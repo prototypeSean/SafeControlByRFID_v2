@@ -1,0 +1,733 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		191EA8F72338C4C9004C3429 /* UIViewsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EA8F62338C4C9004C3429 /* UIViewsTool.swift */; };
+		191EA8F92339B733004C3429 /* MainTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EA8F82339B733004C3429 /* MainTools.swift */; };
+		191EBB97231D0DD90040D1BE /* AddNewFiremanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EBB96231D0DD90040D1BE /* AddNewFiremanViewController.swift */; };
+		191EBB9A231DF9310040D1BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EBB99231DF9310040D1BE /* ImagePicker.swift */; };
+		191EBB9C231E0E7A0040D1BE /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EBB9B231E0E7A0040D1BE /* PhotoManager.swift */; };
+		192008AC23209AE700BF4179 /* BravoSquadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A723209AE600BF4179 /* BravoSquadTableViewCell.swift */; };
+		192008AD23209AE700BF4179 /* BarLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A823209AE600BF4179 /* BarLeftView.swift */; };
+		192008AE23209AE700BF4179 /* FiremanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */; };
+		192008B023209AE700BF4179 /* SafeControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008AB23209AE700BF4179 /* SafeControlModel.swift */; };
+		1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF502318E88D00AC3707 /* SafeControlViewController.swift */; };
+		1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF522318F66900AC3707 /* FireCommandDB.swift */; };
+		19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97BD23161D3000E9B99B /* AppDelegate.swift */; };
+		19AD97C323161D3000E9B99B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AD97C123161D3000E9B99B /* Main.storyboard */; };
+		19AD97C623161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97C423161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld */; };
+		19AD97C823161D3200E9B99B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AD97C723161D3200E9B99B /* Assets.xcassets */; };
+		19AD97CB23161D3200E9B99B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AD97C923161D3200E9B99B /* LaunchScreen.storyboard */; };
+		19AD97D323162A9200E9B99B /* BluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97D223162A9200E9B99B /* BluetoothModel.swift */; };
+		19F7C804232A0ECC005F1167 /* DKBleNfcDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C801232A0ECB005F1167 /* DKBleNfcDevice.m */; };
+		19F7C81D232A0F8A005F1167 /* FeliCa.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C80B232A0F89005F1167 /* FeliCa.m */; };
+		19F7C81E232A0F8A005F1167 /* DESFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C80C232A0F89005F1167 /* DESFire.m */; };
+		19F7C81F232A0F8A005F1167 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C80D232A0F89005F1167 /* Card.m */; };
+		19F7C820232A0F8A005F1167 /* Mifare.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C810232A0F89005F1167 /* Mifare.m */; };
+		19F7C821232A0F8A005F1167 /* CpuCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C811232A0F89005F1167 /* CpuCard.m */; };
+		19F7C822232A0F8A005F1167 /* Iso15693Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C813232A0F8A005F1167 /* Iso15693Card.m */; };
+		19F7C823232A0F8A005F1167 /* Ultralight.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C814232A0F8A005F1167 /* Ultralight.m */; };
+		19F7C824232A0F8A005F1167 /* Iso14443bCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C816232A0F8A005F1167 /* Iso14443bCard.m */; };
+		19F7C825232A0F8A005F1167 /* Ntag21x.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C817232A0F8A005F1167 /* Ntag21x.m */; };
+		19F7C83F232A14BF005F1167 /* DKCardNoResponseException.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C83D232A14BF005F1167 /* DKCardNoResponseException.m */; };
+		19F7C840232A14BF005F1167 /* DKDeviceNoResponseException.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C83E232A14BF005F1167 /* DKDeviceNoResponseException.m */; };
+		19F7C843232A14D7005F1167 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C842232A14D7005F1167 /* NSData+Hex.m */; };
+		19F7C846232A1501005F1167 /* DKBleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C845232A1501005F1167 /* DKBleManager.m */; };
+		19F7C84D232A150C005F1167 /* DKDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C847232A150B005F1167 /* DKDeviceManager.m */; };
+		19F7C84E232A150C005F1167 /* DKComByteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C84A232A150B005F1167 /* DKComByteManager.m */; };
+		19F7C84F232A150C005F1167 /* DKBleDevInitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C84C232A150B005F1167 /* DKBleDevInitInfo.m */; };
+		19F7C862232A151A005F1167 /* DESFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C851232A1518005F1167 /* DESFire.m */; };
+		19F7C863232A151A005F1167 /* Iso15693Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C853232A1518005F1167 /* Iso15693Card.m */; };
+		19F7C864232A151A005F1167 /* Ntag21x.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C854232A1519005F1167 /* Ntag21x.m */; };
+		19F7C865232A151A005F1167 /* Iso14443bCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C857232A1519005F1167 /* Iso14443bCard.m */; };
+		19F7C866232A151A005F1167 /* Ultralight.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C85A232A1519005F1167 /* Ultralight.m */; };
+		19F7C867232A151A005F1167 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C85C232A1519005F1167 /* Card.m */; };
+		19F7C868232A151A005F1167 /* CpuCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C85F232A1519005F1167 /* CpuCard.m */; };
+		19F7C869232A151A005F1167 /* FeliCa.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C860232A151A005F1167 /* FeliCa.m */; };
+		19F7C86A232A151A005F1167 /* Mifare.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C861232A151A005F1167 /* Mifare.m */; };
+		19F7C86E232CC7AC005F1167 /* SafeControlLogPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */; };
+		19F7C86F232CC7AC005F1167 /* SafeControlLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */; };
+		19F7C872232D030B005F1167 /* Objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C871232D030B005F1167 /* Objc.m */; };
+		8EA93EFCA058E79B929F0C2C /* libPods-SafeControlByRFID_DK_v0.01.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9B69AE1DCDE50C34507C7C /* libPods-SafeControlByRFID_DK_v0.01.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		191EA8F62338C4C9004C3429 /* UIViewsTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewsTool.swift; sourceTree = "<group>"; };
+		191EA8F82339B733004C3429 /* MainTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTools.swift; sourceTree = "<group>"; };
+		191EBB96231D0DD90040D1BE /* AddNewFiremanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFiremanViewController.swift; sourceTree = "<group>"; };
+		191EBB99231DF9310040D1BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		191EBB9B231E0E7A0040D1BE /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		192008A723209AE600BF4179 /* BravoSquadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BravoSquadTableViewCell.swift; sourceTree = "<group>"; };
+		192008A823209AE600BF4179 /* BarLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarLeftView.swift; sourceTree = "<group>"; };
+		192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiremanCollectionViewCell.swift; sourceTree = "<group>"; };
+		192008AB23209AE700BF4179 /* SafeControlModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlModel.swift; sourceTree = "<group>"; };
+		1978EF502318E88D00AC3707 /* SafeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlViewController.swift; sourceTree = "<group>"; };
+		1978EF522318F66900AC3707 /* FireCommandDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCommandDB.swift; sourceTree = "<group>"; };
+		19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeControlByRFID_DK_v0.01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AD97BD23161D3000E9B99B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		19AD97C223161D3000E9B99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		19AD97C523161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafeControlByRFID_DK_v0_01.xcdatamodel; sourceTree = "<group>"; };
+		19AD97C723161D3200E9B99B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19AD97CA23161D3200E9B99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		19AD97CC23161D3200E9B99B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19AD97D223162A9200E9B99B /* BluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModel.swift; sourceTree = "<group>"; };
+		19F7C800232A0ECB005F1167 /* SafeControlByRFID_DK_v0.01-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafeControlByRFID_DK_v0.01-Bridging-Header.h"; sourceTree = "<group>"; };
+		19F7C801232A0ECB005F1167 /* DKBleNfcDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBleNfcDevice.m; sourceTree = "<group>"; };
+		19F7C802232A0ECB005F1167 /* DKBleNfcDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBleNfcDevice.h; sourceTree = "<group>"; };
+		19F7C803232A0ECC005F1167 /* DKBleNfc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBleNfc.h; sourceTree = "<group>"; };
+		19F7C80B232A0F89005F1167 /* FeliCa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeliCa.m; sourceTree = "<group>"; };
+		19F7C80C232A0F89005F1167 /* DESFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DESFire.m; sourceTree = "<group>"; };
+		19F7C80D232A0F89005F1167 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		19F7C80E232A0F89005F1167 /* Iso14443bCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iso14443bCard.h; sourceTree = "<group>"; };
+		19F7C80F232A0F89005F1167 /* Iso15693Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iso15693Card.h; sourceTree = "<group>"; };
+		19F7C810232A0F89005F1167 /* Mifare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mifare.m; sourceTree = "<group>"; };
+		19F7C811232A0F89005F1167 /* CpuCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuCard.m; sourceTree = "<group>"; };
+		19F7C812232A0F89005F1167 /* CpuCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuCard.h; sourceTree = "<group>"; };
+		19F7C813232A0F8A005F1167 /* Iso15693Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso15693Card.m; sourceTree = "<group>"; };
+		19F7C814232A0F8A005F1167 /* Ultralight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ultralight.m; sourceTree = "<group>"; };
+		19F7C815232A0F8A005F1167 /* FeliCa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeliCa.h; sourceTree = "<group>"; };
+		19F7C816232A0F8A005F1167 /* Iso14443bCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso14443bCard.m; sourceTree = "<group>"; };
+		19F7C817232A0F8A005F1167 /* Ntag21x.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ntag21x.m; sourceTree = "<group>"; };
+		19F7C818232A0F8A005F1167 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		19F7C819232A0F8A005F1167 /* Ntag21x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ntag21x.h; sourceTree = "<group>"; };
+		19F7C81A232A0F8A005F1167 /* Mifare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mifare.h; sourceTree = "<group>"; };
+		19F7C81B232A0F8A005F1167 /* DESFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DESFire.h; sourceTree = "<group>"; };
+		19F7C81C232A0F8A005F1167 /* Ultralight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ultralight.h; sourceTree = "<group>"; };
+		19F7C83B232A14BE005F1167 /* DKDeviceNoResponseException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKDeviceNoResponseException.h; sourceTree = "<group>"; };
+		19F7C83C232A14BF005F1167 /* DKCardNoResponseException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCardNoResponseException.h; sourceTree = "<group>"; };
+		19F7C83D232A14BF005F1167 /* DKCardNoResponseException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCardNoResponseException.m; sourceTree = "<group>"; };
+		19F7C83E232A14BF005F1167 /* DKDeviceNoResponseException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDeviceNoResponseException.m; sourceTree = "<group>"; };
+		19F7C841232A14D7005F1167 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
+		19F7C842232A14D7005F1167 /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
+		19F7C844232A1501005F1167 /* DKBleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBleManager.h; sourceTree = "<group>"; };
+		19F7C845232A1501005F1167 /* DKBleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBleManager.m; sourceTree = "<group>"; };
+		19F7C847232A150B005F1167 /* DKDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDeviceManager.m; sourceTree = "<group>"; };
+		19F7C848232A150B005F1167 /* DKDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKDeviceManager.h; sourceTree = "<group>"; };
+		19F7C849232A150B005F1167 /* DKBleDevInitInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBleDevInitInfo.h; sourceTree = "<group>"; };
+		19F7C84A232A150B005F1167 /* DKComByteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKComByteManager.m; sourceTree = "<group>"; };
+		19F7C84B232A150B005F1167 /* DKComByteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKComByteManager.h; sourceTree = "<group>"; };
+		19F7C84C232A150B005F1167 /* DKBleDevInitInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBleDevInitInfo.m; sourceTree = "<group>"; };
+		19F7C850232A1518005F1167 /* CpuCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuCard.h; sourceTree = "<group>"; };
+		19F7C851232A1518005F1167 /* DESFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DESFire.m; sourceTree = "<group>"; };
+		19F7C852232A1518005F1167 /* DESFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DESFire.h; sourceTree = "<group>"; };
+		19F7C853232A1518005F1167 /* Iso15693Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso15693Card.m; sourceTree = "<group>"; };
+		19F7C854232A1519005F1167 /* Ntag21x.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ntag21x.m; sourceTree = "<group>"; };
+		19F7C855232A1519005F1167 /* Iso14443bCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iso14443bCard.h; sourceTree = "<group>"; };
+		19F7C856232A1519005F1167 /* Mifare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mifare.h; sourceTree = "<group>"; };
+		19F7C857232A1519005F1167 /* Iso14443bCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso14443bCard.m; sourceTree = "<group>"; };
+		19F7C858232A1519005F1167 /* Ntag21x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ntag21x.h; sourceTree = "<group>"; };
+		19F7C859232A1519005F1167 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		19F7C85A232A1519005F1167 /* Ultralight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ultralight.m; sourceTree = "<group>"; };
+		19F7C85B232A1519005F1167 /* FeliCa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeliCa.h; sourceTree = "<group>"; };
+		19F7C85C232A1519005F1167 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		19F7C85D232A1519005F1167 /* Ultralight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ultralight.h; sourceTree = "<group>"; };
+		19F7C85E232A1519005F1167 /* Iso15693Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iso15693Card.h; sourceTree = "<group>"; };
+		19F7C85F232A1519005F1167 /* CpuCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuCard.m; sourceTree = "<group>"; };
+		19F7C860232A151A005F1167 /* FeliCa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeliCa.m; sourceTree = "<group>"; };
+		19F7C861232A151A005F1167 /* Mifare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mifare.m; sourceTree = "<group>"; };
+		19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlLogPageViewController.swift; sourceTree = "<group>"; };
+		19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlLogTableViewCell.swift; sourceTree = "<group>"; };
+		19F7C870232D02D0005F1167 /* Objc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Objc.h; sourceTree = "<group>"; };
+		19F7C871232D030B005F1167 /* Objc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Objc.m; sourceTree = "<group>"; };
+		2348C79872F456E364B1AF96 /* Pods-SafeControlByRFID_DK_v0.01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeControlByRFID_DK_v0.01.release.xcconfig"; path = "Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01.release.xcconfig"; sourceTree = "<group>"; };
+		3F9B69AE1DCDE50C34507C7C /* libPods-SafeControlByRFID_DK_v0.01.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeControlByRFID_DK_v0.01.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88ED3BBE732BAE983DABF1C7 /* Pods-SafeControlByRFID_DK_v0.01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeControlByRFID_DK_v0.01.debug.xcconfig"; path = "Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19AD97B723161D3000E9B99B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EA93EFCA058E79B929F0C2C /* libPods-SafeControlByRFID_DK_v0.01.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		191EBB95231D0D3B0040D1BE /* RegisterPage */ = {
+			isa = PBXGroup;
+			children = (
+				191EBB96231D0DD90040D1BE /* AddNewFiremanViewController.swift */,
+			);
+			path = RegisterPage;
+			sourceTree = "<group>";
+		};
+		191EBB98231DF8DE0040D1BE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				191EBB99231DF9310040D1BE /* ImagePicker.swift */,
+				191EBB9B231E0E7A0040D1BE /* PhotoManager.swift */,
+				191EA8F62338C4C9004C3429 /* UIViewsTool.swift */,
+				191EA8F82339B733004C3429 /* MainTools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		192008A623209AE600BF4179 /* SafeControlPage */ = {
+			isa = PBXGroup;
+			children = (
+				192008AB23209AE700BF4179 /* SafeControlModel.swift */,
+				1978EF502318E88D00AC3707 /* SafeControlViewController.swift */,
+				192008A723209AE600BF4179 /* BravoSquadTableViewCell.swift */,
+				192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */,
+				192008A823209AE600BF4179 /* BarLeftView.swift */,
+			);
+			path = SafeControlPage;
+			sourceTree = "<group>";
+		};
+		192AA63D2327DD16002ED806 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				19AD97D223162A9200E9B99B /* BluetoothModel.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		192AA63E2327DD40002ED806 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				1978EF522318F66900AC3707 /* FireCommandDB.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		19AD97B123161D3000E9B99B = {
+			isa = PBXGroup;
+			children = (
+				19F7C7FF232A0E9A005F1167 /* BleNfcSDK */,
+				19AD97BC23161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */,
+				19AD97BB23161D3000E9B99B /* Products */,
+				FAB0B621A321D957700FBCD6 /* Pods */,
+				BA96B7313319E092A0EB64EF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		19AD97BB23161D3000E9B99B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19AD97BC23161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */ = {
+			isa = PBXGroup;
+			children = (
+				192AA63E2327DD40002ED806 /* DataBase */,
+				192AA63D2327DD16002ED806 /* Bluetooth */,
+				192008A623209AE600BF4179 /* SafeControlPage */,
+				19F7C86B232CC772005F1167 /* SafeControlLogPage */,
+				191EBB98231DF8DE0040D1BE /* Tools */,
+				191EBB95231D0D3B0040D1BE /* RegisterPage */,
+				19AD97C123161D3000E9B99B /* Main.storyboard */,
+				19AD97BD23161D3000E9B99B /* AppDelegate.swift */,
+				19AD97CC23161D3200E9B99B /* Info.plist */,
+				19AD97C723161D3200E9B99B /* Assets.xcassets */,
+				19AD97C923161D3200E9B99B /* LaunchScreen.storyboard */,
+				19AD97C423161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld */,
+			);
+			path = SafeControlByRFID_DK_v0.01;
+			sourceTree = "<group>";
+		};
+		19F7C7FF232A0E9A005F1167 /* BleNfcSDK */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C809232A0F11005F1167 /* Exception */,
+				19F7C808232A0F07005F1167 /* Tool */,
+				19F7C807232A0F05005F1167 /* BleManager */,
+				19F7C805232A0EEC005F1167 /* DeviceManager */,
+				19F7C80A232A0F71005F1167 /* card */,
+				19F7C803232A0ECC005F1167 /* DKBleNfc.h */,
+				19F7C802232A0ECB005F1167 /* DKBleNfcDevice.h */,
+				19F7C801232A0ECB005F1167 /* DKBleNfcDevice.m */,
+				19F7C800232A0ECB005F1167 /* SafeControlByRFID_DK_v0.01-Bridging-Header.h */,
+				19F7C870232D02D0005F1167 /* Objc.h */,
+				19F7C871232D030B005F1167 /* Objc.m */,
+			);
+			path = BleNfcSDK;
+			sourceTree = "<group>";
+		};
+		19F7C805232A0EEC005F1167 /* DeviceManager */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C849232A150B005F1167 /* DKBleDevInitInfo.h */,
+				19F7C84C232A150B005F1167 /* DKBleDevInitInfo.m */,
+				19F7C84B232A150B005F1167 /* DKComByteManager.h */,
+				19F7C84A232A150B005F1167 /* DKComByteManager.m */,
+				19F7C848232A150B005F1167 /* DKDeviceManager.h */,
+				19F7C847232A150B005F1167 /* DKDeviceManager.m */,
+			);
+			path = DeviceManager;
+			sourceTree = "<group>";
+		};
+		19F7C807232A0F05005F1167 /* BleManager */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C844232A1501005F1167 /* DKBleManager.h */,
+				19F7C845232A1501005F1167 /* DKBleManager.m */,
+			);
+			path = BleManager;
+			sourceTree = "<group>";
+		};
+		19F7C808232A0F07005F1167 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C841232A14D7005F1167 /* NSData+Hex.h */,
+				19F7C842232A14D7005F1167 /* NSData+Hex.m */,
+			);
+			name = Tool;
+			path = "New Group1/Tool";
+			sourceTree = "<group>";
+		};
+		19F7C809232A0F11005F1167 /* Exception */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C83C232A14BF005F1167 /* DKCardNoResponseException.h */,
+				19F7C83D232A14BF005F1167 /* DKCardNoResponseException.m */,
+				19F7C83B232A14BE005F1167 /* DKDeviceNoResponseException.h */,
+				19F7C83E232A14BF005F1167 /* DKDeviceNoResponseException.m */,
+			);
+			path = Exception;
+			sourceTree = "<group>";
+		};
+		19F7C80A232A0F71005F1167 /* card */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C859232A1519005F1167 /* Card.h */,
+				19F7C85C232A1519005F1167 /* Card.m */,
+				19F7C850232A1518005F1167 /* CpuCard.h */,
+				19F7C85F232A1519005F1167 /* CpuCard.m */,
+				19F7C852232A1518005F1167 /* DESFire.h */,
+				19F7C851232A1518005F1167 /* DESFire.m */,
+				19F7C85B232A1519005F1167 /* FeliCa.h */,
+				19F7C860232A151A005F1167 /* FeliCa.m */,
+				19F7C855232A1519005F1167 /* Iso14443bCard.h */,
+				19F7C857232A1519005F1167 /* Iso14443bCard.m */,
+				19F7C85E232A1519005F1167 /* Iso15693Card.h */,
+				19F7C853232A1518005F1167 /* Iso15693Card.m */,
+				19F7C856232A1519005F1167 /* Mifare.h */,
+				19F7C861232A151A005F1167 /* Mifare.m */,
+				19F7C858232A1519005F1167 /* Ntag21x.h */,
+				19F7C854232A1519005F1167 /* Ntag21x.m */,
+				19F7C85D232A1519005F1167 /* Ultralight.h */,
+				19F7C85A232A1519005F1167 /* Ultralight.m */,
+				19F7C818232A0F8A005F1167 /* Card.h */,
+				19F7C80D232A0F89005F1167 /* Card.m */,
+				19F7C812232A0F89005F1167 /* CpuCard.h */,
+				19F7C811232A0F89005F1167 /* CpuCard.m */,
+				19F7C81B232A0F8A005F1167 /* DESFire.h */,
+				19F7C80C232A0F89005F1167 /* DESFire.m */,
+				19F7C815232A0F8A005F1167 /* FeliCa.h */,
+				19F7C80B232A0F89005F1167 /* FeliCa.m */,
+				19F7C80E232A0F89005F1167 /* Iso14443bCard.h */,
+				19F7C816232A0F8A005F1167 /* Iso14443bCard.m */,
+				19F7C80F232A0F89005F1167 /* Iso15693Card.h */,
+				19F7C813232A0F8A005F1167 /* Iso15693Card.m */,
+				19F7C81A232A0F8A005F1167 /* Mifare.h */,
+				19F7C810232A0F89005F1167 /* Mifare.m */,
+				19F7C819232A0F8A005F1167 /* Ntag21x.h */,
+				19F7C817232A0F8A005F1167 /* Ntag21x.m */,
+				19F7C81C232A0F8A005F1167 /* Ultralight.h */,
+				19F7C814232A0F8A005F1167 /* Ultralight.m */,
+			);
+			path = card;
+			sourceTree = "<group>";
+		};
+		19F7C86B232CC772005F1167 /* SafeControlLogPage */ = {
+			isa = PBXGroup;
+			children = (
+				19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */,
+				19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */,
+			);
+			path = SafeControlLogPage;
+			sourceTree = "<group>";
+		};
+		BA96B7313319E092A0EB64EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F9B69AE1DCDE50C34507C7C /* libPods-SafeControlByRFID_DK_v0.01.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAB0B621A321D957700FBCD6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88ED3BBE732BAE983DABF1C7 /* Pods-SafeControlByRFID_DK_v0.01.debug.xcconfig */,
+				2348C79872F456E364B1AF96 /* Pods-SafeControlByRFID_DK_v0.01.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19AD97B923161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19AD97CF23161D3200E9B99B /* Build configuration list for PBXNativeTarget "SafeControlByRFID_DK_v0.01" */;
+			buildPhases = (
+				97C04BFDF0AC6C95C7566E85 /* [CP] Check Pods Manifest.lock */,
+				19AD97B623161D3000E9B99B /* Sources */,
+				19AD97B723161D3000E9B99B /* Frameworks */,
+				19AD97B823161D3000E9B99B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafeControlByRFID_DK_v0.01;
+			productName = SafeControlByRFID_DK_v0.01;
+			productReference = 19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19AD97B223161D3000E9B99B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = DennisKao;
+				TargetAttributes = {
+					19AD97B923161D3000E9B99B = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+					};
+				};
+			};
+			buildConfigurationList = 19AD97B523161D3000E9B99B /* Build configuration list for PBXProject "SafeControlByRFID_DK_v0.01" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19AD97B123161D3000E9B99B;
+			productRefGroup = 19AD97BB23161D3000E9B99B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19AD97B923161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19AD97B823161D3000E9B99B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19AD97CB23161D3200E9B99B /* LaunchScreen.storyboard in Resources */,
+				19AD97C823161D3200E9B99B /* Assets.xcassets in Resources */,
+				19AD97C323161D3000E9B99B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		97C04BFDF0AC6C95C7566E85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SafeControlByRFID_DK_v0.01-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19AD97B623161D3000E9B99B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19AD97C623161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld in Sources */,
+				19F7C872232D030B005F1167 /* Objc.m in Sources */,
+				19F7C866232A151A005F1167 /* Ultralight.m in Sources */,
+				192008B023209AE700BF4179 /* SafeControlModel.swift in Sources */,
+				19F7C822232A0F8A005F1167 /* Iso15693Card.m in Sources */,
+				19F7C843232A14D7005F1167 /* NSData+Hex.m in Sources */,
+				19F7C867232A151A005F1167 /* Card.m in Sources */,
+				1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */,
+				19F7C86A232A151A005F1167 /* Mifare.m in Sources */,
+				19F7C81D232A0F8A005F1167 /* FeliCa.m in Sources */,
+				19F7C846232A1501005F1167 /* DKBleManager.m in Sources */,
+				19F7C84F232A150C005F1167 /* DKBleDevInitInfo.m in Sources */,
+				191EBB9C231E0E7A0040D1BE /* PhotoManager.swift in Sources */,
+				19F7C864232A151A005F1167 /* Ntag21x.m in Sources */,
+				19F7C824232A0F8A005F1167 /* Iso14443bCard.m in Sources */,
+				19F7C86F232CC7AC005F1167 /* SafeControlLogTableViewCell.swift in Sources */,
+				191EA8F92339B733004C3429 /* MainTools.swift in Sources */,
+				19F7C86E232CC7AC005F1167 /* SafeControlLogPageViewController.swift in Sources */,
+				192008AE23209AE700BF4179 /* FiremanCollectionViewCell.swift in Sources */,
+				19F7C823232A0F8A005F1167 /* Ultralight.m in Sources */,
+				19F7C83F232A14BF005F1167 /* DKCardNoResponseException.m in Sources */,
+				19AD97D323162A9200E9B99B /* BluetoothModel.swift in Sources */,
+				191EBB9A231DF9310040D1BE /* ImagePicker.swift in Sources */,
+				192008AC23209AE700BF4179 /* BravoSquadTableViewCell.swift in Sources */,
+				19F7C81E232A0F8A005F1167 /* DESFire.m in Sources */,
+				19F7C865232A151A005F1167 /* Iso14443bCard.m in Sources */,
+				19F7C825232A0F8A005F1167 /* Ntag21x.m in Sources */,
+				19F7C820232A0F8A005F1167 /* Mifare.m in Sources */,
+				19F7C869232A151A005F1167 /* FeliCa.m in Sources */,
+				19F7C84E232A150C005F1167 /* DKComByteManager.m in Sources */,
+				1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */,
+				19F7C81F232A0F8A005F1167 /* Card.m in Sources */,
+				19F7C840232A14BF005F1167 /* DKDeviceNoResponseException.m in Sources */,
+				19F7C84D232A150C005F1167 /* DKDeviceManager.m in Sources */,
+				19F7C862232A151A005F1167 /* DESFire.m in Sources */,
+				19F7C804232A0ECC005F1167 /* DKBleNfcDevice.m in Sources */,
+				191EBB97231D0DD90040D1BE /* AddNewFiremanViewController.swift in Sources */,
+				19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */,
+				19F7C821232A0F8A005F1167 /* CpuCard.m in Sources */,
+				192008AD23209AE700BF4179 /* BarLeftView.swift in Sources */,
+				19F7C868232A151A005F1167 /* CpuCard.m in Sources */,
+				191EA8F72338C4C9004C3429 /* UIViewsTool.swift in Sources */,
+				19F7C863232A151A005F1167 /* Iso15693Card.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		19AD97C123161D3000E9B99B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19AD97C223161D3000E9B99B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		19AD97C923161D3200E9B99B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19AD97CA23161D3200E9B99B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19AD97CD23161D3200E9B99B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		19AD97CE23161D3200E9B99B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		19AD97D023161D3200E9B99B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88ED3BBE732BAE983DABF1C7 /* Pods-SafeControlByRFID_DK_v0.01.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4HS2232BLN;
+				INFOPLIST_FILE = SafeControlByRFID_DK_v0.01/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DennisKao.SafeControlByRFID-DK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BleNfcSDK/SafeControlByRFID_DK_v0.01-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		19AD97D123161D3200E9B99B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2348C79872F456E364B1AF96 /* Pods-SafeControlByRFID_DK_v0.01.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4HS2232BLN;
+				INFOPLIST_FILE = SafeControlByRFID_DK_v0.01/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DennisKao.SafeControlByRFID-DK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BleNfcSDK/SafeControlByRFID_DK_v0.01-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19AD97B523161D3000E9B99B /* Build configuration list for PBXProject "SafeControlByRFID_DK_v0.01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19AD97CD23161D3200E9B99B /* Debug */,
+				19AD97CE23161D3200E9B99B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19AD97CF23161D3200E9B99B /* Build configuration list for PBXNativeTarget "SafeControlByRFID_DK_v0.01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19AD97D023161D3200E9B99B /* Debug */,
+				19AD97D123161D3200E9B99B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		19AD97C423161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				19AD97C523161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodel */,
+			);
+			currentVersion = 19AD97C523161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodel */;
+			path = SafeControlByRFID_DK_v0_01.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 19AD97B223161D3000E9B99B /* Project object */;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "FirecommandDatabase.addNewFireman(serialNumber:firemanName:firemanPhoto:firemanCallsign:firemanRFID:firemanDepartment:):FireCommandDB.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "photoManager">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddNewFiremanViewController.saveToDB(_:):AddNewFiremanViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.firemanAvatar.image">
+            </PersistentString>
+            <PersistentString
+               value = "self.firemanRFID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SafeControlViewController.viewDidLoad():SafeControlViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BluetoothModel.singletion.delegate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddNewFiremanViewController.viewDidLoad():AddNewFiremanViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BluetoothModel.singletion.delegate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

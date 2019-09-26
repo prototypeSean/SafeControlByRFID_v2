@@ -1,0 +1,6 @@
+module Pods_SafeControlByRFID_DK_v0_01 {
+  umbrella header "Pods-SafeControlByRFID_DK_v0.01-umbrella.h"
+
+  export *
+  module * { export * }
+}
