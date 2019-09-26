@@ -407,11 +407,11 @@
             <objects>
                 <viewController id="xgx-L1-0cN" customClass="SafeControlLogPageViewController" customModule="SafeControlByRFID_DK_v0_01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G3m-wk-FX8">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qa4-22-baD">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="954"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.1960784314" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SafeControlLogTableViewCell" id="efo-TA-w8m" userLabel="SafeControlLogTableViewCell" customClass="SafeControlLogTableViewCell" customModule="SafeControlByRFID_DK_v0_01" customModuleProvider="target">
@@ -491,7 +491,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-A5-wyA">
-                                <rect key="frame" x="384" y="0.0" width="384" height="1024"/>
+                                <rect key="frame" x="384" y="0.0" width="384" height="954"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.1960784314" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SafeControlLogTableViewCell" id="D17-Yr-uAc" customClass="SafeControlLogTableViewCell" customModule="SafeControlByRFID_DK_v0_01" customModuleProvider="target">
@@ -581,6 +581,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5R9-ju-8WA"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="進出紀錄" id="Pb1-uo-nus">
                         <barButtonItem key="rightBarButtonItem" title="reload" id="2cj-Bm-R0w">
                             <connections>
