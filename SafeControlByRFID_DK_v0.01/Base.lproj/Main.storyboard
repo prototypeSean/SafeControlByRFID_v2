@@ -571,12 +571,12 @@
                         <color key="backgroundColor" red="0.17254901959999999" green="0.1960784314" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qa4-22-baD" firstAttribute="leading" secondItem="5R9-ju-8WA" secondAttribute="leading" id="ASB-Yf-4sg"/>
+                            <constraint firstItem="JKi-A5-wyA" firstAttribute="top" secondItem="G3m-wk-FX8" secondAttribute="top" id="M3M-zc-OW6"/>
                             <constraint firstItem="qa4-22-baD" firstAttribute="width" secondItem="G3m-wk-FX8" secondAttribute="width" multiplier="0.5" id="Q6h-Xb-et2"/>
                             <constraint firstItem="5R9-ju-8WA" firstAttribute="bottom" secondItem="JKi-A5-wyA" secondAttribute="bottom" id="S9d-aF-3SJ"/>
                             <constraint firstItem="JKi-A5-wyA" firstAttribute="width" secondItem="G3m-wk-FX8" secondAttribute="width" multiplier="0.5" id="Vlr-bR-OpG"/>
                             <constraint firstItem="5R9-ju-8WA" firstAttribute="bottom" secondItem="qa4-22-baD" secondAttribute="bottom" id="aB7-SR-jAC"/>
                             <constraint firstItem="5R9-ju-8WA" firstAttribute="trailing" secondItem="JKi-A5-wyA" secondAttribute="trailing" id="img-J7-Smp"/>
-                            <constraint firstItem="JKi-A5-wyA" firstAttribute="top" secondItem="qa4-22-baD" secondAttribute="top" id="r3L-8r-m3R"/>
                             <constraint firstItem="qa4-22-baD" firstAttribute="top" secondItem="G3m-wk-FX8" secondAttribute="top" id="vU7-ha-Poc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5R9-ju-8WA"/>
