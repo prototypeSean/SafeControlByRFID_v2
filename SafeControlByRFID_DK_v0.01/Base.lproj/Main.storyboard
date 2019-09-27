@@ -222,13 +222,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bluetooth_connected" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-nn-sy6" userLabel="bluetoothStatus">
+                                <rect key="frame" x="6" y="74" width="93" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Skn-Yn-OrU"/>
+                                    <constraint firstAttribute="width" secondItem="mRY-nn-sy6" secondAttribute="height" multiplier="306:79" id="pMG-KB-HUH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="6" id="CPg-LR-NMV"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" id="JPJ-W8-nJR"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="bottom" secondItem="VWP-D3-d93" secondAttribute="bottom" id="cQJ-FI-VfY"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="trailing" secondItem="VWP-D3-d93" secondAttribute="trailing" id="imN-QU-Jjg"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="top" secondItem="vZz-d9-kMs" secondAttribute="top" id="qc1-SF-3nM"/>
+                            <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="4" id="ryE-zU-DD0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
                     </view>
@@ -248,6 +257,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="SafeControlTableView" destination="VWP-D3-d93" id="3oP-9j-VpI"/>
+                        <outlet property="bluetoothStatus" destination="mRY-nn-sy6" id="ieM-Bc-jUM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1b-BK-rll" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,7 +356,7 @@
                                     <action selector="printDB:" destination="iGh-xc-vsU" eventType="touchUpInside" id="jAV-Th-YY0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4Q-1p-uAh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4Q-1p-uAh">
                                 <rect key="frame" x="20" y="945" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
@@ -388,6 +398,11 @@
                             <constraint firstItem="sJO-Qr-1ZD" firstAttribute="width" secondItem="6uS-UJ-NLf" secondAttribute="width" id="zdL-Vs-LY6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y3K-T9-hMV"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="G4Q-1p-uAh"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="fireManName" destination="PlJ-8R-ngh" id="qb1-9t-96w"/>
@@ -583,7 +598,8 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="進出紀錄" id="Pb1-uo-nus">
-                        <barButtonItem key="rightBarButtonItem" title="reload" id="2cj-Bm-R0w">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="reload" id="2cj-Bm-R0w">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="reload:" destination="xgx-L1-0cN" id="MDv-Ir-28S"/>
                             </connections>
@@ -601,6 +617,7 @@
     </scenes>
     <resources>
         <image name="ImagePlaceholder" width="230" height="230"/>
+        <image name="home_bluetooth_connected" width="306" height="79"/>
         <image name="stage_Icon_enter" width="82" height="82"/>
         <image name="stage_icon_quit" width="82" height="82"/>
     </resources>

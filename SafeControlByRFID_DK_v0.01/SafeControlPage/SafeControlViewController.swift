@@ -37,6 +37,8 @@ class SafeControlViewController: UIViewController{
     
     @IBOutlet weak var SafeControlTableView: UITableView!
     
+    @IBOutlet weak var bluetoothStatus: UIImageView!
+    
     override func viewWillAppear(_ animated: Bool) {
         SafeControlTableView.delegate = self
         SafeControlTableView.dataSource = self

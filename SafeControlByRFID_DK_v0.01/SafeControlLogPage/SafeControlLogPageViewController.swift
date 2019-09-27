@@ -15,10 +15,13 @@ class SafeControlLogPageViewController:UIViewController{
 //        countSections()
 //        makeSectionCell(logSectionCase: .enter)
 //        model?.firemanDB.allfiremanForLogPage()
-        print("\(finalArrayEnter)")
-        print("\(finalArrayLeave)")
-        finalArrayEnter = (model?.firemanDB.makeSectionCellEnter)!
-        finalArrayLeave = (model?.firemanDB.makeSectionCellExit)!
+//        print("\(finalArrayEnter)")
+//        print("\(finalArrayLeave)")
+//        finalArrayEnter = (model?.firemanDB.makeSectionCellEnter)!
+//        finalArrayLeave = (model?.firemanDB.makeSectionCellExit)!
+        model?.firemanDB.sortAllfiremanForLogPage()
+        self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
+        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
         self.safeControlEnterLogTableView.reloadData()
         self.safeControlLeaveLogTableView.reloadData()
     }
@@ -34,6 +37,7 @@ class SafeControlLogPageViewController:UIViewController{
         safeControlLeaveLogTableView.restorationIdentifier = "leave"
         
         self.model?.firemanDB.allfiremanForLogPage()
+        self.model?.firemanDB.sortAllfiremanForLogPage()
         self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
         self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
 //        model?.firemanDB.allfiremanForLogPage()
@@ -135,7 +139,6 @@ extension SafeControlLogPageViewController:UITableViewDelegate, UITableViewDataS
             cell.status.text = "進"
 //            let e = makeSectionCell(logSectionCase: .enter)
 //            cell.setFireman(fireman: e[indexPath.section].man[indexPath.row])
-            
             // TODO: setFireman 有點耗資源的感覺
             cell.setFireman(fireman: finalArrayEnter[indexPath.section].fireman[indexPath.row])
             // 臨時外觀設定
@@ -291,6 +294,7 @@ extension SafeControlLogPageViewController:SafeControlModelDelegate{
 //            self.model?.firemanDB.allfiremanForLogPage()
             self.finalArrayEnter.removeAll()
             self.finalArrayLeave.removeAll()
+            self.model?.firemanDB.sortAllfiremanForLogPage()
             self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
             self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
             self.safeControlEnterLogTableView.reloadData()

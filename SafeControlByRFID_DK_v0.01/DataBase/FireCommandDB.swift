@@ -140,6 +140,7 @@ public struct FiremanForBravoSquad {
     let image:UIImage
 }
 // 提供給 Log 頁面的struct
+/// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
 public struct FiremanForLog{
     let dayOnSection:String
     let fireman:Array<FiremanForBravoSquad>
@@ -171,13 +172,12 @@ public func getLatestedTimeStamp(fireman:FiremanForBravoSquad) -> String{
 }
 
 
-// 已經在removeFireman裡面更新DB 所以取出最後一筆離開火場資料暫時用不到??
+// 已經在removeFireman裡面更新DB 所以這func暫時用不到了
 /// 獲取最新一筆離開的時間戳
 ///
 /// - Parameter fireman: FiremanForBravoSquad
 /// - Returns: 純文字時間戳
 public func getLatestedTimeStampOut(fireman:FiremanForBravoSquad) -> String{
-    
     // 從資料庫取出並轉成陣列
     let dateStringArray = fireman.timestampout.split(separator: ",")
 //    print("getLatestedTimeStampOut!!!!\(dateStringArray)")
@@ -274,23 +274,47 @@ extension FirecommandDatabase{
         }
     }
     
+    // 依照時間或其他條件來排序 log 頁面要顯示的順序
+    // 林董一直催～沒時間所以先全部照時間排序 預計要增加參數 (by:Any)
+    func sortAllfiremanForLogPage(){
+        var sortEn:Array<FiremanForLog>=[]
+        var sortEx:Array<FiremanForLog>=[]
+        
+        let currentEn = self.makeSectionCellEnter
+        for eachDay in currentEn{
+            var allMan = eachDay.fireman
+            allMan.sort(by: {$0.timestamp > $1.timestamp})
+            sortEn.append(FiremanForLog(dayOnSection: eachDay.dayOnSection, fireman: allMan))
+        }
+        let currentEx = self.makeSectionCellExit
+        for eachDay in currentEx{
+            var allMan = eachDay.fireman
+            // 依時間排序由大道小
+            allMan.sort(by: {$0.timestamp > $1.timestamp})
+            sortEx.append(FiremanForLog(dayOnSection: eachDay.dayOnSection, fireman: allMan))
+        }
+        
+        self.makeSectionCellEnter = sortEn
+        self.makeSectionCellExit = sortEx
+        print("sortEn\(self.makeSectionCellEnter)")
+    }
+    
     // 專門為log頁面撈資料用的 吐出的一組struct就是section跟裡面的cell
     func allfiremanForLogPage(){
         // 要先產出進去跟出來的日期才能做 TableView Section
         makeSectionCellEnter = []
         makeSectionCellExit = []
         
-        firemanForLog()
+        getFiremanForLog()
         missionDeployedDay()
         print("執行 allfiremanForLog")
 
-        
         // 基本上就是把兩個陣列再整理成表格的型態，因為時間戳格式不同要多一次轉換
         for d in entersDaysString{
             var mansInADay:Array<FiremanForBravoSquad>=[]
             for m in arrayEnter{
                 if timeStampToString(timestamp: Double(m.timestamp)!, theDateFormat: "YYYY-MM-dd") == d{
-                    print("插入同日期\(d)")
+//                    print("插入同日期\(d)")
                     mansInADay.append(m)
                 }
             }
@@ -311,9 +335,8 @@ extension FirecommandDatabase{
     
 
     
-    // TODO: 沒資料庫狀態觸發會閃退
     // 要吐出兩種log 進去跟出來的(存在變數裡面比較省運算)
-    func firemanForLog(){
+    func getFiremanForLog(){
 
         //先清空
         self.arrayEnter = []
@@ -355,12 +378,6 @@ extension FirecommandDatabase{
             }
             
         }
-//        switch logType{
-//        case .enter:
-//            return arrayEnter
-//        case .exit:
-//            return arrayExit
-//        }
     }
     
     // MARK : 更新時間戳（進入火場）

@@ -17,15 +17,17 @@ class SafeControlLogTableViewCell:UITableViewCell{
     var colorSetting:ColorSetting = .Enter
     
     // 把單一個cell要顯示的東西從FiremanForBravoSquad 分析出來
+    // 這邊傳進來的陣列應該已經把對應的時間戳準備好了
     func setFireman(fireman:FiremanForBravoSquad){
         self.name.text = fireman.name
-        self.timestamp.text = getLatestedTimeStamp(fireman: fireman)
+        self.timestamp.text = timeStampToString(timestamp: Double(fireman.timestamp)!, theDateFormat: "HH:mm:ss")
+//        self.timestamp.text = getLatestedTimeStamp(fireman: fireman)
 //        self.timestamp.text = fireman.timestamp.since1970ToString()
     }
     
     func setFiremanOut(fireman:FiremanForBravoSquad){
         self.name.text = fireman.name
-        self.timestamp.text = getLatestedTimeStampOut(fireman: fireman)
+        self.timestamp.text = timeStampToString(timestamp: Double(fireman.timestampout)!, theDateFormat: "HH:mm:ss")
         //        self.timestamp.text = fireman.timestamp.since1970ToString()
     }
     
