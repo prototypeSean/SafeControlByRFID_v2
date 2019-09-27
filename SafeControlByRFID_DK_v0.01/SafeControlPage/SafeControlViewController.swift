@@ -123,7 +123,6 @@ extension SafeControlViewController:SafeControlModelDelegate{
         }else{
             self.bluetoothStatus.image = #imageLiteral(resourceName: "home_bluetooth_connecting")
         }
-        
     }
     
     func dataDidUpdate() {

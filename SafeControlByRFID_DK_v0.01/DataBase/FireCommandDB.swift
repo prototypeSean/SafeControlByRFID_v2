@@ -290,13 +290,13 @@ extension FirecommandDatabase{
         for eachDay in currentEx{
             var allMan = eachDay.fireman
             // 依時間排序由大道小
-            allMan.sort(by: {$0.timestamp > $1.timestamp})
+            allMan.sort(by: {$0.timestampout > $1.timestampout})
             sortEx.append(FiremanForLog(dayOnSection: eachDay.dayOnSection, fireman: allMan))
         }
         
         self.makeSectionCellEnter = sortEn
         self.makeSectionCellExit = sortEx
-        print("sortEn\(self.makeSectionCellEnter)")
+        print("sortEx\(self.makeSectionCellExit)")
     }
     
     // 專門為log頁面撈資料用的 吐出的一組struct就是section跟裡面的cell
