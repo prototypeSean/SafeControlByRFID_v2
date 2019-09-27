@@ -14,8 +14,9 @@ import CoreBluetooth
 
 
 
-protocol BluetoothModelDelegate {
+@objc protocol BluetoothModelDelegate {
     func didReciveRFIDDate(uuid:String)
+    func bluetoothStatusUpdate(status:String)
 }
 
 
@@ -149,6 +150,7 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
         case .poweredOff:
 //            self.textLog.text.append(contentsOf: "本機藍牙尚未啟動\n")
             print("尚未啟動")
+            self.delegate?.bluetoothStatusUpdate(status:"藍芽未開啟")
         case .poweredOn:
 //            self.textLog.text.append(contentsOf: "本機藍牙藍芽已開啟\n")
             print("藍芽已開啟")
@@ -175,7 +177,7 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
                     print("連接BLE_NFC成功")
                     self.bleManager?.stopScan()
                     self.getBLEDeviceMsg()
-                    
+                    self.delegate?.bluetoothStatusUpdate(status: "已連線")
                     //連上設備就打開 RFID
 //                    DispatchQueue.global(qos: .background).async {
 //                        print("背景自動巡卡")

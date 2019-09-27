@@ -289,6 +289,10 @@ extension SafeControlLogPageViewController:UITableViewDelegate, UITableViewDataS
 }
 
 extension SafeControlLogPageViewController:SafeControlModelDelegate{
+    func bleStatus(status: String) {
+        
+    }
+    
     func dataDidUpdate() {
         DispatchQueue.main.async {
 //            self.model?.firemanDB.allfiremanForLogPage()

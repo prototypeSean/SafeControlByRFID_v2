@@ -115,6 +115,17 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
 }
 
 extension SafeControlViewController:SafeControlModelDelegate{
+    func bleStatus(status: String) {
+        if status == "已連線"{
+            self.bluetoothStatus.image = #imageLiteral(resourceName: "home_bluetooth_connected")
+        }else if status == "藍芽未開啟"{
+            self.bluetoothStatus.image = #imageLiteral(resourceName: "home_bluetooth_unconnected")
+        }else{
+            self.bluetoothStatus.image = #imageLiteral(resourceName: "home_bluetooth_connecting")
+        }
+        
+    }
+    
     func dataDidUpdate() {
         DispatchQueue.main.async { [weak self] in
             self?.SafeControlTableView.reloadData()

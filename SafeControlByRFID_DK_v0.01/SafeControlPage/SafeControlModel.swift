@@ -12,6 +12,7 @@ import UIKit
 // 只是個時間點的flag的樣子
 protocol SafeControlModelDelegate{
     func dataDidUpdate()
+    func bleStatus(status:String)
 }
 
 protocol SafeControldelegateforAddNewFireman{
@@ -150,4 +151,8 @@ extension SafeControlModel:BluetoothModelDelegate{
         delegateForLog?.dataDidUpdate()
         delegateForAddFireman?.newFiremanRFID(uuid: uuid)
     }
+    func bluetoothStatusUpdate(status:String){
+        delegate?.bleStatus(status: status)
+    }
+
 }
