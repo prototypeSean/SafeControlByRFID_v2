@@ -19,11 +19,13 @@ class SafeControlLogPageViewController:UIViewController{
 //        print("\(finalArrayLeave)")
 //        finalArrayEnter = (model?.firemanDB.makeSectionCellEnter)!
 //        finalArrayLeave = (model?.firemanDB.makeSectionCellExit)!
-        model?.firemanDB.sortAllfiremanForLogPage()
-        self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
-        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
-        self.safeControlEnterLogTableView.reloadData()
-        self.safeControlLeaveLogTableView.reloadData()
+//        model?.firemanDB.sortAllfiremanForLogPage()
+//        self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
+//        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
+//        self.safeControlEnterLogTableView.reloadData()
+//        self.safeControlLeaveLogTableView.reloadData()
+        
+        model?.firemanDB.getFiremanForLogv2()
     }
     
     
@@ -128,7 +130,6 @@ extension SafeControlLogPageViewController:UITableViewDelegate, UITableViewDataS
 //            return sections.exit[section]
 //        }
 //    }
-    
     
     // 具體定義每個cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -288,6 +289,7 @@ extension SafeControlLogPageViewController:UITableViewDelegate, UITableViewDataS
 //    }
 }
 
+// TODO: 這邊應該不用接收藍牙狀態改變..吧 先放著 不需要再拔掉
 extension SafeControlLogPageViewController:SafeControlModelDelegate{
     func bleStatus(status: String) {
         

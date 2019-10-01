@@ -16,6 +16,9 @@
 		192008AD23209AE700BF4179 /* BarLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A823209AE600BF4179 /* BarLeftView.swift */; };
 		192008AE23209AE700BF4179 /* FiremanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */; };
 		192008B023209AE700BF4179 /* SafeControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008AB23209AE700BF4179 /* SafeControlModel.swift */; };
+		1921A90D2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */; };
+		1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */; };
+		1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */; };
 		1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF502318E88D00AC3707 /* SafeControlViewController.swift */; };
 		1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF522318F66900AC3707 /* FireCommandDB.swift */; };
 		19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97BD23161D3000E9B99B /* AppDelegate.swift */; };
@@ -66,6 +69,9 @@
 		192008A823209AE600BF4179 /* BarLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarLeftView.swift; sourceTree = "<group>"; };
 		192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiremanCollectionViewCell.swift; sourceTree = "<group>"; };
 		192008AB23209AE700BF4179 /* SafeControlModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlModel.swift; sourceTree = "<group>"; };
+		1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogV2ViewController.swift; sourceTree = "<group>"; };
+		1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogInTableViewCell.swift; sourceTree = "<group>"; };
+		1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogOutTableViewCell.swift; sourceTree = "<group>"; };
 		1978EF502318E88D00AC3707 /* SafeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlViewController.swift; sourceTree = "<group>"; };
 		1978EF522318F66900AC3707 /* FireCommandDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCommandDB.swift; sourceTree = "<group>"; };
 		19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeControlByRFID_DK_v0.01.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +186,15 @@
 				192008A823209AE600BF4179 /* BarLeftView.swift */,
 			);
 			path = SafeControlPage;
+			sourceTree = "<group>";
+		};
+		1921A90E2343030900DCFB19 /* SafeControlLogCell */ = {
+			isa = PBXGroup;
+			children = (
+				1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */,
+				1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */,
+			);
+			path = SafeControlLogCell;
 			sourceTree = "<group>";
 		};
 		192AA63D2327DD16002ED806 /* Bluetooth */ = {
@@ -343,8 +358,10 @@
 		19F7C86B232CC772005F1167 /* SafeControlLogPage */ = {
 			isa = PBXGroup;
 			children = (
+				1921A90E2343030900DCFB19 /* SafeControlLogCell */,
 				19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */,
 				19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */,
+				1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */,
 			);
 			path = SafeControlLogPage;
 			sourceTree = "<group>";
@@ -476,6 +493,7 @@
 				19F7C81D232A0F8A005F1167 /* FeliCa.m in Sources */,
 				19F7C846232A1501005F1167 /* DKBleManager.m in Sources */,
 				19F7C84F232A150C005F1167 /* DKBleDevInitInfo.m in Sources */,
+				1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */,
 				191EBB9C231E0E7A0040D1BE /* PhotoManager.swift in Sources */,
 				19F7C864232A151A005F1167 /* Ntag21x.m in Sources */,
 				19F7C824232A0F8A005F1167 /* Iso14443bCard.m in Sources */,
@@ -492,10 +510,12 @@
 				19F7C865232A151A005F1167 /* Iso14443bCard.m in Sources */,
 				19F7C825232A0F8A005F1167 /* Ntag21x.m in Sources */,
 				19F7C820232A0F8A005F1167 /* Mifare.m in Sources */,
+				1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */,
 				19F7C869232A151A005F1167 /* FeliCa.m in Sources */,
 				19F7C84E232A150C005F1167 /* DKComByteManager.m in Sources */,
 				1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */,
 				19F7C81F232A0F8A005F1167 /* Card.m in Sources */,
+				1921A90D2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift in Sources */,
 				19F7C840232A14BF005F1167 /* DKDeviceNoResponseException.m in Sources */,
 				19F7C84D232A150C005F1167 /* DKDeviceManager.m in Sources */,
 				19F7C862232A151A005F1167 /* DESFire.m in Sources */,

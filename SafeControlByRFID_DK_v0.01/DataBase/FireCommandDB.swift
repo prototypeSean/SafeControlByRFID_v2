@@ -9,6 +9,32 @@
 import Foundation
 import SQLite
 
+// 提供給安管系統的簡易版名單
+public struct FiremanForBravoSquad {
+    let name:String
+    let uuid:String
+    let timestamp:String
+    let timestampout:String
+    let image:UIImage
+}
+// 提供給 Log 頁面的struct
+/// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
+public struct FiremanForLog{
+    let dayOnSection:String
+    let fireman:Array<FiremanForBravoSquad>
+}
+
+// 新版log頁面 step 0.
+// 因為不同進出時間在不同欄位沒辦法排序所以重新設計FFBSstruct
+public struct FiremanForLogv2{
+    let name:String
+    let uuid:String
+    let timestamp:String?
+    let timestampout:String?
+    let image:UIImage
+    let timestampAbs:Double
+}
+
 class FirecommandDatabase {
 //                       :PhotoPathJustSaved
     var firemanPhotoPath:URL?
@@ -19,7 +45,6 @@ class FirecommandDatabase {
         connectDatabase()
     }
     
-    // TODO: 排序方法還沒寫 要寫給外部控制
     // 每次進去跟出來的人的 BravoSquad
     // 由 firemanForLog() 生產
     var arrayEnter:Array<FiremanForBravoSquad> = []
@@ -34,8 +59,8 @@ class FirecommandDatabase {
     var makeSectionCellEnter:Array<FiremanForLog>=[]
     var makeSectionCellExit:Array<FiremanForLog>=[]
     
-    
-    
+    // 新版log頁面 step 1.
+    var firemanListforLog:Array<FiremanForLogv2>=[]
     
     // delegate 來的 func
     // TODO: 暫時沒用，待修
@@ -131,20 +156,7 @@ class FirecommandDatabase {
     
 }
 
-// 提供給安管系統的簡易版名單
-public struct FiremanForBravoSquad {
-    let name:String
-    let uuid:String
-    let timestamp:String
-    let timestampout:String
-    let image:UIImage
-}
-// 提供給 Log 頁面的struct
-/// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
-public struct FiremanForLog{
-    let dayOnSection:String
-    let fireman:Array<FiremanForBravoSquad>
-}
+
 
 
 
@@ -377,6 +389,52 @@ extension FirecommandDatabase{
                 arrayExit.append(oneFiremanEachExitLog)
             }
             
+        }
+    }
+    
+    // 新版log頁面 step 2.修改版的 getFiremanForLog
+    func getFiremanForLogv2(){
+        
+        //先清空
+        self.firemanListforLog = []
+        
+        // fm = fireman row
+        for fm in (try! db.prepare(table_FIREMAN)){
+            
+            photoManager = PhotoManager()
+            // 讀取一個fm的照片 讀取失敗就用預設圖
+            let imageFromlocalPath = photoManager?.loadImageFromDocumentDirectory(filename: fm[table_FIREMAN_RFIDUUID]) ?? UIImage(named: "ImageInApp")!
+            
+            // 把人拼成一個 FiremanForBravoSquad 只是這次每個人都只有一筆，同一個人會有很多次
+            // 把兩種時間戳做成矩陣
+            let timeInArray = fm[table_FIREMAN_TIMESTAMP].split(separator: ",")
+            let timeOutArray = fm[table_FIREMAN_TIMESTAMPOUT].split(separator: ",")
+            // 分開生成進去跟出來的陣列 每個人會有多個時間不同的FiremanForBravoSquad
+            // 此特殊陣列有進入時間的話 出來時間就填為空。反之亦然
+            
+            for oneFiremansInTimeLog in timeInArray{
+                let oneFiremanEachEnterLog = FiremanForLogv2(
+                    name: fm[table_FIREMAN_NAME],
+                    uuid: fm[table_FIREMAN_RFIDUUID],
+                    timestamp: String(oneFiremansInTimeLog),
+                    timestampout: nil,
+                    image: imageFromlocalPath,
+                    timestampAbs: Double(oneFiremansInTimeLog)!)
+                firemanListforLog.append(oneFiremanEachEnterLog)
+            }
+            
+            
+            for one in timeOutArray{
+                let oneFiremanEachExitLog = FiremanForLogv2(
+                    name: fm[table_FIREMAN_NAME],
+                    uuid: fm[table_FIREMAN_RFIDUUID],
+                    timestamp: nil,
+                    timestampout: String(one),
+                    image: imageFromlocalPath,
+                    timestampAbs: Double(one)!)
+                firemanListforLog.append(oneFiremanEachExitLog)
+            }
+            print("新版log名單!! \(firemanListforLog)")
         }
     }
     

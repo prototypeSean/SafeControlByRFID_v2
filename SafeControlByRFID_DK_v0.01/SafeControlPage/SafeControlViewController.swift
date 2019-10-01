@@ -66,6 +66,12 @@ class SafeControlViewController: UIViewController{
             /// 有點邪門的寫法，因為註冊頁面是child的關係，這樣兩個VC都會收到delegate
             destinationtoAdd.setupModel(model: model)
         }
+        
+        if segue.identifier == "segueToLogPageV2"{
+            let destinationtoAdd = segue.destination as! SafeControlLogV2ViewController
+            /// 有點邪門的寫法，因為註冊頁面是child的關係，這樣兩個VC都會收到delegate
+            destinationtoAdd.setupModel(model: model)
+        }
 //        self.model.delegate = nil
         
         

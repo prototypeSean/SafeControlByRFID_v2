@@ -49,6 +49,7 @@ class SafeControlModel:NSObject{
     // 資料更新的時候用的旗子
     var delegate:SafeControlModelDelegate?
     var delegateForLog:SafeControlModelDelegate?
+    var delegateForLogV2:SafeControlModelDelegate?
     var delegateForAddFireman:SafeControldelegateforAddNewFireman?
     
     // 吃uuid當參數 試著把人從小隊中移出 並寫入logLeave中，移出成功＝true
@@ -149,6 +150,7 @@ extension SafeControlModel:BluetoothModelDelegate{
         sortLogData()
         delegate?.dataDidUpdate()
         delegateForLog?.dataDidUpdate()
+        delegateForLogV2?.dataDidUpdate()
         delegateForAddFireman?.newFiremanRFID(uuid: uuid)
     }
     func bluetoothStatusUpdate(status:String){
