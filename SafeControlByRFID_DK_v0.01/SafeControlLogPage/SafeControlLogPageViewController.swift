@@ -6,7 +6,7 @@ class SafeControlLogPageViewController:UIViewController{
     @IBOutlet weak var safeControlLeaveLogTableView: UITableView!
     private var model:SafeControlModel?
     
-    var sections:(enter:[String],exit:[String])=([],[])
+//    var sections:(enter:[String],exit:[String])=([],[])
     var finalArrayEnter:Array<FiremanForLog>=[]
     var finalArrayLeave:Array<FiremanForLog>=[]
 
@@ -24,8 +24,8 @@ class SafeControlLogPageViewController:UIViewController{
 //        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
 //        self.safeControlEnterLogTableView.reloadData()
 //        self.safeControlLeaveLogTableView.reloadData()
-        
-        model?.firemanDB.getFiremanForLogv2()
+
+        model?.firemanDB.makefiremanLogPageV2()
     }
     
     

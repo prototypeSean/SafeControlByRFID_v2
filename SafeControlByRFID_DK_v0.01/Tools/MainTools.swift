@@ -25,7 +25,7 @@ public func timeStampToString(timestamp:Double, theDateFormat:String) -> String{
 }
 
 // 傳入的string 一定要跟 stringsDateFormat設定的格式一樣
-public func stringToDate(from string:String, stringsDateFormat:String) -> Date{
+public func timeStampStringToDate(from string:String, stringsDateFormat:String) -> Date{
     let dateformate = DateFormatter()
     dateformate.dateFormat = stringsDateFormat
     return dateformate.date(from: string)!

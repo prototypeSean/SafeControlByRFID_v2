@@ -35,6 +35,14 @@ public struct FiremanForLogv2{
     let timestampAbs:Double
 }
 
+// 新版log頁面 step 4.
+public struct logPageV2{
+    let deployDay:String
+    let oneDayFiremanLog:Array<FiremanForLogv2>
+}
+
+
+
 class FirecommandDatabase {
 //                       :PhotoPathJustSaved
     var firemanPhotoPath:URL?
@@ -54,6 +62,13 @@ class FirecommandDatabase {
     // 由 missionDeployedDay() 生產
     var entersDaysString:[String] = []
     var leavesDaysString:[String] = []
+    
+    // 新版log頁面 step 3.
+    // 由 missionDeployedDayV2() 生產
+    var deployDaysString:[String] = []
+    
+    // 新版log頁面 step 5.(final)
+    var firemanLogPageV2:Array<logPageV2>=[]
     
     // log 相關的最後一步
     var makeSectionCellEnter:Array<FiremanForLog>=[]
@@ -153,7 +168,6 @@ class FirecommandDatabase {
         }
     }
     
-    
 }
 
 
@@ -182,7 +196,6 @@ public func getLatestedTimeStamp(fireman:FiremanForBravoSquad) -> String{
     let timestampLableText = dateFormater.string(from: dateTimeLabel)
     return timestampLableText
 }
-
 
 // 已經在removeFireman裡面更新DB 所以這func暫時用不到了
 /// 獲取最新一筆離開的時間戳
@@ -213,11 +226,14 @@ extension FirecommandDatabase{
     enum logType {
         case enter
         case exit
+        case all
     }
-    
     
     // 製作 FireManForLog Struct的 dayOnSection欄位
     // 任務日期 分進入跟離開（嗶嗶進入跟撤離任務的Day）
+    // 10/2 改版紀錄-- 保留舊版的功能 整理出兩種日期清單以免客人不要。
+    // 新版功能要求 -- 一份日期清單 不要分成兩個矩陣，希望這個func吃類似的struct都可以吐出日期清單
+    
     func missionDeployedDay(){
         
         // 先清空
@@ -226,7 +242,7 @@ extension FirecommandDatabase{
         
         var entersSection:Array<String> = []
         var leavesSection:Array<String> = []
-
+        
         for ffbs in arrayEnter{
             // 逐個把時間戳轉成日期->找出有幾天
             let tpIn = Double(ffbs.timestamp)!
@@ -278,6 +294,65 @@ extension FirecommandDatabase{
         
         // print("全部的進入日期 \(entersSectionString)\n全部的撤離日期 \(leavesSectionString)\n")
 //        return (entersSectionString,leavesSectionString)
+    }
+    
+    func missionDeployedDayV2(){
+        
+        self.deployDaysString = []
+        var days:Array<String> = []
+        
+        for ffbs in firemanListforLog{
+            // 逐個把時間戳轉成日期->找出有幾天
+            let tpIn = ffbs.timestampAbs
+            let dateInString = timeStampToString(timestamp: tpIn, theDateFormat: "YYYY-MM-dd")
+            //  print("\(ffbs.name) 的 進入年月日 \(dateInString)")
+            days.append(dateInString)
+            print("每個部署日期\(dateInString)")
+        }
+        
+        // 用純文字的陣列來移除重複日期 NSOrderedSet 比起set 多了會保留原本順序的特性(而且比較快？)
+        days = Array(NSOrderedSet(array: days)) as! Array<String>
+        
+        // 把剩下的陣列存回date型態 等下要用來依日期重新排序
+        var convertedArraydays: [Date] = []
+
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "YYYY-MM-dd"
+        
+        for d in days {
+            let date = dateFormatter2.date(from: d)
+            if let date = date {
+                convertedArraydays.append(date)
+            }
+        }
+
+        // 照日期降序排 這也能拿來用其實 只是型態不是字串
+        let resultdays = convertedArraydays.sorted(by: { $0.compare($1) == .orderedDescending })
+        let resultdaysString = resultdays.map{dateFormatter2.string(from: $0)}
+        self.deployDaysString = resultdaysString
+        
+        print("全部的純文字日期\(self.deployDaysString)")
+        
+    }
+    
+    func makefiremanLogPageV2(){
+        getFiremanForLogv2()
+        missionDeployedDayV2()
+        self.firemanLogPageV2 = []
+        
+        for d in deployDaysString{
+            var mansInADay:Array<FiremanForLogv2>=[]
+            for m in firemanListforLog{
+                if timeStampToString(timestamp: m.timestampAbs, theDateFormat: "YYYY-MM-dd") == d{
+                    //                    print("插入同日期\(d)")
+                    mansInADay.append(m)
+                }
+            }
+            firemanLogPageV2.append(logPageV2(deployDay: d, oneDayFiremanLog: mansInADay))
+        }
+        
+        print("新版ＬＯＧ完成版陣列\(self.firemanLogPageV2)")
+        
     }
     
     func allFireman(){
@@ -345,7 +420,7 @@ extension FirecommandDatabase{
         print("新版ＬＯＧ頁面清單:\n進：-- \(makeSectionCellEnter)\n出：--\(makeSectionCellExit)")
     }
     
-
+    
     
     // 要吐出兩種log 進去跟出來的(存在變數裡面比較省運算)
     func getFiremanForLog(){
@@ -510,7 +585,6 @@ extension FirecommandDatabase{
             print("插入消防員時間戳失敗:\(error)")
         }
     }
-    
     
     // 用 RFIDUUID 來找從資料庫撈安管頁面需要的部分消防員資料
     func getFiremanforBravoSquad(by uuid:String) -> FiremanForBravoSquad?{

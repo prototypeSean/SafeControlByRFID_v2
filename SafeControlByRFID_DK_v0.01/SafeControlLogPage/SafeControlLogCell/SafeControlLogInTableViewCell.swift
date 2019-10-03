@@ -12,6 +12,7 @@ class SafeControlLogInTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var timeStamp: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
     
     
     override func awakeFromNib() {
@@ -23,6 +24,12 @@ class SafeControlLogInTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setFiremanforCellIn(fireman:FiremanForLogv2){
+        self.name.text = fireman.name
+        self.timeStamp.text = timeStampToString(timestamp: fireman.timestampAbs, theDateFormat: "HH:mm:ss")
+        self.avatar.image = fireman.image
     }
 
 }
