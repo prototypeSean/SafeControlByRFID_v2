@@ -307,7 +307,6 @@ extension FirecommandDatabase{
             let dateInString = timeStampToString(timestamp: tpIn, theDateFormat: "YYYY-MM-dd")
             //  print("\(ffbs.name) 的 進入年月日 \(dateInString)")
             days.append(dateInString)
-            print("每個部署日期\(dateInString)")
         }
         
         // 用純文字的陣列來移除重複日期 NSOrderedSet 比起set 多了會保留原本順序的特性(而且比較快？)
@@ -331,29 +330,11 @@ extension FirecommandDatabase{
         let resultdaysString = resultdays.map{dateFormatter2.string(from: $0)}
         self.deployDaysString = resultdaysString
         
-        print("全部的純文字日期\(self.deployDaysString)")
+//        print("全部的純文字日期\(self.deployDaysString)")
+        print("v2版部署日期已更新")
         
     }
     
-    func makefiremanLogPageV2(){
-        getFiremanForLogv2()
-        missionDeployedDayV2()
-        self.firemanLogPageV2 = []
-        
-        for d in deployDaysString{
-            var mansInADay:Array<FiremanForLogv2>=[]
-            for m in firemanListforLog{
-                if timeStampToString(timestamp: m.timestampAbs, theDateFormat: "YYYY-MM-dd") == d{
-                    //                    print("插入同日期\(d)")
-                    mansInADay.append(m)
-                }
-            }
-            firemanLogPageV2.append(logPageV2(deployDay: d, oneDayFiremanLog: mansInADay))
-        }
-        
-        print("新版ＬＯＧ完成版陣列\(self.firemanLogPageV2)")
-        
-    }
     
     func allFireman(){
         for item in (try! db.prepare(table_FIREMAN)){
@@ -467,6 +448,7 @@ extension FirecommandDatabase{
         }
     }
     
+    // MARK: 新版log頁面 func 們
     // 新版log頁面 step 2.修改版的 getFiremanForLog
     func getFiremanForLogv2(){
         
@@ -509,8 +491,30 @@ extension FirecommandDatabase{
                     timestampAbs: Double(one)!)
                 firemanListforLog.append(oneFiremanEachExitLog)
             }
-            print("新版log名單!! \(firemanListforLog)")
+            
+            firemanListforLog.sort(by: {$0.timestampAbs > $1.timestampAbs})
+//            print("新版log名單!! \(firemanListforLog)")
+            print("新版log清單更新完成")
         }
+    }
+    
+    func makefiremanLogPageV2(){
+        getFiremanForLogv2()
+        missionDeployedDayV2()
+        self.firemanLogPageV2 = []
+        
+        for d in deployDaysString{
+            var mansInADay:Array<FiremanForLogv2>=[]
+            for m in firemanListforLog{
+                if timeStampToString(timestamp: m.timestampAbs, theDateFormat: "YYYY-MM-dd") == d{
+                    //                    print("插入同日期\(d)")
+                    mansInADay.append(m)
+                }
+            }
+            firemanLogPageV2.append(logPageV2(deployDay: d, oneDayFiremanLog: mansInADay))
+        }
+        print("新版log頁面用的陣列整理完成")
+//        print("新版ＬＯＧ完成版陣列\(self.firemanLogPageV2)")
     }
     
     // MARK : 更新時間戳（進入火場）

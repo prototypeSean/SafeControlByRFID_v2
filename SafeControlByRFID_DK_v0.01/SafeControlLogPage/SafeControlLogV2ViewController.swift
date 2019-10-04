@@ -10,7 +10,16 @@ import UIKit
 
 extension SafeControlLogV2ViewController: SafeControlModelDelegate{
     func dataDidUpdate() {
-        print("收到了")
+        
+        DispatchQueue.main.async {
+            self.logPageArray.removeAll()
+            // 這邊也要取得 DB 來的資料
+            self.model?.firemanDB.makefiremanLogPageV2()
+            self.logPageArray = (self.model?.firemanDB.firemanLogPageV2)!
+            self.safeControlLogTable.reloadData()
+            
+            print("22222222222\(self.logPageArray)")
+        }
     }
     
     func bleStatus(status: String) {}

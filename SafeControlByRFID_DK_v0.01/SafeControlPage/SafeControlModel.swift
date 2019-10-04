@@ -116,6 +116,7 @@ extension SafeControlModel{
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在
     func syncBravoSquadLog(){
         firemanDB.allfiremanForLogPage()
+        firemanDB.makefiremanLogPageV2()
 //        logEnter = firemanDB.arrayEnter
 //        logLeave = firemanDB.arrayExit
     }
@@ -135,7 +136,7 @@ extension SafeControlModel:BluetoothModelDelegate{
                 
             }
             
-            if(vc is SafeControlViewController || vc is SafeControlLogPageViewController){
+            if(vc is SafeControlViewController || vc is SafeControlLogPageViewController || vc is SafeControlLogV2ViewController){
                 // 觸發消防員進入或離開火場功能 嗶嗶就先移除，失敗再新增
                 // 如果移除成功就會遇到return跳出迴圈
                 if !removeFireman(by: uuid){
