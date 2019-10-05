@@ -48,6 +48,7 @@ class SafeControlLogV2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.safeControlLogTable.allowsSelection = false
         safeControlLogTable.delegate = self
         safeControlLogTable.dataSource = self
         
@@ -60,13 +61,13 @@ class SafeControlLogV2ViewController: UIViewController {
         
 //        firemanListforLog = (self.model?.firemanDB.firemanListforLog)!
         print("存到這個view陣列中的進出紀錄清單\(logPageArray)")
+        
+        self.safeControlLogTable.register(LogHeader.nib, forHeaderFooterViewReuseIdentifier: "LogHeader")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
 }
 extension SafeControlLogV2ViewController: UITableViewDelegate, UITableViewDataSource{
     
@@ -80,29 +81,45 @@ extension SafeControlLogV2ViewController: UITableViewDelegate, UITableViewDataSo
     
     // 設定清單標題（依日期區分）
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1001712329)
         
-        let headerLabel = UILabel(frame: CGRect(x: 30, y: 5, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
-        
-        headerLabel.textColor = UIColor.white
-        //        headerLabel.addBorderBottom(size: 2.0, color: UIColor.white)
-        if tableView.restorationIdentifier == "enter"{
-            headerLabel.text = logPageArray[section].deployDay
-        }else{
-            headerLabel.text = logPageArray[section].deployDay
-        }
-        headerLabel.sizeToFit()
-        headerView.addSubview(headerLabel)
+        let headerView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: "LogHeader")
+            as? LogHeader
+        headerView?.headerDay.text = logPageArray[section].deployDay
+        headerView?.headerTitle.text = "進出時間"
         
         return headerView
+        
+//        let headerView = UIView()
+//        headerView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1001712329)
+//
+//        let headerDayLabel = UILabel(frame: CGRect(x: 30, y: 5, width:
+//            tableView.bounds.size.width, height: tableView.bounds.size.height))
+//
+//        let headerCenterLabel = UILabel(frame: CGRect(x: tableView.bounds.size.width/2, y: 5, width: 60, height: tableView.bounds.size.height))
+//        headerCenterLabel.text = "進出時間"
+//
+//        headerDayLabel.textColor = UIColor.white
+//        //        headerLabel.addBorderBottom(size: 2.0, color: UIColor.white)
+//        if tableView.restorationIdentifier == "enter"{
+//            headerDayLabel.text = logPageArray[section].deployDay
+//        }else{
+//            headerDayLabel.text = logPageArray[section].deployDay
+//        }
+//        headerDayLabel.sizeToFit()
+//        headerView.addSubview(headerDayLabel)
+//        headerView.addSubview(headerCenterLabel)
+//        return headerView
 
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30   
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        var cell:UITableViewCell
-        
         // 利用 indexPath 會遍歷的特性來跑整個消防員清單 如果timestamp不是nil 就表示是"進入cell"
         let eachFmLog = self.logPageArray[indexPath.section].oneDayFiremanLog[indexPath.row]
         if eachFmLog.timestamp != nil{

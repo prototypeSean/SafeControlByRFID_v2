@@ -52,18 +52,15 @@ class AddNewFiremanViewController: UIViewController {
     
     var firemanTimeStamp:String?
     
+    @IBOutlet weak var saveToDBOutlet: UIButton!
+    
     @IBAction func saveToDB(_ sender: Any) {
         // 多一層彈出視窗 確認才寫入
-        let controller = UIAlertController(title: "新增一名消防員", message: "確認資料無誤", preferredStyle: .alert)
+        let controller = UIAlertController(title: "儲存消防員資料", message: "確認資料無誤", preferredStyle: .alert)
         // 利用 UIAlertAction 的第三個參數 handler 傳入的 closure 控制點選按鈕要做的事情。
         let okAction = UIAlertAction(title: "確認存入", style: .default){
             (_) in self.addCurrentFireMan()
-            self.firemanAvatar.image = UIImage(named: "ImagePlaceholder")
-            self.firemanCallSign.text = ""
-            self.serialNumber.text = ""
-            self.fireManName.text = ""
-            self.fireManRFID.text = "請感應卡片"
-            self.firemanDepartment.text = ""
+            self.resetPageContent()
         }
         let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
         controller.addAction(okAction)
@@ -71,6 +68,24 @@ class AddNewFiremanViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
+    
+
+    @IBAction func upDateFireman(_ sender: UIButton) {
+        // 多一層彈出視窗 確認才寫入
+        let controller = UIAlertController(title: "修改消防員資料", message: "確認資料無誤", preferredStyle: .alert)
+        // 利用 UIAlertAction 的第三個參數 handler 傳入的 closure 控制點選按鈕要做的事情。
+        let okAction = UIAlertAction(title: "確認存入", style: .default){
+            (_) in self.upDateFireman()
+            self.resetPageContent()
+            self.upDateFiremanOutlet.isHidden = true
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        controller.addAction(okAction)
+        controller.addAction(cancelAction)
+        
+        present(controller, animated: true, completion: nil)
+    }
+    @IBOutlet weak var upDateFiremanOutlet: UIButton!
     
     func addCurrentFireMan(){
 //        let currentTimeStamp = Date().timeIntervalSince1970
@@ -84,6 +99,25 @@ class AddNewFiremanViewController: UIViewController {
             firemanTimeStamp: "",
             firemanTimeStampOut: "",
             firemanDepartment: firemanDepartment.text!)
+    }
+    
+    func upDateFireman(){
+        let ffr = FiremanForRegister(name: self.fireManName.text!,
+                                     uuid: self.fireManRFID.text!,
+                                     serialNumber: self.serialNumber.text!,
+                                     callSing: self.firemanCallSign.text!,
+                                     department: self.firemanDepartment.text!,
+                                     image: self.firemanAvatar.image!)
+        self.model?.firemanDB.updateFiremanForRegisterPage(by: ffr)
+    }
+    
+    func resetPageContent(){
+        self.firemanAvatar.image = UIImage(named: "ImagePlaceholder")
+        self.firemanCallSign.text = ""
+        self.serialNumber.text = ""
+        self.fireManName.text = ""
+        self.fireManRFID.text = "請感應卡片"
+        self.firemanDepartment.text = ""
     }
     
     // 內部測試用 之後會拔掉 印出所有消防員
@@ -137,7 +171,7 @@ class AddNewFiremanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        upDateFiremanOutlet.isHidden = true
 //        BluetoothModel.singletion.delegate = self
 //        model.delegateForAddFireman = self
         //MARK:-- 外觀設定
@@ -217,7 +251,22 @@ extension AddNewFiremanViewController:SafeControldelegateforAddNewFireman{
     func newFiremanRFID(uuid: String) {
         DispatchQueue.main.async{
             print("註冊人員頁面的dataDidUpdate")
-            self.fireManRFID.text = "\(uuid)"
+            
+            if let fireman = self.model?.firemanDB.getFiremanforRegisterCheck(by: uuid){
+                self.firemanAvatar.image = fireman.image
+                self.firemanCallSign.text = fireman.callSing
+                self.fireManName.text = fireman.name
+                self.fireManRFID.text = uuid
+                self.firemanDepartment.text = fireman.department
+                self.serialNumber.text = fireman.serialNumber
+                
+                self.saveToDBOutlet.isHidden = true
+                self.upDateFiremanOutlet.isHidden = false
+                
+            }else{
+                self.resetPageContent()
+                self.fireManRFID.text = "\(uuid)"
+            }
         }
     }
 }

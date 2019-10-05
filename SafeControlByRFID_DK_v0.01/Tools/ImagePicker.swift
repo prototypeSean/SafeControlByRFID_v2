@@ -5,7 +5,7 @@
 //  Created by DennisKao on 2019/9/3.
 //  Copyright © 2019 DennisKao. All rights reserved.
 //
-// https://theswiftdev.com/2019/01/30/picking-images-with-uiimagepickercontroller-in-swift-5/
+// 
 
 import UIKit
 

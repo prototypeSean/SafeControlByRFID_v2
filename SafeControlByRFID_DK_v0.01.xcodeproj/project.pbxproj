@@ -16,6 +16,8 @@
 		192008AD23209AE700BF4179 /* BarLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A823209AE600BF4179 /* BarLeftView.swift */; };
 		192008AE23209AE700BF4179 /* FiremanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */; };
 		192008B023209AE700BF4179 /* SafeControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192008AB23209AE700BF4179 /* SafeControlModel.swift */; };
+		19204E9223485CC4006C8AE6 /* LogHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19204E9123485CC4006C8AE6 /* LogHeader.xib */; };
+		19204E9423485D10006C8AE6 /* LogHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19204E9323485D10006C8AE6 /* LogHeader.swift */; };
 		1921A90D2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */; };
 		1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */; };
 		1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */; };
@@ -69,6 +71,8 @@
 		192008A823209AE600BF4179 /* BarLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarLeftView.swift; sourceTree = "<group>"; };
 		192008A923209AE600BF4179 /* FiremanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiremanCollectionViewCell.swift; sourceTree = "<group>"; };
 		192008AB23209AE700BF4179 /* SafeControlModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlModel.swift; sourceTree = "<group>"; };
+		19204E9123485CC4006C8AE6 /* LogHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogHeader.xib; sourceTree = "<group>"; };
+		19204E9323485D10006C8AE6 /* LogHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeader.swift; sourceTree = "<group>"; };
 		1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogV2ViewController.swift; sourceTree = "<group>"; };
 		1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogInTableViewCell.swift; sourceTree = "<group>"; };
 		1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogOutTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */,
 				1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */,
+				19204E9123485CC4006C8AE6 /* LogHeader.xib */,
+				19204E9323485D10006C8AE6 /* LogHeader.swift */,
 			);
 			path = SafeControlLogCell;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19204E9223485CC4006C8AE6 /* LogHeader.xib in Resources */,
 				19AD97CB23161D3200E9B99B /* LaunchScreen.storyboard in Resources */,
 				19AD97C823161D3200E9B99B /* Assets.xcassets in Resources */,
 				19AD97C323161D3000E9B99B /* Main.storyboard in Resources */,
@@ -520,6 +527,7 @@
 				19F7C84D232A150C005F1167 /* DKDeviceManager.m in Sources */,
 				19F7C862232A151A005F1167 /* DESFire.m in Sources */,
 				19F7C804232A0ECC005F1167 /* DKBleNfcDevice.m in Sources */,
+				19204E9423485D10006C8AE6 /* LogHeader.swift in Sources */,
 				191EBB97231D0DD90040D1BE /* AddNewFiremanViewController.swift in Sources */,
 				19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */,
 				19F7C821232A0F8A005F1167 /* CpuCard.m in Sources */,

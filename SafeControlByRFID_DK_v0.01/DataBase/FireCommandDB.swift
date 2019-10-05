@@ -9,6 +9,18 @@
 import Foundation
 import SQLite
 
+
+// 提供給註冊頁面的名單
+public struct FiremanForRegister {
+    let name:String
+    let uuid:String
+    let serialNumber:String
+    let callSing:String
+    let department:String
+    let image:UIImage
+}
+
+
 // 提供給安管系統的簡易版名單
 public struct FiremanForBravoSquad {
     let name:String
@@ -590,6 +602,38 @@ extension FirecommandDatabase{
         }
     }
     
+    // 註冊頁面編輯人員
+    func updateFiremanForRegisterPage(by editfireman:FiremanForRegister){
+        let fireman = table_FIREMAN.filter(table_FIREMAN_RFIDUUID == editfireman.uuid)
+        do{
+            //照片比較麻煩
+            // 讓PhotoManager介入把照片存入檔案
+            photoManager = PhotoManager()
+            // 要生成資料庫的時候才把照片存入本地
+            let path = photoManager!.saveImageToDocumentDirectory(image: editfireman.image, filename: editfireman.uuid)
+            
+            // 那個中括號很重要
+            let updateRows = try db.run(fireman.update(
+                [table_FIREMAN_NAME <- editfireman.name,
+                table_FIREMAN_SN <- editfireman.serialNumber,
+                table_FIREMAN_CALLSIGN <- editfireman.callSing,
+                table_FIREMAN_DEPARTMENT <- editfireman.department,
+                table_FIREMAN_PHOTO_PATH <- path!.absoluteString]
+                ))
+            
+            if updateRows > 0 {
+                print("編輯消防員完成")
+            }else{
+                print("沒有發現消防員\(editfireman)")
+            }
+        }catch{
+            print("編輯消防員失敗：\(error)")
+        }
+        
+        
+        
+    }
+    
     // 用 RFIDUUID 來找從資料庫撈安管頁面需要的部分消防員資料
     func getFiremanforBravoSquad(by uuid:String) -> FiremanForBravoSquad?{
         do{
@@ -604,6 +648,31 @@ extension FirecommandDatabase{
                 //            print("取出的BravoSquad人員:\(fm[table_FIREMAN_NAME]),\nRFID:\(fm[table_FIREMAN_RFIDUUID]),\n時間戳:\(fm[table_FIREMAN_TIMESTAMP]),\n照片路徑:\(fm[table_FIREMAN_PHOTO_PATH]),")
                 
                 return FiremanForBravoSquad(name: fm[table_FIREMAN_NAME], uuid: fm[table_FIREMAN_RFIDUUID], timestamp: fm[table_FIREMAN_TIMESTAMP], timestampout: fm[table_FIREMAN_TIMESTAMPOUT], image: imageFromlocalPath)
+            }
+        }catch{
+            print("取出FiremanforBravoSquad錯誤\(error)")
+        }
+        return nil
+    }
+    
+    func getFiremanforRegisterCheck(by uuid:String) -> FiremanForRegister?{
+        do{
+            let fireman = Table("table_FIREMAN")
+            // 先更新時間戳 再把資料傳給model
+            updateFiremanForBravoSquadaTime(by: uuid)
+            
+            // 幾乎都是sqlite.swift提供的語法，目的是用UUID找出對應的消防員
+            for fm in try db.prepare(fireman.where(table_FIREMAN_RFIDUUID == uuid)){
+                photoManager = PhotoManager()
+                let imageFromlocalPath = photoManager?.loadImageFromDocumentDirectory(filename: fm[table_FIREMAN_RFIDUUID]) ?? UIImage(named: "ImageInApp")!
+                //            print("取出的BravoSquad人員:\(fm[table_FIREMAN_NAME]),\nRFID:\(fm[table_FIREMAN_RFIDUUID]),\n時間戳:\(fm[table_FIREMAN_TIMESTAMP]),\n照片路徑:\(fm[table_FIREMAN_PHOTO_PATH]),")
+                
+                return FiremanForRegister(name: fm[table_FIREMAN_NAME],
+                                          uuid: fm[table_FIREMAN_RFIDUUID],
+                                          serialNumber: fm[table_FIREMAN_SN],
+                                          callSing: fm[table_FIREMAN_CALLSIGN],
+                                          department: fm[table_FIREMAN_DEPARTMENT],
+                                          image: imageFromlocalPath)
             }
         }catch{
             print("取出FiremanforBravoSquad錯誤\(error)")
