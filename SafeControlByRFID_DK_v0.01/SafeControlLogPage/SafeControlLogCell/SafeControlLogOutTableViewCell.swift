@@ -16,6 +16,9 @@ class SafeControlLogOutTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.avatar.layer.cornerRadius = (self.avatar.layer.bounds.height)/2
+        self.avatar.layer.borderWidth = 1   
+        self.avatar.layer.borderColor = #colorLiteral(red: 0.3450980392, green: 0.968627451, blue: 0.8549019608, alpha: 1)
         // Initialization code
     }
 
