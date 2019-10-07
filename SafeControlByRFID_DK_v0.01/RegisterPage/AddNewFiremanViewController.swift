@@ -266,6 +266,7 @@ extension AddNewFiremanViewController:SafeControldelegateforAddNewFireman{
             }else{
                 self.resetPageContent()
                 self.upDateFiremanOutlet.isHidden = true
+                self.saveToDBOutlet.isHidden = false
                 self.fireManRFID.text = "\(uuid)"
             }
         }

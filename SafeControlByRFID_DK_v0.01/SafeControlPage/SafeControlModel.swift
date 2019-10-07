@@ -137,6 +137,13 @@ extension SafeControlModel:BluetoothModelDelegate{
             }
             
             if(vc is SafeControlViewController || vc is SafeControlLogPageViewController || vc is SafeControlLogV2ViewController){
+                
+                syncBravoSquadLog()
+                sortLogData()
+                delegate?.dataDidUpdate()
+                delegateForLog?.dataDidUpdate()
+                delegateForLogV2?.dataDidUpdate()
+                
                 // 觸發消防員進入或離開火場功能 嗶嗶就先移除，失敗再新增
                 // 如果移除成功就會遇到return跳出迴圈
                 if !removeFireman(by: uuid){
@@ -147,11 +154,7 @@ extension SafeControlModel:BluetoothModelDelegate{
             }
         }
         //畢畢的時候也要同步一次（會不會資料量太大？）
-        syncBravoSquadLog()
-        sortLogData()
-        delegate?.dataDidUpdate()
-        delegateForLog?.dataDidUpdate()
-        delegateForLogV2?.dataDidUpdate()
+        
         delegateForAddFireman?.newFiremanRFID(uuid: uuid)
     }
     func bluetoothStatusUpdate(status:String){

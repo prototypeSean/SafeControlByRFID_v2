@@ -659,7 +659,7 @@ extension FirecommandDatabase{
         do{
             let fireman = Table("table_FIREMAN")
             // 先更新時間戳 再把資料傳給model
-            updateFiremanForBravoSquadaTime(by: uuid)
+//            updateFiremanForBravoSquadaTime(by: uuid)
             
             // 幾乎都是sqlite.swift提供的語法，目的是用UUID找出對應的消防員
             for fm in try db.prepare(fireman.where(table_FIREMAN_RFIDUUID == uuid)){
