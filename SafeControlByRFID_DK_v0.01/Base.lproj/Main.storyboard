@@ -814,7 +814,7 @@
                         <viewLayoutGuide key="safeArea" id="2fk-cL-pA7"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="進出紀錄v2" id="Wx9-3c-2cZ">
+                    <navigationItem key="navigationItem" title="進出紀錄" id="Wx9-3c-2cZ">
                         <barButtonItem key="rightBarButtonItem" title="reload" id="d8D-JG-noU">
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
@@ -833,7 +833,7 @@
         <image name="home_bluetooth_connected" width="306" height="79"/>
         <image name="stage_Icon_enter" width="82" height="82"/>
         <image name="stage_icon_quit" width="82" height="82"/>
-        <image name="stage_member_cell_enter" width="702" height="106"/>
+        <image name="stage_member_cell_enter" width="704" height="106"/>
         <image name="stage_member_cell_quit" width="702" height="106"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

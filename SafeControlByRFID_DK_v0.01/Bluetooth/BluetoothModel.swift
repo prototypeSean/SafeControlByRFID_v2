@@ -59,11 +59,20 @@ class BluetoothModel:NSObject{
         let deviceName = self.bleNfcDevice?.getName()
 //        self.textLog.text.append(contentsOf: "設備名稱：\(deviceName ?? "獲取設備名稱失敗")\n")
         print("設備名稱：\(deviceName ?? "獲取設備名稱失敗")")
-        // TODO:--人家寫的getBatteryVoltage規定不能在主線程跑(.偶而會造成閃退因為NSException沒處理)
-//        DispatchQueue.global(qos: .background).async {
-//            let deviceBattery = self.bleNfcDevice?.getBatteryVoltage()
-//            print("電池電壓：\(round(deviceBattery!*100)/100)")
+        
+        // TODO: 電壓警示 還來不及檢查先不放
+//        do{
+//            try ObjC.catchException{
+//                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
+//                btyQueue.async {
+//                    let deviceBattery = self.bleNfcDevice?.getBatteryVoltage()
+//                    print("電池電壓：\(round(deviceBattery!*100)/100)")
+//                }
+//            }
+//        }catch{
+//            print("電壓不足的NSErrorrrrr\(error)")
 //        }
+
     }
     
 //    開啟 RFID 自動掃描功能
@@ -85,15 +94,7 @@ class BluetoothModel:NSObject{
         }catch {
             print("該死的NSErrorrrrr\(error)")
         }
-        
-        // 不確定是不是因為丟到背景一直抱錯
-//        DispatchQueue.global(qos: .background).async {
-//            if (self.bleNfcDevice?.startAutoSearchCard(20, cardType: UInt8(ISO14443_P4))) != nil{
-//                print("等待感應RFID中...")
-//            }else{
-//                print("不支援自動感應")
-//            }
-//        }
+
     }
     
     // 讀寫卡片 因爲不知道怎用swift抓NSUInteger 但是可以抓編號,所以貼過來看
@@ -120,6 +121,20 @@ class BluetoothModel:NSObject{
             let cardUID = rawCardUID.trimmingCharacters(in: angleBracketsSet)
 //            self.textLog.text.append(contentsOf: "uuid:\(String(describing: cardUID))\n")
             print("卡片uuid:\(String(describing: cardUID))")
+            
+            
+            do{
+                try ObjC.catchException{
+                    if (self.bleNfcDevice?.openBeep(50, offDelay: 50, cnt: 2)) != nil{
+                        print("嗶嗶嗶")
+                    }else{
+                        print("不支援蜂鳴器")
+                    }
+                }
+            }catch {
+                print("該死的NSErrorrrrr\(error)")
+            }
+            
             
             // 這邊把uuid傳出去這個model了
             self.delegate?.didReciveRFIDDate(uuid: cardUID)

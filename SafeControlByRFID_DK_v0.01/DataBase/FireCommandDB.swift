@@ -410,7 +410,7 @@ extension FirecommandDatabase{
             }
             makeSectionCellExit.append(FiremanForLog(dayOnSection: d2, fireman: mansInADay))
         }
-        print("新版ＬＯＧ頁面清單:\n進：-- \(makeSectionCellEnter)\n出：--\(makeSectionCellExit)")
+//        print("新版ＬＯＧ頁面清單:\n進：-- \(makeSectionCellEnter)\n出：--\(makeSectionCellExit)")
     }
     
     
@@ -445,7 +445,7 @@ extension FirecommandDatabase{
                     image: imageFromlocalPath)
                 arrayEnter.append(oneFiremanEachEnterLog)
             }
-            print("arrayEnter!! \(arrayEnter)")
+//            print("arrayEnter!! \(arrayEnter)")
             
             for one in timeOutArray{
                 let oneFiremanEachExitLog = FiremanForBravoSquad(

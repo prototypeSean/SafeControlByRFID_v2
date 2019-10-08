@@ -20,7 +20,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     
     private var timestamp:TimeInterval?
     // 單位是秒
-    let barMaxTime:Double = 10
+    let barMaxTime:Double = 1800
     
     override func awakeFromNib() {
         // cell的圓角

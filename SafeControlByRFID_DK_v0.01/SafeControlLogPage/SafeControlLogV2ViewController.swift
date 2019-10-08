@@ -18,7 +18,7 @@ extension SafeControlLogV2ViewController: SafeControlModelDelegate{
             self.logPageArray = (self.model?.firemanDB.firemanLogPageV2)!
             self.safeControlLogTable.reloadData()
             
-            print("22222222222\(self.logPageArray)")
+//            print("22222222222\(self.logPageArray)")
         }
     }
     
@@ -60,7 +60,7 @@ class SafeControlLogV2ViewController: UIViewController {
         self.logPageArray = (self.model?.firemanDB.firemanLogPageV2)!
         
 //        firemanListforLog = (self.model?.firemanDB.firemanListforLog)!
-        print("存到這個view陣列中的進出紀錄清單\(logPageArray)")
+//        print("存到這個view陣列中的進出紀錄清單\(logPageArray)")
         
         self.safeControlLogTable.register(LogHeader.nib, forHeaderFooterViewReuseIdentifier: "LogHeader")
     }
