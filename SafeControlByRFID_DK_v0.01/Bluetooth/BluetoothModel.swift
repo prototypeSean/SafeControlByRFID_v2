@@ -57,22 +57,25 @@ class BluetoothModel:NSObject{
     func getBLEDeviceMsg(){
         // 設備名稱
         let deviceName = self.bleNfcDevice?.getName()
-//        self.textLog.text.append(contentsOf: "設備名稱：\(deviceName ?? "獲取設備名稱失敗")\n")
+        
+        // 測試中...
+//        for service in (self.mNearestBle?.services!)!{
+//            print("發現service \(service)")
+//        }
         print("設備名稱：\(deviceName ?? "獲取設備名稱失敗")")
         
         // TODO: 電壓警示 還來不及檢查先不放
-//        do{
-//            try ObjC.catchException{
-//                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
-//                btyQueue.async {
-//                    let deviceBattery = self.bleNfcDevice?.getBatteryVoltage()
-//                    print("電池電壓：\(round(deviceBattery!*100)/100)")
-//                }
-//            }
-//        }catch{
-//            print("電壓不足的NSErrorrrrr\(error)")
-//        }
-
+        do{
+            try ObjC.catchException{
+                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
+                btyQueue.async {
+                    let deviceBattery = self.bleNfcDevice?.getBatteryVoltage()
+                    print("電池電壓：\(round(deviceBattery!*100)/100)")
+                }
+            }
+        }catch{
+            print("電壓不足的NSErrorrrrr\(error)")
+        }
     }
     
 //    開啟 RFID 自動掃描功能
@@ -123,18 +126,19 @@ class BluetoothModel:NSObject{
             print("卡片uuid:\(String(describing: cardUID))")
             
             
-            do{
-                try ObjC.catchException{
-                    if (self.bleNfcDevice?.openBeep(50, offDelay: 50, cnt: 2)) != nil{
-                        print("嗶嗶嗶")
-                    }else{
-                        print("不支援蜂鳴器")
-                    }
-                }
-            }catch {
-                print("該死的NSErrorrrrr\(error)")
-            }
-            
+            // TODO: RBF 出廠前移除註解
+//            do{
+//                try ObjC.catchException{
+//                    if (self.bleNfcDevice?.openBeep(50, offDelay: 50, cnt: 2)) != nil{
+//                        print("嗶嗶嗶")
+//                    }else{
+//                        print("不支援蜂鳴器")
+//                    }
+//                }
+//            }catch {
+//                print("該死的NSErrorrrrr\(error)")
+//            }
+            // TODO: RBF 出廠前移除註解
             
             // 這邊把uuid傳出去這個model了
             self.delegate?.didReciveRFIDDate(uuid: cardUID)
@@ -182,8 +186,25 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
     // 開始掃描後監聽發現的外圍設備 -> 找到BLE_NFC之後掛上instance就連線
     func dkScannerCallback(_ central: CBCentralManager!, didDiscover peripheral: CBPeripheral!, advertisementData: [AnyHashable : Any]!, rssi RSSI: NSNumber!) {
         
-        print("「發現外圍設備」的 delegate")
+//        print("「發現外圍設備」的 delegate")
+        print("外圍設備名稱\(String(describing: peripheral.name))")
         
+        
+        // 測試中...
+//        if peripheral.name == "HC-08"{
+//            self.mNearestBle = peripheral
+//            self.bleManager?.connect(peripheral, callbackBlock: { (isConnected) in
+//                if isConnected{
+//                    print("連接BLE_NFC成功")
+//                        self.bleManager?.stopScan()
+//                        self.getBLEDeviceMsg()
+//                        self.delegate?.bluetoothStatusUpdate(status: "已連線")
+//                }
+//                else{ print("連接失敗")
+//                }
+//            })
+//        }
+//         TODO: *** 暫時註解而已 之後要打開
         if peripheral.name == "BLE_NFC"{
             print("找到 BLE_NFC")
             self.mNearestBle = peripheral
@@ -193,15 +214,11 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
                     self.bleManager?.stopScan()
                     self.getBLEDeviceMsg()
                     self.delegate?.bluetoothStatusUpdate(status: "已連線")
-                    //連上設備就打開 RFID
-//                    DispatchQueue.global(qos: .background).async {
-//                        print("背景自動巡卡")
-//                        self.AutoScanRFID()
-//                    }
 
                 }else{ print("連接失敗")}
             })
         }
+//         TODO: *** 暫時註解而已 之後要打開
     }
     
     // TODO: 斷線重連寫在這邊，尚未驗證是否會有問題
@@ -236,7 +253,7 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
     func receiveRfnSearchCard(_ isblnIsSus: Bool, cardType: UInt, uid CardSn: Data!, ats bytCarATS: Data!) {
 //        self.textLog.text.append(contentsOf: "讀取到卡片\n")
 //        self.textLog.text.append(contentsOf: "卡片描述:\(CardSn.description)\n")
-        
+        print("有收到感應__僅此而已")
         self.readWriteCard(cardType: cardType)
     }
 }

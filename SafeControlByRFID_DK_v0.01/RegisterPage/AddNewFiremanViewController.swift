@@ -40,6 +40,7 @@ class AddNewFiremanViewController: UIViewController {
     @IBOutlet weak var serialNumber: UITextField!
     @IBOutlet weak var firemanCallSign: UITextField!
     @IBOutlet weak var firemanDepartment: UITextField!
+    @IBOutlet weak var firemanScubaTime: UITextField!
     
     // 暫時區
     @IBAction func testingLog(_ sender: UIButton) {
@@ -98,7 +99,8 @@ class AddNewFiremanViewController: UIViewController {
             firemanRFID: fireManRFID.text!,
             firemanTimeStamp: "",
             firemanTimeStampOut: "",
-            firemanDepartment: firemanDepartment.text!)
+            firemanDepartment: firemanDepartment.text!,
+            firemanScubaTime: Double(firemanScubaTime.text!)!)
     }
     
     func upDateFireman(){
@@ -107,6 +109,7 @@ class AddNewFiremanViewController: UIViewController {
                                      serialNumber: self.serialNumber.text!,
                                      callSing: self.firemanCallSign.text!,
                                      department: self.firemanDepartment.text!,
+                                     scubaTime: self.firemanScubaTime.text!,
                                      image: self.firemanAvatar.image!)
         self.model?.firemanDB.updateFiremanForRegisterPage(by: ffr)
     }
@@ -122,6 +125,9 @@ class AddNewFiremanViewController: UIViewController {
     
     // 內部測試用 之後會拔掉 印出所有消防員
     @IBAction func printDB(_ sender: Any) {
+        
+        fireCommandDB?.insertColumnToCurrentDB(table: "table_fireman", column: "firemanScubaTime", defaultValue: "1800")
+        
         fireCommandDB?.allFireman()
     }
     
@@ -259,6 +265,7 @@ extension AddNewFiremanViewController:SafeControldelegateforAddNewFireman{
                 self.fireManRFID.text = uuid
                 self.firemanDepartment.text = fireman.department
                 self.serialNumber.text = fireman.serialNumber
+                self.firemanScubaTime.text = fireman.scubaTime
                 
                 self.saveToDBOutlet.isHidden = true
                 self.upDateFiremanOutlet.isHidden = false

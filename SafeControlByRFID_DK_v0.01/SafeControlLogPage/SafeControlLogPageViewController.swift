@@ -38,10 +38,10 @@ class SafeControlLogPageViewController:UIViewController{
         safeControlLeaveLogTableView.dataSource = self
         safeControlLeaveLogTableView.restorationIdentifier = "leave"
         
-        self.model?.firemanDB.allfiremanForLogPage()
-        self.model?.firemanDB.sortAllfiremanForLogPage()
-        self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
-        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
+//        self.model?.firemanDB.allfiremanForLogPage()
+//        self.model?.firemanDB.sortAllfiremanForLogPage()
+//        self.finalArrayEnter = (self.model?.firemanDB.makeSectionCellEnter)!
+//        self.finalArrayLeave = (self.model?.firemanDB.makeSectionCellExit)!
 //        model?.firemanDB.allfiremanForLogPage()
 //        sections = countSections()
     }

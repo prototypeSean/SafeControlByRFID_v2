@@ -384,6 +384,12 @@
                                     <action selector="printDB:" destination="iGh-xc-vsU" eventType="touchUpInside" id="jAV-Th-YY0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="氣瓶時間（秒）" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HIM-GU-GXj">
+                                <rect key="frame" x="454.5" y="468" width="180" height="40"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -392,12 +398,15 @@
                             <constraint firstItem="Syz-m7-vxF" firstAttribute="leading" secondItem="PlJ-8R-ngh" secondAttribute="leading" id="43G-QH-njR"/>
                             <constraint firstItem="40S-jA-ycm" firstAttribute="height" secondItem="PlJ-8R-ngh" secondAttribute="height" id="4Fr-HB-zWm"/>
                             <constraint firstItem="6uS-UJ-NLf" firstAttribute="centerX" secondItem="y3K-T9-hMV" secondAttribute="centerX" multiplier="0.65" id="59B-6d-oUz"/>
+                            <constraint firstItem="HIM-GU-GXj" firstAttribute="height" secondItem="Syz-m7-vxF" secondAttribute="height" id="79m-pp-aRN"/>
                             <constraint firstItem="soz-RS-wZO" firstAttribute="width" secondItem="PlJ-8R-ngh" secondAttribute="width" id="BK3-nK-dtO"/>
                             <constraint firstItem="PlJ-8R-ngh" firstAttribute="top" secondItem="6uS-UJ-NLf" secondAttribute="top" id="E0G-0K-miT"/>
                             <constraint firstItem="82P-dG-mWZ" firstAttribute="height" secondItem="Syz-m7-vxF" secondAttribute="height" id="E8q-hd-4XZ"/>
+                            <constraint firstItem="HIM-GU-GXj" firstAttribute="leading" secondItem="PlJ-8R-ngh" secondAttribute="leading" id="GL6-xj-aOm"/>
                             <constraint firstItem="rGn-iD-GIz" firstAttribute="centerX" secondItem="y3K-T9-hMV" secondAttribute="centerX" id="GpG-pS-eE3"/>
                             <constraint firstItem="82P-dG-mWZ" firstAttribute="width" secondItem="PlJ-8R-ngh" secondAttribute="width" id="JE6-eb-ngL"/>
                             <constraint firstItem="y3K-T9-hMV" firstAttribute="leading" secondItem="ikW-em-1ED" secondAttribute="leading" id="JjB-co-Vou"/>
+                            <constraint firstItem="HIM-GU-GXj" firstAttribute="width" secondItem="PlJ-8R-ngh" secondAttribute="width" id="Qbl-Gb-DRM"/>
                             <constraint firstItem="GCr-db-tQe" firstAttribute="width" secondItem="y3K-T9-hMV" secondAttribute="width" id="TY9-Vd-B13"/>
                             <constraint firstItem="40S-jA-ycm" firstAttribute="width" secondItem="PlJ-8R-ngh" secondAttribute="width" id="YJn-0c-VhM"/>
                             <constraint firstItem="6uS-UJ-NLf" firstAttribute="top" secondItem="y3K-T9-hMV" secondAttribute="top" constant="120" id="ar9-RR-cKB"/>
@@ -407,6 +416,7 @@
                             <constraint firstItem="GCr-db-tQe" firstAttribute="bottom" secondItem="y3K-T9-hMV" secondAttribute="bottom" id="dS6-5U-mGi"/>
                             <constraint firstItem="soz-RS-wZO" firstAttribute="leading" secondItem="PlJ-8R-ngh" secondAttribute="leading" id="fYr-tt-rQA"/>
                             <constraint firstItem="82P-dG-mWZ" firstAttribute="top" secondItem="Syz-m7-vxF" secondAttribute="bottom" constant="10" id="hZy-f7-TDg"/>
+                            <constraint firstItem="HIM-GU-GXj" firstAttribute="top" secondItem="soz-RS-wZO" secondAttribute="bottom" constant="18" id="j0K-YL-fM3"/>
                             <constraint firstItem="Syz-m7-vxF" firstAttribute="width" secondItem="PlJ-8R-ngh" secondAttribute="width" id="lOb-ls-TJW"/>
                             <constraint firstItem="40S-jA-ycm" firstAttribute="top" secondItem="PlJ-8R-ngh" secondAttribute="bottom" id="lhE-lj-rXU"/>
                             <constraint firstItem="y3K-T9-hMV" firstAttribute="bottom" secondItem="rGn-iD-GIz" secondAttribute="bottom" id="n3K-nk-lwd"/>
@@ -431,6 +441,7 @@
                         <outlet property="firemanAvatar" destination="6uS-UJ-NLf" id="kww-kN-ZhS"/>
                         <outlet property="firemanCallSign" destination="82P-dG-mWZ" id="tLa-vW-Xhx"/>
                         <outlet property="firemanDepartment" destination="soz-RS-wZO" id="Glu-fL-jXW"/>
+                        <outlet property="firemanScubaTime" destination="HIM-GU-GXj" id="gCs-I9-aIA"/>
                         <outlet property="saveToDBOutlet" destination="GCr-db-tQe" id="ajm-2E-7Cc"/>
                         <outlet property="serialNumber" destination="Syz-m7-vxF" id="5k4-5V-wMZ"/>
                         <outlet property="upDateFiremanOutlet" destination="rGn-iD-GIz" id="w4w-gO-Dpa"/>
