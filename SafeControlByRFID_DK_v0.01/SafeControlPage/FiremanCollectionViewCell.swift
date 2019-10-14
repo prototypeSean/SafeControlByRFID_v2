@@ -7,7 +7,7 @@
 //
 // 最上層顯示消防員大頭跟各種欄位的cell 暫時都不改 先吃得下DB再說
 
-// TODO: v 進入畫面Barleft會閃一下暫時無解
+// TODO: 人多的時候 Barleft會閃一下暫時無解
 import Foundation
 import UIKit
 
@@ -19,7 +19,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var enterText: UILabel!
     
     private var timestamp:TimeInterval?
-    // 單位是秒
+    // 氣瓶時間，預設1800 單位是秒
     let barMaxTime:Double = 1800
     
     override func awakeFromNib() {
@@ -69,6 +69,9 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         }
         self.nameLable.text = fireman!.name
         self.photo.image = fireman!.image
+        
+        //客製化氣瓶時間
+        
         
         // 從資料庫讀出時間戳字串-->取最後一筆-->拿來計算(會取到逼逼出來的？)
         // 從資料庫取出並轉成陣列

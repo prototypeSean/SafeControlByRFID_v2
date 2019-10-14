@@ -121,6 +121,7 @@ class AddNewFiremanViewController: UIViewController {
         self.fireManName.text = ""
         self.fireManRFID.text = "請感應卡片"
         self.firemanDepartment.text = ""
+        self.firemanScubaTime.text = ""
     }
     
     // 內部測試用 之後會拔掉 印出所有消防員
