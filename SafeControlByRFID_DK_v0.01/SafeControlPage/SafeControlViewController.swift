@@ -104,19 +104,10 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         // 計算現在小隊中有多少人用來計算顯示需要的行數(計算用的數字都是float才能無條件進位)
         let firemansInbravoSquad = Float(model.getBravoSquads()[indexPath.row].fireMans.count)
         var rows = ceil(firemansInbravoSquad / divideBy)
-        if rows < 3{
-            rows = 3
+        if rows < 1{
+            rows = 1
         }
-        return CGFloat(rows*420)
-//        if cell.ppp.count >= 5 && indexPath.section == 0{
-//
-//            print("ppp高度高度\(CGFloat(cell.ppp.count*600))")
-//            return CGFloat(cell.ppp.count/5*600)
-//        }else
-//        {
-//            return 600
-//            }}
-//        return 600
+        return CGFloat(rows*450)
     }
 }
 

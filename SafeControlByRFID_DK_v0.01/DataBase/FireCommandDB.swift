@@ -29,6 +29,7 @@ public struct FiremanForBravoSquad {
     let timestamp:String
     let timestampout:String
     let image:UIImage
+    let scubaTime:Double
 }
 // 提供給 Log 頁面的struct
 /// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
@@ -477,7 +478,12 @@ extension FirecommandDatabase{
                 let imageFromlocalPath = photoManager?.loadImageFromDocumentDirectory(filename: fm[table_FIREMAN_RFIDUUID]) ?? UIImage(named: "ImageInApp")!
                 //            print("取出的BravoSquad人員:\(fm[table_FIREMAN_NAME]),\nRFID:\(fm[table_FIREMAN_RFIDUUID]),\n時間戳:\(fm[table_FIREMAN_TIMESTAMP]),\n照片路徑:\(fm[table_FIREMAN_PHOTO_PATH]),")
                 
-                return FiremanForBravoSquad(name: fm[table_FIREMAN_NAME], uuid: fm[table_FIREMAN_RFIDUUID], timestamp: fm[table_FIREMAN_TIMESTAMP], timestampout: fm[table_FIREMAN_TIMESTAMPOUT], image: imageFromlocalPath)
+                return FiremanForBravoSquad(name: fm[table_FIREMAN_NAME],
+                                            uuid: fm[table_FIREMAN_RFIDUUID],
+                                            timestamp: fm[table_FIREMAN_TIMESTAMP],
+                                            timestampout: fm[table_FIREMAN_TIMESTAMPOUT],
+                                            image: imageFromlocalPath,
+                                            scubaTime: fm[table_FIREMAN_SCUBATIME])
             }
         }catch{
             print("取出FiremanforBravoSquad錯誤\(error)")
@@ -512,28 +518,39 @@ extension FirecommandDatabase{
     }
     
   
-    // 新增消防員每人氧氣瓶使用時間
-    // 檢查 DB 欄位是否存在，若否則增加該欄位
-    
+    /// 新增消防員每人氧氣瓶使用時間。
+    /// 檢查 DB 欄位是否存在，若否則增加該欄位。
+    /// 用generic type <T>來根據 defauleValue 自動判斷數字或是字串。
     /// 在已經建立好的表格中新增Column用 (以後要不要直接拿來建表格？)
     ///
     /// - Parameters:
     ///   - table: 要被修改的表格
     ///   - column: 新增的欄位名稱
     ///   - defaultValue: 給他一個預設值
-    func insertColumnToCurrentDB(table:String, column:String, defaultValue:String){
+    func insertColumnToCurrentDB<T>(table:String, column:String, defaultValue:T){
         
-        let insertColumn = Expression<Double>(column)
-        
-        // 這邊應該要因為不同情況改變值得型態
-        let defaultValue = Double(defaultValue)
-        
-        // 欄位不存在就執行新增欄位
-        if try! db.didColumnExist(column: column, in: table) == false{
-            print("確認欄位不存在，嘗試新增欄位\(column)")
-            try! db.run(table_FIREMAN.addColumn(insertColumn, defaultValue: defaultValue!))
+        if defaultValue is Double{
+            let insertColumn = Expression<Double>(column)
+            let dv = defaultValue as! Double
+            
+            if try! db.didColumnExist(column: column, in: table) == false{
+                print("確認欄位不存在，嘗試新增欄位\(column)")
+                try! db.run(table_FIREMAN.addColumn(insertColumn, defaultValue: dv))
+            }else{
+                print("欄位\(column)已經存在")
+            }
+        }else if defaultValue is String{
+            let insertColumn = Expression<String>(column)
+            let dv = defaultValue as! String
+            
+            if try! db.didColumnExist(column: column, in: table) == false{
+                print("確認欄位不存在，嘗試新增欄位\(column)")
+                try! db.run(table_FIREMAN.addColumn(insertColumn, defaultValue: dv))
+            }else{
+                print("欄位\(column)已經存在")
+            }
         }else{
-            print("欄位\(column)已經存在")
+            print("僅支持 Double String 兩種預設型態的輸入")
         }
     }
     
@@ -576,7 +593,8 @@ extension FirecommandDatabase{
                     uuid: fm[table_FIREMAN_RFIDUUID],
                     timestamp: String(oneFiremansInTimeLog),
                     timestampout: "",
-                    image: imageFromlocalPath)
+                    image: imageFromlocalPath,
+                    scubaTime: fm[table_FIREMAN_SCUBATIME])
                 arrayEnter.append(oneFiremanEachEnterLog)
             }
             //            print("arrayEnter!! \(arrayEnter)")
@@ -587,7 +605,8 @@ extension FirecommandDatabase{
                     uuid: fm[table_FIREMAN_RFIDUUID],
                     timestamp: "",
                     timestampout: String(one),
-                    image: imageFromlocalPath)
+                    image: imageFromlocalPath,
+                    scubaTime: fm[table_FIREMAN_SCUBATIME])
                 arrayExit.append(oneFiremanEachExitLog)
             }
             

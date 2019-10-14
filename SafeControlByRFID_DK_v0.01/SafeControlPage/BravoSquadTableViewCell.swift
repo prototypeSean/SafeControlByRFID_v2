@@ -61,7 +61,7 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let count = self.bravoSquad?.fireMans.count ?? 0
 //        return count
 //        return ppp.count
-        return count > 12 ? count:12
+        return count > 5 ? count:5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

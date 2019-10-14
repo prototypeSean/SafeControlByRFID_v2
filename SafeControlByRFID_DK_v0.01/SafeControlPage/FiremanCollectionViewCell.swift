@@ -20,23 +20,16 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     
     private var timestamp:TimeInterval?
     // 氣瓶時間，預設1800 單位是秒
-    let barMaxTime:Double = 1800
-    
+    var barMaxTime:Double = 1800
+
     override func awakeFromNib() {
         // cell的圓角
         self.layer.cornerRadius = 2.0
         self.layer.borderWidth = 1.2
-//        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-//        self.barLeftVIew.barColor = LifeCircleColor.white
-        
-        
+
         // 不用變化的外觀先寫在這
         self.photo.layer.borderWidth = 1
         self.photo.layer.borderColor = UIColor.white.cgColor
-        
-//        self.backgroundColor = UIColor.clear
-        
-//        barLeftVIew.setBar(color: LifeCircleColor.white)
         super.awakeFromNib()
         
         countDown()
@@ -71,7 +64,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.photo.image = fireman!.image
         
         //客製化氣瓶時間
-        
+        self.barMaxTime = fireman!.scubaTime
         
         // 從資料庫讀出時間戳字串-->取最後一筆-->拿來計算(會取到逼逼出來的？)
         // 從資料庫取出並轉成陣列

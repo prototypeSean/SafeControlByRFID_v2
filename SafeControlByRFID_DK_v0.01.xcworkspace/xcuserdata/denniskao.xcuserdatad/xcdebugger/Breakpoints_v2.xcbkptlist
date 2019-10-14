@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "592294740.266901"
+            timestampString = "592725274.761368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "setFireman(fireman:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "592294740.267392"
+            timestampString = "592725274.761448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "setFireman(fireman:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlLogPage/SafeControlLogPageViewController.swift"
-            timestampString = "592709531.594273"
+            timestampString = "592725274.761506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlLogPage/SafeControlLogPageViewController.swift"
-            timestampString = "592709531.59438"
+            timestampString = "592725274.761555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlLogPage/SafeControlLogPageViewController.swift"
-            timestampString = "592709531.594432"
+            timestampString = "592725274.7615989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -90,12 +90,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlLogPage/SafeControlLogPageViewController.swift"
-            timestampString = "592709531.594478"
+            timestampString = "592725274.761641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
+            timestampString = "592725274.7616839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "countDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
+            timestampString = "592725274.761732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "countDown()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -79,6 +79,7 @@ class AddNewFiremanViewController: UIViewController {
             (_) in self.upDateFireman()
             self.resetPageContent()
             self.upDateFiremanOutlet.isHidden = true
+            self.saveToDBOutlet.isHidden = false
         }
         let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
         controller.addAction(okAction)
@@ -120,14 +121,14 @@ class AddNewFiremanViewController: UIViewController {
         self.serialNumber.text = ""
         self.fireManName.text = ""
         self.fireManRFID.text = "請感應卡片"
-        self.firemanDepartment.text = ""
+        self.firemanDepartment.text =  ""
         self.firemanScubaTime.text = ""
     }
     
-    // 內部測試用 之後會拔掉 印出所有消防員
+    // 內部測試用 之後會拔掉
     @IBAction func printDB(_ sender: Any) {
-        
-        fireCommandDB?.insertColumnToCurrentDB(table: "table_fireman", column: "firemanScubaTime", defaultValue: "1800")
+        // 僅此一次而已 還是要建立table的時候就創建欄位
+        fireCommandDB?.insertColumnToCurrentDB(table: "table_fireman", column: "firemanScubaTime", defaultValue: 1800)
         
         fireCommandDB?.allFireman()
     }

@@ -67,7 +67,6 @@ class SafeControlModel:NSObject{
             }
         }
         
-        
         print("沒有此消防員可以移出")
         return false
     }
@@ -78,8 +77,6 @@ class SafeControlModel:NSObject{
         // 這個 getFiremanforBravoSquad 包含了畢畢時間存入DB
         // 嗶嗶的時候要更新log以外 要存入資料庫
         // log 頁面要顯示歷史紀錄
-        
-        
         
         if let fireman = firemanDB.getFiremanforBravoSquad(by: uuid){
 //            print("嘗試加入消防員到小隊中\(fireman)")
