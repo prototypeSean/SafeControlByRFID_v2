@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" red="0.85098039215686272" green="0.87058823529411766" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BravoSquadTableViewCell" id="T85-8U-YBN" customClass="BravoSquadTableViewCell" customModule="SafeControlByRFID_DK_v0_01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="600"/>
@@ -59,7 +59,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcb-zO-oFr" userLabel="backgroundContainerView">
                                                             <rect key="frame" x="0.0" y="60" width="768" height="400"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務中隊員" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJG-gm-0ew">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務中隊員" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJG-gm-0ew">
                                                                     <rect key="frame" x="313" y="0.0" width="142" height="45"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="45" id="9RJ-0a-3n9"/>
@@ -176,11 +176,9 @@
                                                                 <constraint firstItem="HJG-gm-0ew" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" id="0PT-hT-XW3"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="leading" secondItem="Rcb-zO-oFr" secondAttribute="leading" constant="8" id="AH6-ex-auY"/>
                                                                 <constraint firstAttribute="height" constant="400" id="G0b-ST-9CD"/>
-                                                                <constraint firstItem="4cm-66-X06" firstAttribute="centerX" secondItem="HJG-gm-0ew" secondAttribute="centerX" id="H80-jo-gSi"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" constant="100" id="f8y-21-kkx"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="bottom" id="n5T-Mm-gpK"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="width" secondItem="HJG-gm-0ew" secondAttribute="width" id="pbG-ce-cH7"/>
-                                                                <constraint firstItem="HJG-gm-0ew" firstAttribute="centerX" secondItem="Rcb-zO-oFr" secondAttribute="centerX" id="yN8-xP-LFK"/>
                                                                 <constraint firstAttribute="trailing" secondItem="R5R-Nd-mDW" secondAttribute="trailing" constant="8" id="ycc-ub-map"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
@@ -203,10 +201,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="NQP-St-Tee" secondAttribute="trailing" id="8MB-9s-bdF"/>
                                                 <constraint firstItem="NQP-St-Tee" firstAttribute="width" secondItem="7oS-ZV-w5W" secondAttribute="width" id="ETq-xZ-CuY"/>
                                                 <constraint firstAttribute="bottom" secondItem="NQP-St-Tee" secondAttribute="bottom" id="OBs-ie-IUy"/>
+                                                <constraint firstItem="4cm-66-X06" firstAttribute="centerX" secondItem="7oS-ZV-w5W" secondAttribute="centerX" id="VTe-hd-uO0"/>
                                                 <constraint firstItem="NQP-St-Tee" firstAttribute="height" secondItem="7oS-ZV-w5W" secondAttribute="height" id="VUg-3k-qmO"/>
                                                 <constraint firstItem="NQP-St-Tee" firstAttribute="leading" secondItem="7oS-ZV-w5W" secondAttribute="leading" id="bwy-lF-0wM"/>
                                                 <constraint firstItem="NQP-St-Tee" firstAttribute="centerX" secondItem="7oS-ZV-w5W" secondAttribute="centerX" id="c5v-aq-v9k"/>
                                                 <constraint firstItem="NQP-St-Tee" firstAttribute="top" secondItem="7oS-ZV-w5W" secondAttribute="top" id="jn6-7P-eb3"/>
+                                                <constraint firstItem="HJG-gm-0ew" firstAttribute="centerX" secondItem="7oS-ZV-w5W" secondAttribute="centerX" id="mHo-UK-FR6"/>
                                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Rcb-zO-oFr" secondAttribute="bottom" constant="139.5" id="oSZ-nk-Xlb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -216,9 +216,39 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="bravoSquadSubTitle" destination="4cm-66-X06" id="R3y-b8-dgw"/>
+                                            <outlet property="bravoSquadTitle" destination="HJG-gm-0ew" id="noe-jw-rbf"/>
                                             <outlet property="firemanCollectionView" destination="R5R-Nd-mDW" id="uXP-yq-Xdk"/>
                                             <outlet property="heightOfCollectionView" destination="1VS-3h-Tlk" id="aU8-Eh-mrM"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addBravoSquadBtnCell" rowHeight="90" id="y3Y-77-AJz">
+                                        <rect key="frame" x="0.0" y="628" width="768" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y3Y-77-AJz" id="Hid-id-cfp">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-ra-6Zd">
+                                                    <rect key="frame" x="19" y="9" width="730" height="71.5"/>
+                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.7029109589041096" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <state key="normal" title="✚ 新增小隊">
+                                                        <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.34509803919999998" green="0.96862745100000003" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="height" secondItem="Hid-id-cfp" secondAttribute="height" multiplier="0.8" id="2GO-AS-zHK"/>
+                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="centerX" secondItem="Hid-id-cfp" secondAttribute="centerX" id="S7o-Or-76n"/>
+                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="width" secondItem="Hid-id-cfp" secondAttribute="width" multiplier="0.95" id="bK5-8S-kKO"/>
+                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="centerY" secondItem="Hid-id-cfp" secondAttribute="centerY" id="eUn-8I-wxt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.17254901959999999" green="0.1960784314" blue="0.24313725489999999" alpha="0.90317315924657537" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class BravoSquadTableViewCell:UITableViewCell{
+    @IBOutlet weak var bravoSquadTitle: UILabel!
+    @IBOutlet weak var bravoSquadSubTitle: UILabel!
     @IBOutlet weak var firemanCollectionView: UICollectionView!
     private var bravoSquad:BravoSquad?
     
@@ -36,12 +38,18 @@ class BravoSquadTableViewCell:UITableViewCell{
         firemanCollectionView.dataSource = self
     }
     
+    func showSelectedSquad(){
+        self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
+    }
     
+    func deSelectedSquad(){
+        self.bravoSquadSubTitle.text = ""
+    }
     
     func setBravoSquad(bravoSquad:BravoSquad){
         self.bravoSquad = bravoSquad
         self.firemanCollectionView.reloadData()
-        
+        self.bravoSquadTitle.text = bravoSquad.squadTitle
         // TODO:-- 抄來的 尚未解析
         // 讓collectoinView高度自動適應，這邊不知道原理，趕時間以後再研究
         // https://stackoverflow.com/a/42438709

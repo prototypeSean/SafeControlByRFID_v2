@@ -81,16 +81,24 @@ class SafeControlViewController: UIViewController{
 extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.getBravoSquads().count
+        return model.getBravoSquads().count + 1
+//        return
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row + 1 > model.getBravoSquads().count{
+            let addBravoSquadBtnCell = tableView.dequeueReusableCell(withIdentifier: "addBravoSquadBtnCell")
+            
+            return addBravoSquadBtnCell!
+        }else{
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "BravoSquadTableViewCell") as! BravoSquadTableViewCell
         let bravoSquad = model.getBravoSquads()[indexPath.row]
         cell.setBravoSquad(bravoSquad: bravoSquad)
         cell.selectionStyle = .none
-
+        
         return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,6 +109,8 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         // 根據現在平版狀態直向橫向來給出可能要變更的行高
         NotificationCenter.default.addObserver(self, selector: #selector(self.didOrientationChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
         
+        // 有Ｘ數量小隊 index.row 從row[0] ~ row[x-1] 都用來顯示小隊，最後一個顯示按鈕
+        if indexPath.row < model.getBravoSquads().count{
         // 計算現在小隊中有多少人用來計算顯示需要的行數(計算用的數字都是float才能無條件進位)
         let firemansInbravoSquad = Float(model.getBravoSquads()[indexPath.row].fireMans.count)
         var rows = ceil(firemansInbravoSquad / divideBy)
@@ -108,7 +118,29 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
             rows = 1
         }
         return CGFloat(rows*450)
+        }else{
+            return 90
+        }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 最後一個row是新增按鈕 不給選
+        let lastRow = tableView.numberOfRows(inSection: 0) - 1
+        if indexPath.row < lastRow {
+            let cell = tableView.cellForRow(at: indexPath) as! BravoSquadTableViewCell
+            cell.showSelectedSquad()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // 最後一個row是新增按鈕 不給選
+        let lastRow = tableView.numberOfRows(inSection: 0) - 1
+        if indexPath.row < lastRow {
+            let cell = tableView.cellForRow(at: indexPath) as! BravoSquadTableViewCell
+            cell.deSelectedSquad()
+        }
+    }
+    
 }
 
 extension SafeControlViewController:SafeControlModelDelegate{

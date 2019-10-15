@@ -20,6 +20,7 @@ protocol SafeControldelegateforAddNewFireman{
 }
 // 顯示用的小隊：陣列<消防員>
 struct BravoSquad {
+    var squadTitle:String
     var fireMans:Array<FiremanForBravoSquad>
 }
 
@@ -43,7 +44,8 @@ class SafeControlModel:NSObject{
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(fireMans: []))
+        bravoSquads.append(BravoSquad(squadTitle: "衝鋒小隊", fireMans: []))
+        self.addNewBrevoSquad(title: "第二小隊")
     }
     
     // 資料更新的時候用的旗子
@@ -82,10 +84,22 @@ class SafeControlModel:NSObject{
 //            print("嘗試加入消防員到小隊中\(fireman)")
 //            logEnter.append(fireman)
             bravoSquads[0].fireMans.append(fireman)
+
 //            firemanDB.updateFiremanForBravoSquadaTime(by: uuid)
             return true
         }
         return false
+    }
+    
+    
+    func addNewBrevoSquad(title:String){
+        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: []))
+    }
+    
+    func removeBravoSquad(title:String){
+        if let removeIndex:Int = bravoSquads.firstIndex(where:{$0.squadTitle == title}){
+            bravoSquads.remove(at: removeIndex)
+        }
     }
     
 //    func getFiremanEnterLog() -> Array<FiremanForBravoSquad>{
