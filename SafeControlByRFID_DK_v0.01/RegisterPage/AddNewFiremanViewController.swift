@@ -277,6 +277,7 @@ extension AddNewFiremanViewController:SafeControldelegateforAddNewFireman{
                 self.upDateFiremanOutlet.isHidden = true
                 self.saveToDBOutlet.isHidden = false
                 self.fireManRFID.text = "\(uuid)"
+                self.firemanScubaTime.text = "1800"
             }
         }
     }

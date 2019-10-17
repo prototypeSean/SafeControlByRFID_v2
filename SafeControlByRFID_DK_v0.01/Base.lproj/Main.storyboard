@@ -68,7 +68,7 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請感應 RFID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cm-66-X06">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cm-66-X06">
                                                                     <rect key="frame" x="313" y="45" width="142" height="26"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="26" id="tlS-on-1hV"/>
@@ -222,34 +222,6 @@
                                             <outlet property="heightOfCollectionView" destination="1VS-3h-Tlk" id="aU8-Eh-mrM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addBravoSquadBtnCell" rowHeight="90" id="y3Y-77-AJz">
-                                        <rect key="frame" x="0.0" y="628" width="768" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y3Y-77-AJz" id="Hid-id-cfp">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="89.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-ra-6Zd">
-                                                    <rect key="frame" x="19" y="9" width="730" height="71.5"/>
-                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.7029109589041096" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
-                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <state key="normal" title="✚ 新增小隊">
-                                                        <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="tintColor" red="0.34509803919999998" green="0.96862745100000003" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="height" secondItem="Hid-id-cfp" secondAttribute="height" multiplier="0.8" id="2GO-AS-zHK"/>
-                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="centerX" secondItem="Hid-id-cfp" secondAttribute="centerX" id="S7o-Or-76n"/>
-                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="width" secondItem="Hid-id-cfp" secondAttribute="width" multiplier="0.95" id="bK5-8S-kKO"/>
-                                                <constraint firstItem="rqv-ra-6Zd" firstAttribute="centerY" secondItem="Hid-id-cfp" secondAttribute="centerY" id="eUn-8I-wxt"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.17254901959999999" green="0.1960784314" blue="0.24313725489999999" alpha="0.90317315924657537" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bluetooth_connected" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-nn-sy6" userLabel="bluetoothStatus">
@@ -259,15 +231,34 @@
                                     <constraint firstAttribute="width" secondItem="mRY-nn-sy6" secondAttribute="height" multiplier="306:79" id="pMG-KB-HUH"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Oq-fUf">
+                                <rect key="frame" x="30" y="953" width="140" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.29959514170000001" blue="0.31126855599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="8CY-ph-hPc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                <state key="normal" title="✚ 新增小隊"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNewSquadBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="Zmu-Ju-qYn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="6" id="CPg-LR-NMV"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" id="JPJ-W8-nJR"/>
+                            <constraint firstAttribute="bottom" secondItem="nTe-Oq-fUf" secondAttribute="bottom" constant="30" id="WK8-lg-hDC"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="bottom" secondItem="VWP-D3-d93" secondAttribute="bottom" id="cQJ-FI-VfY"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="trailing" secondItem="VWP-D3-d93" secondAttribute="trailing" id="imN-QU-Jjg"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="top" secondItem="vZz-d9-kMs" secondAttribute="top" id="qc1-SF-3nM"/>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="6" id="ryE-zU-DD0"/>
+                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="leading" secondItem="vZz-d9-kMs" secondAttribute="leading" constant="30" id="wWu-tm-yv1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
                     </view>

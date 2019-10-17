@@ -77,7 +77,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         let doubleLtestTimeStamp = Double(latestTimeStamp!)!
         self.timestamp = doubleLtestTimeStamp
         
-        print("最後一筆時間戳\(String(describing: latestTimeStamp))")
+//        print("最後一筆時間戳\(String(describing: latestTimeStamp))")
         
         
         // 要給label顯示的時間字串格式

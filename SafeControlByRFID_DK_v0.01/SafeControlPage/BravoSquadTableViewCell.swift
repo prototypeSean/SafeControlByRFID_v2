@@ -38,18 +38,25 @@ class BravoSquadTableViewCell:UITableViewCell{
         firemanCollectionView.dataSource = self
     }
     
-    func showSelectedSquad(){
+    func selectedSquad(){
         self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
     }
-    
+
     func deSelectedSquad(){
-        self.bravoSquadSubTitle.text = ""
+        self.bravoSquadSubTitle.text = "點擊登陸此小隊"
     }
     
-    func setBravoSquad(bravoSquad:BravoSquad){
+    func setBravoSquad(bravoSquad:BravoSquad, isSelected:Bool){
         self.bravoSquad = bravoSquad
         self.firemanCollectionView.reloadData()
         self.bravoSquadTitle.text = bravoSquad.squadTitle
+        
+        if isSelected{
+            self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
+        }else{
+            self.bravoSquadSubTitle.text = "點擊登錄此小隊"
+        }
+        
         // TODO:-- 抄來的 尚未解析
         // 讓collectoinView高度自動適應，這邊不知道原理，趕時間以後再研究
         // https://stackoverflow.com/a/42438709
@@ -69,21 +76,18 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let count = self.bravoSquad?.fireMans.count ?? 0
 //        return count
 //        return ppp.count
-        return count > 5 ? count:5
+        return count > 5 ? count: 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = firemanCollectionView.dequeueReusableCell(withReuseIdentifier: "FiremanCollectionViewCell", for: indexPath) as! FiremanCollectionViewCell
         // 預設了十個格子 只有fireMans.count人數 超過人數的格子設為nil
+        
         if self.bravoSquad?.fireMans.count ?? 0 <= indexPath.row{
             cell.setFireman(fireman: nil)
         }else{
             cell.setFireman(fireman: self.bravoSquad?.fireMans[indexPath.row])
         }
         return cell
-    }
-    
-    override func didAddSubview(_ subview: UIView) {
-        print("123")
     }
 }

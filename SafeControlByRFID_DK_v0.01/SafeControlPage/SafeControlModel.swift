@@ -22,6 +22,7 @@ protocol SafeControldelegateforAddNewFireman{
 struct BravoSquad {
     var squadTitle:String
     var fireMans:Array<FiremanForBravoSquad>
+    var isSelected:Bool
 }
 
 
@@ -44,8 +45,8 @@ class SafeControlModel:NSObject{
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(squadTitle: "衝鋒小隊", fireMans: []))
-        self.addNewBrevoSquad(title: "第二小隊")
+        bravoSquads.append(BravoSquad(squadTitle: "衝鋒小隊", fireMans: [], isSelected: true))
+//        self.addNewBrevoSquad(title: "第二小隊")
     }
     
     // 資料更新的時候用的旗子
@@ -75,16 +76,16 @@ class SafeControlModel:NSObject{
     
     // 與移出成對，把消防員加入BravoSquad，加入成功＝true
     private func addFireman(by uuid:String) -> Bool{
-        print("嘗試加入消防員到小隊中")
         // 這個 getFiremanforBravoSquad 包含了畢畢時間存入DB
         // 嗶嗶的時候要更新log以外 要存入資料庫
         // log 頁面要顯示歷史紀錄
         
+        // 取得目前被選取的 squad Index (也就是cell index)
+        let selectedSquadIndex = getSelectedSquad().index
         if let fireman = firemanDB.getFiremanforBravoSquad(by: uuid){
 //            print("嘗試加入消防員到小隊中\(fireman)")
-//            logEnter.append(fireman)
-            bravoSquads[0].fireMans.append(fireman)
-
+            bravoSquads[selectedSquadIndex].fireMans.append(fireman)
+//            bravoSquads[0].fireMans.append(fireman)
 //            firemanDB.updateFiremanForBravoSquadaTime(by: uuid)
             return true
         }
@@ -93,7 +94,7 @@ class SafeControlModel:NSObject{
     
     
     func addNewBrevoSquad(title:String){
-        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: []))
+        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], isSelected: false))
     }
     
     func removeBravoSquad(title:String){
@@ -123,6 +124,24 @@ extension SafeControlModel{
     func getBravoSquads() -> Array<BravoSquad>{
         return self.bravoSquads
     }
+    
+    func selectBravoSquad(by index:Int){
+        self.bravoSquads[index].isSelected = true
+    }
+    
+    func deSelectBravoSquad(by index:Int){
+        self.bravoSquads[index].isSelected = false
+    }
+    
+    func getSelectedSquad() -> (squad:BravoSquad,index:Int){
+        let bravoSquads = getBravoSquads()
+        if let aa = bravoSquads.firstIndex(where: {$0.isSelected == true}){
+            return (bravoSquads[aa],aa)
+        }else{
+            return (bravoSquads[0],0)
+        }
+    }
+    
     
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在
     func syncBravoSquadLog(){
