@@ -25,7 +25,6 @@ struct BravoSquad {
     var isSelected:Bool
 }
 
-
 class SafeControlModel:NSObject{
     
     
@@ -38,14 +37,28 @@ class SafeControlModel:NSObject{
     private(set) var logEnter:Array<FiremanForBravoSquad> = []
     private(set) var logLeave:Array<FiremanForBravoSquad> = []
     
+    var selectionStatus:(priviousRow:Int,currentRow:Int) = (0,0)
     
-    
+    func didSelect(row:Int){
+        print("自己寫的didselect主要用來操作矩陣的取消選取")
+//        if self.selectionStatus.priviousRow != self.selectionStatus.currentRow{
+            self.selectionStatus.priviousRow = self.selectionStatus.currentRow
+            self.selectionStatus.currentRow = row
+        
+            // 先取消選取，再選取才能避免存錯資料到array
+            self.bravoSquads[selectionStatus.priviousRow].isSelected=false
+            self.bravoSquads[row].isSelected = true
+        
+            print("\(self.bravoSquads)")
+//        }
+    }
     
     // 初始化的時候把藍芽連上 把要顯示的各小隊跟隊員準備好
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(squadTitle: "衝鋒小隊", fireMans: [], isSelected: true))
+        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], isSelected: true))
+        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], isSelected: false))
 //        self.addNewBrevoSquad(title: "第二小隊")
     }
     
@@ -134,7 +147,7 @@ extension SafeControlModel{
     }
     
     func getSelectedSquad() -> (squad:BravoSquad,index:Int){
-        let bravoSquads = getBravoSquads()
+        let bravoSquads = self.bravoSquads
         if let aa = bravoSquads.firstIndex(where: {$0.isSelected == true}){
             return (bravoSquads[aa],aa)
         }else{

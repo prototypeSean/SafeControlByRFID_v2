@@ -72,6 +72,10 @@ class SafeControlViewController: UIViewController{
         // 建立DB連線
         firecommandDB = FirecommandDatabase()
         firecommandDB.createTableFireman()
+        
+        if UIDevice.current.orientation.isLandscape{
+            self.divideBy = 5.0
+        }
     }
     
     
@@ -120,46 +124,54 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         let bravoSquads = model.getBravoSquads()
         
         // 為了找出正在被選擇的squad準備
-        var ii:IndexPath = IndexPath(row: 0, section: 0)
+//        var ii:IndexPath = IndexPath(row: 0, section: 0)
 //
-        
 //        let selectedSquadIndex = model.getSelectedSquad().index
 //        ii.row = selectedSquadIndex
         
         // 遍歷所有bravoSquad，找出isSelected＝ture的，把他的index存入ii
-        for (index, element) in bravoSquads.enumerated(){
-            if element.isSelected == true{
-                ii.row = index
-            }
-        }
-        print("ii=\(ii),ii.row=\(ii.row)")
+//        for (index, element) in bravoSquads.enumerated(){
+//            if element.isSelected == true{
+//                ii.row = index
+//            }
+//        }
+//        print("ii=\(ii),ii.row=\(ii.row)")
         // 根據剛剛的index 「選取」該bravoSquad cell
-        tableView.selectRow(at: ii, animated: true, scrollPosition: .none)
+//        tableView.selectRow(at: ii, animated: true, scrollPosition: .none)
         // 選取跟改變裡面的文字是兩回事，所以要靠cell裡面的func setBravoSquad 來設定外觀文字
-        cell.setBravoSquad(bravoSquad: bravoSquads[indexPath.row], isSelected: bravoSquads[indexPath.row].isSelected)
+        if model.selectionStatus.currentRow == indexPath.row{
+            cell.setBravoSquad(bravoSquad: bravoSquads[indexPath.row], isSelected: true)
+        }else{
+            cell.setBravoSquad(bravoSquad: bravoSquads[indexPath.row], isSelected: false)
+        }
+        print(model.getBravoSquads())
         // 關閉預設的選取樣式
-//        cell.selectionStyle = .none
+        cell.selectionStyle = .none
         return cell
     }
     
     // TODO: 選擇cell 之後 嗶嗶都要進入這小隊
     // 選擇 --> 調用model的func把該squad的.isSelected 改為true --> 會自動觸發下面的取消選擇
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.model.selectBravoSquad(by: indexPath.row)
+//        self.model.selectBravoSquad(by: indexPath.row)
+        model.didSelect(row: indexPath.row)
         print(model.getBravoSquads())
-        let cell = tableView.cellForRow(at: indexPath) as? BravoSquadTableViewCell
-        cell?.selectedSquad()
+//        let cell = tableView.cellForRow(at: indexPath) as? BravoSquadTableViewCell
+//        cell?.selectedSquad()
+        self.SafeControlTableView.reloadData()
     }
     
     // 取消選擇 --> 調用model的func把該squad的.isSelected 改為false
     // **注意！ .reloadData()必須寫在這邊 因為 .reloadData()之後所有selected都會被取消掉，寫在別處就會無法觸發此delegate func
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.model.deSelectBravoSquad(by: indexPath.row)
+        print("有觸發取消選取-- 取消選取了\(indexPath.row)")
+//        self.model.deSelectBravoSquad(by: indexPath.row)
+        
 //        let cell = tableView.cellForRow(at: indexPath) as? BravoSquadTableViewCell
 //        self.SafeControlTableView.reloadData()
     }
     
-    // 設定動態cell的高度
+    // MARK: 設定動態cell的高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        if let cell = tableView.cellForRow(at: indexPath) as? BravoSquadTableViewCell{
 //        let bravoSquad = model.getBravoSquads()[indexPath.row]
@@ -176,6 +188,7 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
             if rows < 1{
                 rows = 1
             }
+        print("目前一行可以放\(divideBy)個，此cell有\(rows)行")
         return CGFloat(rows*420)
 //        }else{
 //            return 90

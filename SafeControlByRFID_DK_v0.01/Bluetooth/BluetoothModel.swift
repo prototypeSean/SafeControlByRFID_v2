@@ -69,8 +69,11 @@ class BluetoothModel:NSObject{
             try ObjC.catchException{
                 let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
                 btyQueue.async {
-                    let deviceBattery = self.bleNfcDevice?.getBatteryVoltage()
-                    print("電池電壓：\(round(deviceBattery!*100)/100)")
+                    if let deviceBattery = self.bleNfcDevice?.getBatteryVoltage(){
+                        print("電池電壓：\(round(deviceBattery*100)/100)")
+                    }else{
+                        print("無法獲取電池電壓")
+                    }
                 }
             }
         }catch{
