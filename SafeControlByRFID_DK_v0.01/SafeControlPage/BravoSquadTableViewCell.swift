@@ -14,7 +14,7 @@ class BravoSquadTableViewCell:UITableViewCell{
     @IBOutlet weak var bravoSquadSubTitle: UILabel!
     @IBOutlet weak var firemanCollectionView: UICollectionView!
     private var bravoSquad:BravoSquad?
-    
+    let model = SafeControlModel()
     @IBOutlet weak var heightOfCollectionView: NSLayoutConstraint!
     
 //    var ppp:[String] = ["123","223","3","4"]
@@ -53,8 +53,10 @@ class BravoSquadTableViewCell:UITableViewCell{
         
         if isSelected{
             self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
+            self.bravoSquadSubTitle.textColor = #colorLiteral(red: 1, green: 0.7450980392, blue: 0.7490196078, alpha: 1)
         }else{
             self.bravoSquadSubTitle.text = "點擊登錄此小隊"
+            self.bravoSquadSubTitle.textColor = UIColor.white
         }
         
         // TODO:-- 抄來的 尚未解析
@@ -83,11 +85,29 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let cell = firemanCollectionView.dequeueReusableCell(withReuseIdentifier: "FiremanCollectionViewCell", for: indexPath) as! FiremanCollectionViewCell
         // 預設了十個格子 只有fireMans.count人數 超過人數的格子設為nil
         
+        collectionView.tag = self.bravoSquad!.indexInTableView
+        
         if self.bravoSquad?.fireMans.count ?? 0 <= indexPath.row{
             cell.setFireman(fireman: nil)
+            print("此格沒有消防員")
         }else{
             cell.setFireman(fireman: self.bravoSquad?.fireMans[indexPath.row])
         }
+        
+        
+        
+        collectionView.allowsMultipleSelection = true
+        
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("小隊\(collectionView.tag)\n被選上的消防員\(indexPath.item)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("被取消選取的消防員\(indexPath.item)")
+    }
+    
+    
 }

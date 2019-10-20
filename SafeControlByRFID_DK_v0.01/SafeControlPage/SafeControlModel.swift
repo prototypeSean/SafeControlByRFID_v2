@@ -20,6 +20,7 @@ protocol SafeControldelegateforAddNewFireman{
 }
 // 顯示用的小隊：陣列<消防員>
 struct BravoSquad {
+    var indexInTableView:Int
     var squadTitle:String
     var fireMans:Array<FiremanForBravoSquad>
     var isSelected:Bool
@@ -57,8 +58,8 @@ class SafeControlModel:NSObject{
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], isSelected: true))
-        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], isSelected: false))
+        bravoSquads.append(BravoSquad(indexInTableView: 0, squadTitle: "第一面", fireMans: [], isSelected: true))
+        bravoSquads.append(BravoSquad(indexInTableView: 1,squadTitle: "第二面", fireMans: [], isSelected: false))
 //        self.addNewBrevoSquad(title: "第二小隊")
     }
     
@@ -97,9 +98,10 @@ class SafeControlModel:NSObject{
         let selectedSquadIndex = getSelectedSquad().index
         if let fireman = firemanDB.getFiremanforBravoSquad(by: uuid){
 //            print("嘗試加入消防員到小隊中\(fireman)")
-            bravoSquads[selectedSquadIndex].fireMans.append(fireman)
+            self.bravoSquads[selectedSquadIndex].fireMans.append(fireman)
 //            bravoSquads[0].fireMans.append(fireman)
 //            firemanDB.updateFiremanForBravoSquadaTime(by: uuid)
+            print("消防員登錄小隊成功 self.bravoSquads==\(self.bravoSquads)")
             return true
         }
         return false
@@ -107,7 +109,7 @@ class SafeControlModel:NSObject{
     
     
     func addNewBrevoSquad(title:String){
-        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], isSelected: false))
+        bravoSquads.append(BravoSquad(indexInTableView: bravoSquads.count, squadTitle: title, fireMans: [], isSelected: false))
     }
     
     func removeBravoSquad(title:String){
@@ -162,6 +164,14 @@ extension SafeControlModel{
         firemanDB.makefiremanLogPageV2()
 //        logEnter = firemanDB.arrayEnter
 //        logLeave = firemanDB.arrayExit
+    }
+    
+    func fakeLogin(by uuid:String) {
+        if !removeFireman(by: uuid){
+            if(!addFireman(by: uuid)){
+                print("uuid not fuund in database!")
+            }
+        }
     }
     
 }

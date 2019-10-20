@@ -97,6 +97,11 @@ class FirecommandDatabase {
 //        firemanPhotoPath = photoPath
 //    }
     
+    // MARK:假資料前置作業
+    let fakeRFIDUUID:String=""
+    let fakeFireMansUUID:Array<String>=["7991b08c","898fd6a2","469e6bac","7945d3a2","2992d9a2","ba719e15","b93557a3"]
+    
+    
     func connectDatabase(){
     // 把DB存到(或新建)使用者檔案路徑中的db.sqlite3
         let path = NSSearchPathForDirectoriesInDomains(
@@ -555,6 +560,7 @@ extension FirecommandDatabase{
     }
     
     
+    //MARK: 假裝有ＲＦＩＤ嗶嗶了
     
     
     //MARK:------已閒置 v0.1版用的 func
@@ -562,7 +568,7 @@ extension FirecommandDatabase{
     // 早期測試用 單純印出整個fireman而已
     func allFireman(){
         for item in (try! db.prepare(table_FIREMAN)){
-//            print("消防員in table_FIREMAN\n id:\(item[table_FIREMAN_ID])\n,SN:\(item[table_FIREMAN_SN])\n,NAME:\(item[table_FIREMAN_NAME])\n,PhotoPaht:\(item[table_FIREMAN_PHOTO_PATH])\n,CALL SIGN:\(item[table_FIREMAN_CALLSIGN])\n,RFID:\(item[table_FIREMAN_RFIDUUID])\n,DEPARTMENT:\(item[table_FIREMAN_DEPARTMENT]),時間戳進入:\(item[table_FIREMAN_TIMESTAMP]),時間戳出:\(item[table_FIREMAN_TIMESTAMPOUT])")
+            print("消防員in table_FIREMAN\n id:\(item[table_FIREMAN_ID])\n,SN:\(item[table_FIREMAN_SN])\n,NAME:\(item[table_FIREMAN_NAME])\n,PhotoPaht:\(item[table_FIREMAN_PHOTO_PATH])\n,CALL SIGN:\(item[table_FIREMAN_CALLSIGN])\n,RFID:\(item[table_FIREMAN_RFIDUUID])\n,DEPARTMENT:\(item[table_FIREMAN_DEPARTMENT]),時間戳進入:\(item[table_FIREMAN_TIMESTAMP]),時間戳出:\(item[table_FIREMAN_TIMESTAMPOUT])")
             print(item)
         }
     }

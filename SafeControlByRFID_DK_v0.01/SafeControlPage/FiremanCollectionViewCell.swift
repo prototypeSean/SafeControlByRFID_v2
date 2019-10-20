@@ -18,6 +18,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var barLeftVIew: BarLeftView!
     @IBOutlet weak var enterText: UILabel!
     
+    @IBOutlet weak var selectedOutlet: UIButton!
     private var timestamp:TimeInterval?
     // 氣瓶時間，預設1800 單位是秒
     var barMaxTime:Double = 1800
@@ -32,6 +33,11 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.photo.layer.borderColor = UIColor.white.cgColor
         super.awakeFromNib()
         
+        self.selectedOutlet.layer.cornerRadius = self.selectedOutlet.layer.bounds.height/2
+        self.selectedOutlet.layer.borderWidth = 1.2
+        self.selectedOutlet.layer.borderColor = UIColor.white.cgColor
+        
+        
         countDown()
     }
     
@@ -42,7 +48,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     func setFireman(fireman:FiremanForBravoSquad?){
         // 沒有消防員的時候顯示什麼
         if fireman == nil{
-//            print("setFireman 沒有消防員")
+            print("setFireman 沒有消防員")
             self.nameLable.text = nil
             self.photo.image = nil
             timestampLable.text = nil
@@ -60,6 +66,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
             
             return
         }
+        print("setFireman ！！！！")
         self.nameLable.text = fireman!.name
         self.photo.image = fireman!.image
         
@@ -150,6 +157,15 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.layer.borderColor = colorSetting.getUIColor().cgColor
         
     }
+    
+    // 複寫cell被選擇的外觀
+//    override var isSelected: Bool{
+//        didSet{
+//            print("self.contentView = \(self.contentView)")
+//            self.selectedOutlet.setTitle(isSelected ? "✓": "", for: .normal)
+//            self.selectedOutlet.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
+//        }
+//    }
 }
 
 

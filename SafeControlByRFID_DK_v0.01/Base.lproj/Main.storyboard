@@ -138,6 +138,13 @@
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oi5-Eh-A3o">
+                                                                                        <rect key="frame" x="127" y="23" width="36" height="36"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="Oi5-Eh-A3o" secondAttribute="height" multiplier="1:1" id="coc-aH-Uva"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                                                    </button>
                                                                                 </subviews>
                                                                             </view>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,12 +157,14 @@
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="top" secondItem="R4L-PN-FgA" secondAttribute="bottom" id="Jlc-Rm-NOx"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" multiplier="0.55" id="OJ2-Fh-Slc"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="QaK-gP-8E8"/>
+                                                                                <constraint firstItem="mYA-d5-poQ" firstAttribute="leading" secondItem="Oi5-Eh-A3o" secondAttribute="trailing" constant="3" id="Rm6-Qk-pAG"/>
                                                                                 <constraint firstItem="x0p-IJ-iPH" firstAttribute="top" secondItem="xFG-NK-dbp" secondAttribute="bottom" id="TXw-XM-9gL"/>
                                                                                 <constraint firstItem="mYA-d5-poQ" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="top" id="UNY-Nn-IjR"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="x0p-IJ-iPH" secondAttribute="trailing" id="fLY-7Q-rcb"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="iG9-tN-rRR"/>
                                                                                 <constraint firstItem="mYA-d5-poQ" firstAttribute="height" secondItem="R4L-PN-FgA" secondAttribute="height" id="jdj-5c-aCM"/>
                                                                                 <constraint firstItem="xFG-NK-dbp" firstAttribute="top" secondItem="R4L-PN-FgA" secondAttribute="bottom" id="m97-fp-K4b"/>
+                                                                                <constraint firstItem="Oi5-Eh-A3o" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="topMargin" constant="3" id="oMr-Ja-pFo"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="top" id="rJS-zM-WER"/>
                                                                                 <constraint firstItem="xFG-NK-dbp" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" multiplier="0.45" id="sPj-ME-utO"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" id="wEg-c9-PZ8"/>
@@ -165,6 +174,7 @@
                                                                                 <outlet property="enterText" destination="0En-L7-jyg" id="Yov-Gi-8iN"/>
                                                                                 <outlet property="nameLable" destination="x0p-IJ-iPH" id="10n-PD-31l"/>
                                                                                 <outlet property="photo" destination="R4L-PN-FgA" id="D9X-Ja-JWD"/>
+                                                                                <outlet property="selectedOutlet" destination="Oi5-Eh-A3o" id="BwY-ci-JXA"/>
                                                                                 <outlet property="timestampLable" destination="xFG-NK-dbp" id="WL7-aX-ppI"/>
                                                                             </connections>
                                                                         </collectionViewCell>
@@ -232,8 +242,8 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Oq-fUf">
-                                <rect key="frame" x="30" y="953" width="140" height="41"/>
-                                <color key="backgroundColor" red="1" green="0.29959514170000001" blue="0.31126855599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="608" y="973" width="140" height="41"/>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="8CY-ph-hPc"/>
                                 </constraints>
@@ -253,22 +263,29 @@
                         <constraints>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="6" id="CPg-LR-NMV"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" id="JPJ-W8-nJR"/>
-                            <constraint firstAttribute="bottom" secondItem="nTe-Oq-fUf" secondAttribute="bottom" constant="30" id="WK8-lg-hDC"/>
+                            <constraint firstAttribute="bottom" secondItem="nTe-Oq-fUf" secondAttribute="bottom" constant="10" id="WK8-lg-hDC"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="bottom" secondItem="VWP-D3-d93" secondAttribute="bottom" id="cQJ-FI-VfY"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="trailing" secondItem="VWP-D3-d93" secondAttribute="trailing" id="imN-QU-Jjg"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="top" secondItem="vZz-d9-kMs" secondAttribute="top" id="qc1-SF-3nM"/>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="6" id="ryE-zU-DD0"/>
-                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="leading" secondItem="vZz-d9-kMs" secondAttribute="leading" constant="30" id="wWu-tm-yv1"/>
+                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="trailing" secondItem="vZz-d9-kMs" secondAttribute="trailing" constant="-20" id="wWu-tm-yv1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="人員管制系統" id="9sH-Gl-tgJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="aQL-Gq-ITz">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="add" id="aQL-Gq-ITz">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="cWd-cM-OZ2">
+                                <connections>
+                                    <action selector="fakeLoginFireman:" destination="eVz-wj-sr4" id="EW6-Jd-DoK"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="進出紀錄" id="qvg-PT-zkA">
                                 <connections>
@@ -285,6 +302,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="SafeControlTableView" destination="VWP-D3-d93" id="3oP-9j-VpI"/>
+                        <outlet property="addNewSquadBtnOutlet" destination="nTe-Oq-fUf" id="eju-FH-HHg"/>
                         <outlet property="bluetoothStatus" destination="mRY-nn-sy6" id="ieM-Bc-jUM"/>
                     </connections>
                 </viewController>
@@ -698,7 +716,7 @@
                                                                 <constraint firstAttribute="width" secondItem="grF-lg-ZNL" secondAttribute="height" multiplier="16:9" id="OEW-2j-xhL"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
-                                                            <color key="textColor" red="1" green="0.5" blue="0.50833333329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="1" green="0.49803921568627452" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stage_member_cell_enter" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-CV-ZOg">

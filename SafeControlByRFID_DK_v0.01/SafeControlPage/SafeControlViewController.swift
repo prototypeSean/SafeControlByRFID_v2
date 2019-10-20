@@ -61,6 +61,15 @@ class SafeControlViewController: UIViewController{
         controller.addAction(cancelAction)
         present(controller, animated: true, completion: nil)
     }
+    
+    
+    @IBOutlet weak var addNewSquadBtnOutlet: UIButton!
+    
+    @IBAction func fakeLoginFireman(_ sender: UIBarButtonItem) {
+        model.fakeLogin(by: firecommandDB.fakeFireMansUUID[0])
+        print(model.getBravoSquads())
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         SafeControlTableView.delegate = self
         SafeControlTableView.dataSource = self
@@ -72,6 +81,9 @@ class SafeControlViewController: UIViewController{
         // 建立DB連線
         firecommandDB = FirecommandDatabase()
         firecommandDB.createTableFireman()
+        
+        self.addNewSquadBtnOutlet.layer.borderWidth = 1
+        self.addNewSquadBtnOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         if UIDevice.current.orientation.isLandscape{
             self.divideBy = 5.0
@@ -189,7 +201,7 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
                 rows = 1
             }
         print("目前一行可以放\(divideBy)個，此cell有\(rows)行")
-        return CGFloat(rows*420)
+        return CGFloat(rows*440)
 //        }else{
 //            return 90
 //        }

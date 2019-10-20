@@ -44,11 +44,8 @@ class AddNewFiremanViewController: UIViewController {
     
     // 暫時區
     @IBAction func testingLog(_ sender: UIButton) {
-        self.fireManRFID.text?.removeAll()
-        print(fireCommandDB?.arrayEnter as Any)
-        print(fireCommandDB?.arrayExit as Any)
+        fireCommandDB?.allFireman()
     }
-    
     // 暫時區
     
     var firemanTimeStamp:String?
