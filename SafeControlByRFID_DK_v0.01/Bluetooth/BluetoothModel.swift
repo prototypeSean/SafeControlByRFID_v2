@@ -5,8 +5,6 @@
 //  Created by DennisKao on 2019/8/28.
 //  Copyright © 2019 DennisKao. All rights reserved.
 //
-//  此程式中，因為用途，所以我們設計連接的HC-08是外圍設備（Peripheral），
-//  負責提供RFID的資訊給平板(Central)
 
 
 import Foundation
