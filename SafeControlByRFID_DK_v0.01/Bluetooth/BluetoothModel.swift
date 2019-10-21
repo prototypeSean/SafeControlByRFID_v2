@@ -20,6 +20,8 @@ import CoreBluetooth
 
 class BluetoothModel:NSObject{
     
+    var bleNFCDeviceName:String = "NewTaipei_00"
+    
     // 為了singletion 設計的
     static let singletion = BluetoothModel()
     
@@ -63,20 +65,20 @@ class BluetoothModel:NSObject{
         print("設備名稱：\(deviceName ?? "獲取設備名稱失敗")")
         
         // TODO: 電壓警示 還來不及檢查先不放
-        do{
-            try ObjC.catchException{
-                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
-                btyQueue.async {
-                    if let deviceBattery = self.bleNfcDevice?.getBatteryVoltage(){
-                        print("電池電壓：\(round(deviceBattery*100)/100)")
-                    }else{
-                        print("無法獲取電池電壓")
-                    }
-                }
-            }
-        }catch{
-            print("電壓不足的NSErrorrrrr\(error)")
-        }
+//        do{
+//            try ObjC.catchException{
+//                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
+//                btyQueue.async {
+//                    if let deviceBattery = self.bleNfcDevice?.getBatteryVoltage(){
+//                        print("電池電壓：\(round(deviceBattery*100)/100)")
+//                    }else{
+//                        print("無法獲取電池電壓")
+//                    }
+//                }
+//            }
+//        }catch{
+//            print("電壓不足的NSErrorrrrr\(error)")
+//        }
     }
     
 //    開啟 RFID 自動掃描功能
@@ -148,6 +150,32 @@ class BluetoothModel:NSObject{
         }
     }
     
+    // 修改藍芽ＮＦＣ名稱
+    func reNameBLENFCDevide(as newName:String){
+        if !self.bleManager!.isConnect() {
+            //            self.textLog.text.append(contentsOf: "未連上藍牙")
+            print("修改名稱失敗-- 未連上設備")
+        }
+        let renameQueue:DispatchQueue = DispatchQueue(label: "renameQueue")
+        renameQueue.async {
+            do{
+                try ObjC.catchException{
+                    if let changeSecuss = (self.bleNfcDevice?.changeBleName(newName)){
+//                        print(changeSecuss)
+                        print("修改名稱是否成功\(changeSecuss)")
+                        print("重新獲取設備資訊")
+                        self.getBLEDeviceMsg()
+                        self.bleNFCDeviceName = newName
+                    }else{
+                        print("修改名稱失敗")
+                    }
+                }
+            }catch {
+                print("修改名稱的NSErrorrrrr\(error)")
+            }
+        }
+    }
+    
     
 }
 
@@ -190,28 +218,14 @@ extension BluetoothModel: DKBleManagerDelegate, DKBleNfcDeviceDelegate{
 //        print("「發現外圍設備」的 delegate")
         print("外圍設備名稱\(String(describing: peripheral.name))")
         
-        
-        // 測試中...
-//        if peripheral.name == "HC-08"{
-//            self.mNearestBle = peripheral
-//            self.bleManager?.connect(peripheral, callbackBlock: { (isConnected) in
-//                if isConnected{
-//                    print("連接BLE_NFC成功")
-//                        self.bleManager?.stopScan()
-//                        self.getBLEDeviceMsg()
-//                        self.delegate?.bluetoothStatusUpdate(status: "已連線")
-//                }
-//                else{ print("連接失敗")
-//                }
-//            })
-//        }
+
 //         TODO: *** 暫時註解而已 之後要打開
-        if peripheral.name == "BLE_NFC"{
-            print("找到 BLE_NFC")
+        if peripheral.name == bleNFCDeviceName{
+            print("已找到\(bleNFCDeviceName)")
             self.mNearestBle = peripheral
             self.bleManager?.connect(peripheral, callbackBlock: { (isConnected) in
                 if isConnected{
-                    print("連接BLE_NFC成功")
+                    print("連接\(self.bleNFCDeviceName)成功")
                     self.bleManager?.stopScan()
                     self.getBLEDeviceMsg()
                     self.delegate?.bluetoothStatusUpdate(status: "已連線")

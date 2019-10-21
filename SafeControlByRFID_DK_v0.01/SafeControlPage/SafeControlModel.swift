@@ -155,6 +155,9 @@ extension SafeControlModel{
         }
     }
     
+    func reNameBLENFCDevide(){
+        BluetoothModel.singletion.reNameBLENFCDevide(as: "NewTaipei_00")
+    }
     
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在
     func syncBravoSquadLog(){

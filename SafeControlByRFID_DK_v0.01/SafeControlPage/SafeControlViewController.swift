@@ -35,9 +35,15 @@ class SafeControlViewController: UIViewController{
 
     let model = SafeControlModel()
     
+    
+    
     @IBOutlet weak var SafeControlTableView: UITableView!
     
     @IBOutlet weak var bluetoothStatus: UIImageView!
+    
+    @IBAction func editName(_ sender: UIBarButtonItem) {
+        model.reNameBLENFCDevide()
+    }
     
     // 按下新增小隊按鈕
     @IBAction func addNewSquadBtn(_ sender: UIButton) {

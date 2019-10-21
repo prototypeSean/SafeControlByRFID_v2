@@ -263,12 +263,19 @@
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="人員管制系統" id="9sH-Gl-tgJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="aQL-Gq-ITz">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="add" id="aQL-Gq-ITz">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="2fm-ay-l1Y" userLabel="EditName">
+                                <connections>
+                                    <action selector="editName:" destination="eVz-wj-sr4" id="81L-8y-TYu"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="進出紀錄" id="qvg-PT-zkA">
                                 <connections>
