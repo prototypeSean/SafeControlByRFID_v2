@@ -20,7 +20,7 @@ import CoreBluetooth
 
 class BluetoothModel:NSObject{
     
-    var bleNFCDeviceName:String = "NewTaipei_00"
+    var bleNFCDeviceName:String = "Taipei_00"
     
     // 為了singletion 設計的
     static let singletion = BluetoothModel()
@@ -130,17 +130,17 @@ class BluetoothModel:NSObject{
             
             
             // TODO: RBF 出廠前移除註解
-//            do{
-//                try ObjC.catchException{
-//                    if (self.bleNfcDevice?.openBeep(50, offDelay: 50, cnt: 2)) != nil{
-//                        print("嗶嗶嗶")
-//                    }else{
-//                        print("不支援蜂鳴器")
-//                    }
-//                }
-//            }catch {
-//                print("該死的NSErrorrrrr\(error)")
-//            }
+            do{
+                try ObjC.catchException{
+                    if (self.bleNfcDevice?.openBeep(50, offDelay: 50, cnt: 2)) != nil{
+                        print("嗶嗶嗶")
+                    }else{
+                        print("不支援蜂鳴器")
+                    }
+                }
+            }catch {
+                print("該死的NSErrorrrrr\(error)")
+            }
             // TODO: RBF 出廠前移除註解
             
             // 這邊把uuid傳出去這個model了

@@ -17,6 +17,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var barLeftVIew: BarLeftView!
     @IBOutlet weak var enterText: UILabel!
+    @IBOutlet weak var selectedCheck: UIButton!
     
     private var timestamp:TimeInterval?
     // 氣瓶時間，預設1800 單位是秒
@@ -30,6 +31,12 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         // 不用變化的外觀先寫在這
         self.photo.layer.borderWidth = 1
         self.photo.layer.borderColor = UIColor.white.cgColor
+        
+        self.selectedCheck.layer.cornerRadius = self.selectedCheck.layer.bounds.height/2
+        self.selectedCheck.layer.borderWidth = 2
+        self.selectedCheck.layer.borderColor = UIColor.white.cgColor
+        
+        
         super.awakeFromNib()
         
         countDown()
@@ -95,6 +102,15 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         changeColor(by: ratio)
         barLeftVIew.setBar(ratio: ratio)
     }
+    
+    // 複寫cell被選擇的外觀
+        override var isSelected: Bool{
+            didSet{
+                print("self.contentView = \(self.contentView)")
+                self.selectedCheck.setTitle(isSelected ? "✓": "", for: .normal)
+                self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
+            }
+        }
     
     
     //

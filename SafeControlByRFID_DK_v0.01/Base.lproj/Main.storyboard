@@ -138,6 +138,14 @@
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-RZ-Bi0">
+                                                                                        <rect key="frame" x="10" y="129" width="41" height="41"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="EvM-RZ-Bi0" secondAttribute="height" multiplier="1:1" id="idf-Uu-wnk"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                                                                        <state key="normal" title="✓"/>
+                                                                                    </button>
                                                                                 </subviews>
                                                                             </view>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,6 +154,7 @@
                                                                                 <constraint firstItem="xFG-NK-dbp" firstAttribute="leading" secondItem="0En-L7-jyg" secondAttribute="trailing" id="2AL-0b-GhB"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="xFG-NK-dbp" secondAttribute="trailing" id="AUf-SD-fyH"/>
                                                                                 <constraint firstItem="x0p-IJ-iPH" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="En3-QG-y99"/>
+                                                                                <constraint firstItem="EvM-RZ-Bi0" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" constant="10" id="F3x-Ne-Gvf"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="x0p-IJ-iPH" secondAttribute="bottom" id="FGI-Ps-rmj"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="top" secondItem="R4L-PN-FgA" secondAttribute="bottom" id="Jlc-Rm-NOx"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" multiplier="0.55" id="OJ2-Fh-Slc"/>
@@ -156,6 +165,7 @@
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="iG9-tN-rRR"/>
                                                                                 <constraint firstItem="mYA-d5-poQ" firstAttribute="height" secondItem="R4L-PN-FgA" secondAttribute="height" id="jdj-5c-aCM"/>
                                                                                 <constraint firstItem="xFG-NK-dbp" firstAttribute="top" secondItem="R4L-PN-FgA" secondAttribute="bottom" id="m97-fp-K4b"/>
+                                                                                <constraint firstItem="EvM-RZ-Bi0" firstAttribute="bottom" secondItem="0En-L7-jyg" secondAttribute="top" constant="-10" id="mxy-we-4Dr"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="top" id="rJS-zM-WER"/>
                                                                                 <constraint firstItem="xFG-NK-dbp" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" multiplier="0.45" id="sPj-ME-utO"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" id="wEg-c9-PZ8"/>
@@ -165,6 +175,7 @@
                                                                                 <outlet property="enterText" destination="0En-L7-jyg" id="Yov-Gi-8iN"/>
                                                                                 <outlet property="nameLable" destination="x0p-IJ-iPH" id="10n-PD-31l"/>
                                                                                 <outlet property="photo" destination="R4L-PN-FgA" id="D9X-Ja-JWD"/>
+                                                                                <outlet property="selectedCheck" destination="EvM-RZ-Bi0" id="9hP-Yj-X0i"/>
                                                                                 <outlet property="timestampLable" destination="xFG-NK-dbp" id="WL7-aX-ppI"/>
                                                                             </connections>
                                                                         </collectionViewCell>
@@ -231,14 +242,15 @@
                                     <constraint firstAttribute="width" secondItem="mRY-nn-sy6" secondAttribute="height" multiplier="306:79" id="pMG-KB-HUH"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Oq-fUf">
-                                <rect key="frame" x="30" y="953" width="140" height="41"/>
-                                <color key="backgroundColor" red="1" green="0.29959514170000001" blue="0.31126855599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Oq-fUf">
+                                <rect key="frame" x="688" y="90" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="8CY-ph-hPc"/>
+                                    <constraint firstAttribute="width" secondItem="nTe-Oq-fUf" secondAttribute="height" multiplier="1:1" id="9GV-zn-oa5"/>
+                                    <constraint firstAttribute="height" constant="60" id="AKk-J2-RzI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                                <state key="normal" title="✚ 新增小隊"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="home_new_team"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="5"/>
@@ -248,17 +260,35 @@
                                     <action selector="addNewSquadBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="Zmu-Ju-qYn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHg-8n-Gup" userLabel="AllowEditSquad">
+                                <rect key="frame" x="578" y="90" width="60" height="60"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VHg-8n-Gup" secondAttribute="height" multiplier="1:1" id="qgz-YK-iJv"/>
+                                </constraints>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="allowEditSquadBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="KkN-1Q-bmd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VHg-8n-Gup" firstAttribute="height" secondItem="nTe-Oq-fUf" secondAttribute="height" id="8q8-K5-TXf"/>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="6" id="CPg-LR-NMV"/>
+                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="leading" secondItem="VHg-8n-Gup" secondAttribute="trailing" constant="50" id="DV1-gm-v9K"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" id="JPJ-W8-nJR"/>
-                            <constraint firstAttribute="bottom" secondItem="nTe-Oq-fUf" secondAttribute="bottom" constant="30" id="WK8-lg-hDC"/>
+                            <constraint firstItem="kDa-mF-pRJ" firstAttribute="top" secondItem="nTe-Oq-fUf" secondAttribute="top" constant="-20" id="Qzd-45-vDL"/>
+                            <constraint firstItem="VHg-8n-Gup" firstAttribute="top" secondItem="nTe-Oq-fUf" secondAttribute="top" id="cIS-f9-Ad7"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="bottom" secondItem="VWP-D3-d93" secondAttribute="bottom" id="cQJ-FI-VfY"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="trailing" secondItem="VWP-D3-d93" secondAttribute="trailing" id="imN-QU-Jjg"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="top" secondItem="vZz-d9-kMs" secondAttribute="top" id="qc1-SF-3nM"/>
                             <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="6" id="ryE-zU-DD0"/>
-                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="leading" secondItem="vZz-d9-kMs" secondAttribute="leading" constant="30" id="wWu-tm-yv1"/>
+                            <constraint firstItem="nTe-Oq-fUf" firstAttribute="trailing" secondItem="kDa-mF-pRJ" secondAttribute="trailing" constant="-20" id="wyw-Q2-Tbr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
                     </view>
@@ -270,9 +300,10 @@
                                     <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="2fm-ay-l1Y" userLabel="EditName">
+                            <barButtonItem title="reName" id="2fm-ay-l1Y" userLabel="EditName">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="editName:" destination="eVz-wj-sr4" id="81L-8y-TYu"/>
+                                    <action selector="reNameBLENFCDevice:" destination="eVz-wj-sr4" id="81L-8y-TYu"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -292,6 +323,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="SafeControlTableView" destination="VWP-D3-d93" id="3oP-9j-VpI"/>
+                        <outlet property="addNewSquad" destination="nTe-Oq-fUf" id="d8l-a1-q0O"/>
+                        <outlet property="allowEditSquad" destination="VHg-8n-Gup" id="p1o-uw-V1D"/>
                         <outlet property="bluetoothStatus" destination="mRY-nn-sy6" id="ieM-Bc-jUM"/>
                     </connections>
                 </viewController>
@@ -871,6 +904,7 @@
     <resources>
         <image name="ImagePlaceholder" width="230" height="230"/>
         <image name="home_bluetooth_connected" width="306" height="79"/>
+        <image name="home_new_team" width="159" height="159"/>
         <image name="stage_Icon_enter" width="82" height="82"/>
         <image name="stage_icon_quit" width="82" height="82"/>
         <image name="stage_member_cell_enter" width="704" height="106"/>

@@ -15,6 +15,7 @@ import UIKit
 // 這裡的資料靠 SafeControlModel 提供
 class SafeControlViewController: UIViewController{
     
+    
     var divideBy:Float = 4.0
     //     監聽裝置旋轉
     @objc func didOrientationChange(_ notification: Notification) {
@@ -29,21 +30,25 @@ class SafeControlViewController: UIViewController{
         default:
             print("other")
         }
+        self.SafeControlTableView.reloadData()
     }
     
     var firecommandDB: FirecommandDatabase!
 
     let model = SafeControlModel()
     
-    
-    
     @IBOutlet weak var SafeControlTableView: UITableView!
     
     @IBOutlet weak var bluetoothStatus: UIImageView!
     
-    @IBAction func editName(_ sender: UIBarButtonItem) {
+    @IBAction func reNameBLENFCDevice(_ sender: UIBarButtonItem) {
         model.reNameBLENFCDevide()
     }
+    
+    @IBOutlet weak var addNewSquad: UIButton!
+
+    @IBOutlet weak var allowEditSquad: UIButton!
+    
     
     // 按下新增小隊按鈕
     @IBAction func addNewSquadBtn(_ sender: UIButton) {
@@ -67,6 +72,22 @@ class SafeControlViewController: UIViewController{
         controller.addAction(cancelAction)
         present(controller, animated: true, completion: nil)
     }
+    
+    // 開始編輯小隊按鈕
+    @IBAction func allowEditSquadBtn(_ sender: UIButton) {
+        if allowEdit{
+            allowEdit = false
+        }else{
+            allowEdit = true
+        }
+        
+        self.SafeControlTableView.reloadData()
+    }
+    
+    private var allowEdit:Bool = false
+    
+    var allSelectedFiremans:Array<(row:Int, item:Int)> = []
+    
     override func viewWillAppear(_ animated: Bool) {
         SafeControlTableView.delegate = self
         SafeControlTableView.dataSource = self
@@ -79,8 +100,11 @@ class SafeControlViewController: UIViewController{
         firecommandDB = FirecommandDatabase()
         firecommandDB.createTableFireman()
         
+        
         if UIDevice.current.orientation.isLandscape{
             self.divideBy = 5.0
+        }else if UIDevice.current.orientation.isPortrait{
+            self.divideBy = 4.0
         }
     }
     
@@ -126,6 +150,15 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BravoSquadTableViewCell") as! BravoSquadTableViewCell
+        
+        cell.delegate = self
+        
+        if self.allowEdit{
+            cell.firemanCollectionView.allowsMultipleSelection = true
+        }else{
+            cell.firemanCollectionView.allowsSelection = false
+            cell.firemanCollectionView.allowsMultipleSelection = false
+        }
         
         let bravoSquads = model.getBravoSquads()
         
@@ -221,4 +254,18 @@ extension SafeControlViewController:SafeControlModelDelegate{
         
         }
     }
+}
+
+extension SafeControlViewController:SelectedFiremanDelegate{
+    func removeFiremanToChangeSquadList(selectedFiremans: Array<(row: Int, item: Int)>) {
+        self.allSelectedFiremans.filter{$0 == selectedFiremans}
+    }
+    
+    func addFiremanToChangeSquadList(selectedFiremans: Array<(row: Int, item: Int)>) {
+        self.allSelectedFiremans += selectedFiremans
+        print("全部被選取的人\(self.allSelectedFiremans)")
+    }
+    
+    
+    
 }

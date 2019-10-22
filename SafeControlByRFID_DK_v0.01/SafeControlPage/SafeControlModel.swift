@@ -23,6 +23,7 @@ struct BravoSquad {
     var squadTitle:String
     var fireMans:Array<FiremanForBravoSquad>
     var isSelected:Bool
+    var indexInTableView:Int
 }
 
 class SafeControlModel:NSObject{
@@ -57,8 +58,8 @@ class SafeControlModel:NSObject{
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], isSelected: true))
-        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], isSelected: false))
+        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], isSelected: true, indexInTableView: 0))
+        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], isSelected: false, indexInTableView: 1))
 //        self.addNewBrevoSquad(title: "第二小隊")
     }
     
@@ -107,7 +108,7 @@ class SafeControlModel:NSObject{
     
     
     func addNewBrevoSquad(title:String){
-        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], isSelected: false))
+        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], isSelected: false, indexInTableView: bravoSquads.count))
     }
     
     func removeBravoSquad(title:String){
@@ -146,17 +147,18 @@ extension SafeControlModel{
         self.bravoSquads[index].isSelected = false
     }
     
+    // 找出現在哪個小隊被點選 要嗶嗶進入這小對了
     func getSelectedSquad() -> (squad:BravoSquad,index:Int){
         let bravoSquads = self.bravoSquads
-        if let aa = bravoSquads.firstIndex(where: {$0.isSelected == true}){
-            return (bravoSquads[aa],aa)
+        if let targetSquad = bravoSquads.firstIndex(where: {$0.isSelected == true}){
+            return (bravoSquads[targetSquad],targetSquad)
         }else{
             return (bravoSquads[0],0)
         }
     }
     
     func reNameBLENFCDevide(){
-        BluetoothModel.singletion.reNameBLENFCDevide(as: "NewTaipei_00")
+        BluetoothModel.singletion.reNameBLENFCDevide(as: "Taipei_00")
     }
     
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在

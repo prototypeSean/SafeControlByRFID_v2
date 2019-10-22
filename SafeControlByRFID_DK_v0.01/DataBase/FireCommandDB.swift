@@ -136,6 +136,7 @@ class FirecommandDatabase {
                 table.column(table_FIREMAN_TIMESTAMP, defaultValue: "初始in時間戳欄位")
                 table.column(table_FIREMAN_TIMESTAMPOUT, defaultValue: "初始out時間戳欄位")
                 table.column(table_FIREMAN_DEPARTMENT)
+                table.column(table_FIREMAN_SCUBATIME, defaultValue: 1800)
             })
             print("建立 FIREMAN 表格成功")
         }catch
@@ -176,7 +177,7 @@ class FirecommandDatabase {
             table_FIREMAN_TIMESTAMPOUT <- firemanTimeStampOut,
             table_FIREMAN_DEPARTMENT <- firemanDepartment,
             table_FIREMAN_SCUBATIME <- firemanScubaTime)
-        
+
         do{
             try db.run(insert)
             print("新增一名Fireman成功")
@@ -336,7 +337,7 @@ extension FirecommandDatabase{
             
             firemanListforLog.sort(by: {$0.timestampAbs > $1.timestampAbs})
 //            print("新版log名單!! \(firemanListforLog)")
-            print("新版log清單更新完成")
+//            print("新版log清單更新完成")
         }
     }
     

@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
+protocol SelectedFiremanDelegate {
+    func addFiremanToChangeSquadList(selectedFiremans:Array<(row:Int, item:Int)>)
+    func removeFiremanToChangeSquadList(selectedFiremans:Array<(row:Int, item:Int)>)
+}
+
 class BravoSquadTableViewCell:UITableViewCell{
+    
     @IBOutlet weak var bravoSquadTitle: UILabel!
     @IBOutlet weak var bravoSquadSubTitle: UILabel!
     @IBOutlet weak var firemanCollectionView: UICollectionView!
@@ -17,6 +23,9 @@ class BravoSquadTableViewCell:UITableViewCell{
     
     @IBOutlet weak var heightOfCollectionView: NSLayoutConstraint!
     
+    var selectedFiremansIndex: Array<(row:Int, item:Int)> = []
+    
+    var delegate: SelectedFiremanDelegate?
 //    var ppp:[String] = ["123","223","3","4"]
 ////    ,"4","5","6","7","8","9","10","11","12","13","14"
 //    @IBAction func plus1fireman(_ sender: UIButton) {
@@ -36,6 +45,7 @@ class BravoSquadTableViewCell:UITableViewCell{
         super.awakeFromNib()
         firemanCollectionView.delegate = self
         firemanCollectionView.dataSource = self
+        
     }
     
     func selectedSquad(){
@@ -46,6 +56,7 @@ class BravoSquadTableViewCell:UITableViewCell{
         self.bravoSquadSubTitle.text = "點擊登陸此小隊"
     }
     
+    // 設定 BravoSquad 外觀
     func setBravoSquad(bravoSquad:BravoSquad, isSelected:Bool){
         self.bravoSquad = bravoSquad
         self.firemanCollectionView.reloadData()
@@ -72,10 +83,9 @@ class BravoSquadTableViewCell:UITableViewCell{
 }
 
 extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.bravoSquad?.fireMans.count ?? 0
-//        return count
-//        return ppp.count
         return count > 5 ? count: 5
     }
     
@@ -83,11 +93,37 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let cell = firemanCollectionView.dequeueReusableCell(withReuseIdentifier: "FiremanCollectionViewCell", for: indexPath) as! FiremanCollectionViewCell
         // 預設了十個格子 只有fireMans.count人數 超過人數的格子設為nil
         
+        collectionView.tag = self.bravoSquad!.indexInTableView
+        
         if self.bravoSquad?.fireMans.count ?? 0 <= indexPath.row{
             cell.setFireman(fireman: nil)
         }else{
             cell.setFireman(fireman: self.bravoSquad?.fireMans[indexPath.row])
         }
+        if collectionView.allowsMultipleSelection == true{
+            cell.selectedCheck.isHidden = false
+        }else{
+            cell.selectedCheck.isHidden = true
+        }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("小隊\(collectionView.tag)\n被選上的消防員\(indexPath.item)")
+        let row = collectionView.tag
+        let item = indexPath.item
+        //這邊傳入的只有一個cell的選擇
+        self.delegate?.addFiremanToChangeSquadList(selectedFiremans: [(row,item)])
+        print("單cell被選擇的人\(String(describing: self.selectedFiremansIndex))")
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let row = collectionView.tag
+        let item = indexPath.item
+        //這邊傳入的只有一個cell的選擇
+        self.delegate?.removeFiremanToChangeSquadList(selectedFiremans: [(row,item)])
+    }
+    
+    
 }
