@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol SelectedFiremanDelegate {
-    func addFiremanToChangeSquadList(selectedFiremans:Array<(row:Int, item:Int)>)
-    func removeFiremanToChangeSquadList(selectedFiremans:Array<(row:Int, item:Int)>)
+    func addFiremanToChangeSquadList(selectedFiremans:(row:Int, item:Int))
+    func removeFiremanToChangeSquadList(selectedFiremans:(row:Int, item:Int))
 }
 
 class BravoSquadTableViewCell:UITableViewCell{
@@ -26,6 +26,8 @@ class BravoSquadTableViewCell:UITableViewCell{
     var selectedFiremansIndex: Array<(row:Int, item:Int)> = []
     
     var delegate: SelectedFiremanDelegate?
+    
+    
 //    var ppp:[String] = ["123","223","3","4"]
 ////    ,"4","5","6","7","8","9","10","11","12","13","14"
 //    @IBAction func plus1fireman(_ sender: UIButton) {
@@ -80,6 +82,11 @@ class BravoSquadTableViewCell:UITableViewCell{
             self.firemanCollectionView.scrollToItem(at: IndexPath(row: bravoSquad.fireMans.count-1, section: 0), at: .right, animated: true)
         }
     }
+    
+    // 在某個cell按下移動人員之後 要修改 bravoSquad 陣列 要知道該移動到哪個cell
+    func moveFiremanHere(at SquadRow:Int){
+        
+    }
 }
 
 extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewDataSource{
@@ -100,6 +107,8 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         }else{
             cell.setFireman(fireman: self.bravoSquad?.fireMans[indexPath.row])
         }
+        
+//        從父層的cellForRowAt indexPath來設定allowsMultipleSelection連帶控制這邊勾勾符號出現與否
         if collectionView.allowsMultipleSelection == true{
             cell.selectedCheck.isHidden = false
         }else{
@@ -113,7 +122,7 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let row = collectionView.tag
         let item = indexPath.item
         //這邊傳入的只有一個cell的選擇
-        self.delegate?.addFiremanToChangeSquadList(selectedFiremans: [(row,item)])
+        self.delegate?.addFiremanToChangeSquadList(selectedFiremans: (row,item))
         print("單cell被選擇的人\(String(describing: self.selectedFiremansIndex))")
         
     }
@@ -122,7 +131,7 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
         let row = collectionView.tag
         let item = indexPath.item
         //這邊傳入的只有一個cell的選擇
-        self.delegate?.removeFiremanToChangeSquadList(selectedFiremans: [(row,item)])
+        self.delegate?.removeFiremanToChangeSquadList(selectedFiremans: (row,item))
     }
     
     

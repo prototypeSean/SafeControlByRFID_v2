@@ -49,6 +49,25 @@ class SafeControlViewController: UIViewController{
 
     @IBOutlet weak var allowEditSquad: UIButton!
     
+    //在某個cell按下「移入」人員
+    @IBAction func moveFiremanTo(_ sender: UIButton) {
+        var fmReadyToMove: Array<FiremanForBravoSquad> = []
+        for (x,y) in allSelectedFiremans{
+            let fireman = model.getBravoSquads()[x].fireMans[y]
+            fmReadyToMove.append(fireman)
+        }
+        
+        let buttonPosition = sender.convert(CGPoint.zero, to: self.SafeControlTableView)
+        let indexPath = self.SafeControlTableView.indexPathForRow(at: buttonPosition)
+        if indexPath != nil {
+            print("按下的按鈕是第幾行\(indexPath!.row)")
+        }
+        
+        
+        print(fmReadyToMove)
+    }
+//    @IBOutlet weak var moveFiremanToBtn: UIButton!
+    
     
     // 按下新增小隊按鈕
     @IBAction func addNewSquadBtn(_ sender: UIButton) {
@@ -63,6 +82,8 @@ class SafeControlViewController: UIViewController{
             let squadName = controller.textFields?[0].text ?? "新小隊"
             self.model.addNewBrevoSquad(title: squadName)
             self.SafeControlTableView.reloadData()
+            // 如果觸發了新增小隊的功能，要把之前選取的cell都取消掉
+            self.allSelectedFiremans.removeAll()
             print("新增\(squadName)小隊成功")
         }
         
@@ -80,7 +101,7 @@ class SafeControlViewController: UIViewController{
         }else{
             allowEdit = true
         }
-        
+        self.allSelectedFiremans.removeAll()
         self.SafeControlTableView.reloadData()
     }
     
@@ -149,6 +170,10 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
     // ** 注意 因為現在整張表格全部都用來顯示bravoSquads 所以表格的index才能跟bravoSquads陣列中的index對上
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //給出按下按鈕的是哪個cell
+//        moveFiremanTo.tag = indexPath.row
+//        moveFiremanToBtn.addTarget(self, action: Selector("moveFiremanTo"), for: UIControl.Event.touchUpInside)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "BravoSquadTableViewCell") as! BravoSquadTableViewCell
         
         cell.delegate = self
@@ -162,21 +187,6 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         
         let bravoSquads = model.getBravoSquads()
         
-        // 為了找出正在被選擇的squad準備
-//        var ii:IndexPath = IndexPath(row: 0, section: 0)
-//
-//        let selectedSquadIndex = model.getSelectedSquad().index
-//        ii.row = selectedSquadIndex
-        
-        // 遍歷所有bravoSquad，找出isSelected＝ture的，把他的index存入ii
-//        for (index, element) in bravoSquads.enumerated(){
-//            if element.isSelected == true{
-//                ii.row = index
-//            }
-//        }
-//        print("ii=\(ii),ii.row=\(ii.row)")
-        // 根據剛剛的index 「選取」該bravoSquad cell
-//        tableView.selectRow(at: ii, animated: true, scrollPosition: .none)
         // 選取跟改變裡面的文字是兩回事，所以要靠cell裡面的func setBravoSquad 來設定外觀文字
         if model.selectionStatus.currentRow == indexPath.row{
             cell.setBravoSquad(bravoSquad: bravoSquads[indexPath.row], isSelected: true)
@@ -186,6 +196,8 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         print(model.getBravoSquads())
         // 關閉預設的選取樣式
         cell.selectionStyle = .none
+        
+        
         return cell
     }
     
@@ -256,16 +268,17 @@ extension SafeControlViewController:SafeControlModelDelegate{
     }
 }
 
+// collectionViewCell 的代理 選取之後把人傳回這個ＶＣ
 extension SafeControlViewController:SelectedFiremanDelegate{
-    func removeFiremanToChangeSquadList(selectedFiremans: Array<(row: Int, item: Int)>) {
-        self.allSelectedFiremans.filter{$0 == selectedFiremans}
+    
+    func removeFiremanToChangeSquadList(selectedFiremans: (row: Int, item: Int)) {
+        self.allSelectedFiremans.removeAll(where: {$0 == selectedFiremans})
+        print("有被取消選取的人後\(self.allSelectedFiremans)")
     }
     
-    func addFiremanToChangeSquadList(selectedFiremans: Array<(row: Int, item: Int)>) {
-        self.allSelectedFiremans += selectedFiremans
+    func addFiremanToChangeSquadList(selectedFiremans: (row: Int, item: Int)) {
+        self.allSelectedFiremans.append(selectedFiremans)
         print("全部被選取的人\(self.allSelectedFiremans)")
     }
-    
-    
     
 }
