@@ -164,25 +164,26 @@ extension SafeControlModel{
     
     //
     func reArrengementSquad(into squadRow:Int, selectedList:Array<(row:Int, item:Int)>){
-        print("跑進來了？")
         print("squad==\(squadRow), array\(selectedList)")
+        
         for manIndex in selectedList{
-            print("跑進來了")
             // 匹配被選擇的消防原 --> 逐個移出Squad
-            if let targetRow = self.getBravoSquads()[safe:manIndex.row], var targetFireman = targetRow.fireMans[safe:manIndex.item]{
-                self.bravoSquads[manIndex.row].fireMans.remove(at: manIndex.item)
-                print("有人要被移出的小隊\(targetRow)")
-                print("要被移出的人\(targetFireman)")
-                if let inputRow = self.getBravoSquads()[safe:squadRow]{
+            if let outputRow = self.bravoSquads[safe:manIndex.row], var targetFireman = outputRow.fireMans[safe:manIndex.item]{
+
+                if let inputRow = self.bravoSquads[safe:squadRow]{
                     // 這邊要把記錄在陣列裡面的選取取消掉 不然移動過去變成已經選取
                     targetFireman.isSelected = false
+                    
                     self.bravoSquads[squadRow].fireMans.append(targetFireman)
-                    print("要被移入的小隊\(inputRow)")
-                    print("已經移入的人\(targetFireman)")
+                    //                    print("要被移入的小隊\(inputRow)")
+                    //                    print("已經移入的人\(targetFireman)")
                 }
+
+                self.bravoSquads[manIndex.row].fireMans.remove(at: manIndex.item)
             }
+            
         }
-        print("看看結果\(self.getBravoSquads())")
+//        print("看看結果\(self.getBravoSquads())")
     }
     
     

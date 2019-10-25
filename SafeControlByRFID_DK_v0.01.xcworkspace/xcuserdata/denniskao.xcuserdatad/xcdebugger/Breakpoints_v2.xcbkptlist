@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "593683738.267738"
+            timestampString = "593689637.709287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "593683738.267814"
+            timestampString = "593689637.709357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "593683738.268006"
+            timestampString = "593689637.709525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -122,12 +122,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/FiremanCollectionViewCell.swift"
-            timestampString = "593683738.268062"
+            timestampString = "593689637.709577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "countDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeControlByRFID_DK_v0.01/SafeControlPage/SafeControlModel.swift"
+            timestampString = "593689637.709625"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "reArrengementSquad(into:selectedList:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
