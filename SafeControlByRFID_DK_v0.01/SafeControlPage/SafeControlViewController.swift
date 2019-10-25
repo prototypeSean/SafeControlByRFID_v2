@@ -51,22 +51,39 @@ class SafeControlViewController: UIViewController{
     
     //在某個cell按下「移入」人員
     @IBAction func moveFiremanTo(_ sender: UIButton) {
-        var fmReadyToMove: Array<FiremanForBravoSquad> = []
-        for (x,y) in allSelectedFiremans{
-            let fireman = model.getBravoSquads()[x].fireMans[y]
-            fmReadyToMove.append(fireman)
-        }
-        
+
+        // 用神奇的方法抓取是哪個row(也就是bravoSquad)被按下了，之後要移入
         let buttonPosition = sender.convert(CGPoint.zero, to: self.SafeControlTableView)
         let indexPath = self.SafeControlTableView.indexPathForRow(at: buttonPosition)
         if indexPath != nil {
             print("按下的按鈕是第幾行\(indexPath!.row)")
         }
         
+        self.model.reArrengementSquad(into: indexPath!.row, selectedList: self.allSelectedFiremans)
         
-        print(fmReadyToMove)
+        self.allSelectedFiremans.removeAll()
+        
+        
+        
+        self.SafeControlTableView.reloadData()
+        
+//        reArrengementSquad()
     }
-//    @IBOutlet weak var moveFiremanToBtn: UIButton!
+
+    // 目的：找出所有被選取的ＦＭ從鎮列中刪除然後重新編排
+    // 已經有 (x,y) in allSelectedFiremans 可以對應到 FiremanForBravoSquads
+    func reArrengementSquad(){
+        //
+        let allSquad = model.getBravoSquads()
+        for (row,item) in allSelectedFiremans{
+            let squad = allSquad[row]
+            var allfms = squad.fireMans
+            if allfms[safe:item] != nil{
+                print("要被移除的消防員\(allfms[item].name)")
+                allfms.remove(at: item)
+            }
+        }
+    }
     
     
     // 按下新增小隊按鈕
@@ -98,8 +115,12 @@ class SafeControlViewController: UIViewController{
     @IBAction func allowEditSquadBtn(_ sender: UIButton) {
         if allowEdit{
             allowEdit = false
+            allowEditSquad.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            allowEditSquad.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 0.5)
         }else{
             allowEdit = true
+            allowEditSquad.tintColor = #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1)
+            allowEditSquad.backgroundColor = UIColor.white
         }
         self.allSelectedFiremans.removeAll()
         self.SafeControlTableView.reloadData()
@@ -127,6 +148,10 @@ class SafeControlViewController: UIViewController{
         }else if UIDevice.current.orientation.isPortrait{
             self.divideBy = 4.0
         }
+        
+        // 編排人員的時候要把該按鈕反白高光
+        let allowEditImage = #imageLiteral(resourceName: "home_switch_member").withRenderingMode(.alwaysTemplate)
+        allowEditSquad.setImage(allowEditImage, for: .normal)
     }
     
     
@@ -180,9 +205,11 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         
         if self.allowEdit{
             cell.firemanCollectionView.allowsMultipleSelection = true
+            cell.moveFiremanHere?.isHidden = false
         }else{
             cell.firemanCollectionView.allowsSelection = false
             cell.firemanCollectionView.allowsMultipleSelection = false
+            cell.moveFiremanHere?.isHidden = true
         }
         
         let bravoSquads = model.getBravoSquads()
@@ -193,10 +220,9 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         }else{
             cell.setBravoSquad(bravoSquad: bravoSquads[indexPath.row], isSelected: false)
         }
-        print(model.getBravoSquads())
+//        print(model.getBravoSquads())
         // 關閉預設的選取樣式
         cell.selectionStyle = .none
-        
         
         return cell
     }
@@ -206,9 +232,10 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        self.model.selectBravoSquad(by: indexPath.row)
         model.didSelect(row: indexPath.row)
-        print(model.getBravoSquads())
+//        print(model.getBravoSquads())
 //        let cell = tableView.cellForRow(at: indexPath) as? BravoSquadTableViewCell
 //        cell?.selectedSquad()
+        self.allSelectedFiremans.removeAll()
         self.SafeControlTableView.reloadData()
     }
     
@@ -271,14 +298,21 @@ extension SafeControlViewController:SafeControlModelDelegate{
 // collectionViewCell 的代理 選取之後把人傳回這個ＶＣ
 extension SafeControlViewController:SelectedFiremanDelegate{
     
-    func removeFiremanToChangeSquadList(selectedFiremans: (row: Int, item: Int)) {
-        self.allSelectedFiremans.removeAll(where: {$0 == selectedFiremans})
-        print("有被取消選取的人後\(self.allSelectedFiremans)")
-    }
-    
-    func addFiremanToChangeSquadList(selectedFiremans: (row: Int, item: Int)) {
-        self.allSelectedFiremans.append(selectedFiremans)
+    // 在選取模式點下了某個消防員 傳進此處的陣列
+    func addFiremanToChangeSquadList(selectedFireman: (row: Int, item: Int)) {
+        self.allSelectedFiremans.append(selectedFireman)
+        
+        self.model.selectedFireman(in: selectedFireman.row, place: selectedFireman.item)
+//        print("代理被選擇的人\(selectedFireman.row)\(selectedFireman.item)")
         print("全部被選取的人\(self.allSelectedFiremans)")
     }
     
+    // 同上 取消選取某消防員
+    func removeFiremanToChangeSquadList(selectedFireman: (row: Int, item: Int)) {
+        self.allSelectedFiremans.removeAll(where: {$0 == selectedFireman})
+        
+        self.model.deSelectedFireman(in: selectedFireman.row, place: selectedFireman.item)
+        
+//        print("有被取消選取的人後\(self.allSelectedFiremans)")
+    }
 }

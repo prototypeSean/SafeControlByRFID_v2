@@ -30,3 +30,10 @@ public func timeStampStringToDate(from string:String, stringsDateFormat:String) 
     dateformate.dateFormat = stringsDateFormat
     return dateformate.date(from: string)!
 }
+
+// 陣列相關： 讓index out of range可以用if let 解決
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

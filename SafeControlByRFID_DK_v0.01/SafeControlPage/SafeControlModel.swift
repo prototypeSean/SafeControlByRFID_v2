@@ -38,6 +38,7 @@ class SafeControlModel:NSObject{
     private(set) var logEnter:Array<FiremanForBravoSquad> = []
     private(set) var logLeave:Array<FiremanForBravoSquad> = []
     
+    // BravoSquad 的選取狀態 （現在要從哪個squad登錄）
     var selectionStatus:(priviousRow:Int,currentRow:Int) = (0,0)
     
     func didSelect(row:Int){
@@ -139,6 +140,7 @@ extension SafeControlModel{
         return self.bravoSquads
     }
     
+    // 選取 ROW (SQUAD)
     func selectBravoSquad(by index:Int){
         self.bravoSquads[index].isSelected = true
     }
@@ -146,6 +148,44 @@ extension SafeControlModel{
     func deSelectBravoSquad(by index:Int){
         self.bravoSquads[index].isSelected = false
     }
+    
+    // 選取 FIREMAN (collectionViewCell)
+    func selectedFireman(in squad:Int, place:Int){
+        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.isSelected) != nil{
+            self.bravoSquads[squad].fireMans[place].isSelected = true
+        }
+    }
+    
+    func deSelectedFireman(in squad:Int, place:Int){
+        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.isSelected) != nil{
+            self.bravoSquads[squad].fireMans[place].isSelected = false
+        }
+    }
+    
+    //
+    func reArrengementSquad(into squadRow:Int, selectedList:Array<(row:Int, item:Int)>){
+        print("跑進來了？")
+        print("squad==\(squadRow), array\(selectedList)")
+        for manIndex in selectedList{
+            print("跑進來了")
+            // 匹配被選擇的消防原 --> 逐個移出Squad
+            if let targetRow = self.getBravoSquads()[safe:manIndex.row], var targetFireman = targetRow.fireMans[safe:manIndex.item]{
+                self.bravoSquads[manIndex.row].fireMans.remove(at: manIndex.item)
+                print("有人要被移出的小隊\(targetRow)")
+                print("要被移出的人\(targetFireman)")
+                if let inputRow = self.getBravoSquads()[safe:squadRow]{
+                    // 這邊要把記錄在陣列裡面的選取取消掉 不然移動過去變成已經選取
+                    targetFireman.isSelected = false
+                    self.bravoSquads[squadRow].fireMans.append(targetFireman)
+                    print("要被移入的小隊\(inputRow)")
+                    print("已經移入的人\(targetFireman)")
+                }
+            }
+        }
+        print("看看結果\(self.getBravoSquads())")
+    }
+    
+    
     
     // 找出現在哪個小隊被點選 要嗶嗶進入這小對了
     func getSelectedSquad() -> (squad:BravoSquad,index:Int){
@@ -158,7 +198,7 @@ extension SafeControlModel{
     }
     
     func reNameBLENFCDevide(){
-        BluetoothModel.singletion.reNameBLENFCDevide(as: "Taipei_00")
+        BluetoothModel.singletion.reNameBLENFCDevide(as: "Dev_00")
     }
     
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在
@@ -168,7 +208,6 @@ extension SafeControlModel{
 //        logEnter = firemanDB.arrayEnter
 //        logLeave = firemanDB.arrayExit
     }
-    
 }
 
 // delegate from bluetooth 收到藍牙傳來的UUID 就新增或移除人員,然後再給兩個ＶＣ一根旗子讓他們刷新頁面

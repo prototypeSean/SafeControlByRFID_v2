@@ -30,6 +30,7 @@ public struct FiremanForBravoSquad {
     let timestampout:String
     let image:UIImage
     let scubaTime:Double
+    var isSelected:Bool
 }
 // 提供給 Log 頁面的struct
 /// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
@@ -484,7 +485,8 @@ extension FirecommandDatabase{
                                             timestamp: fm[table_FIREMAN_TIMESTAMP],
                                             timestampout: fm[table_FIREMAN_TIMESTAMPOUT],
                                             image: imageFromlocalPath,
-                                            scubaTime: fm[table_FIREMAN_SCUBATIME])
+                                            scubaTime: fm[table_FIREMAN_SCUBATIME],
+                                            isSelected: false)
             }
         }catch{
             print("取出FiremanforBravoSquad錯誤\(error)")
@@ -595,7 +597,7 @@ extension FirecommandDatabase{
                     timestamp: String(oneFiremansInTimeLog),
                     timestampout: "",
                     image: imageFromlocalPath,
-                    scubaTime: fm[table_FIREMAN_SCUBATIME])
+                    scubaTime: fm[table_FIREMAN_SCUBATIME], isSelected: false)
                 arrayEnter.append(oneFiremanEachEnterLog)
             }
             //            print("arrayEnter!! \(arrayEnter)")
@@ -607,7 +609,7 @@ extension FirecommandDatabase{
                     timestamp: "",
                     timestampout: String(one),
                     image: imageFromlocalPath,
-                    scubaTime: fm[table_FIREMAN_SCUBATIME])
+                    scubaTime: fm[table_FIREMAN_SCUBATIME], isSelected: false)
                 arrayExit.append(oneFiremanEachExitLog)
             }
             
@@ -736,7 +738,7 @@ extension FirecommandDatabase{
     }
 }
 
-// 檢查column是否存在
+// 檢查 db 中 column是否存在
 extension Connection {
     public func didColumnExist(column: String, in table: String) throws -> Bool {
         let stmt = try prepare("PRAGMA table_info(\(table))")

@@ -63,10 +63,19 @@ class FiremanCollectionViewCell:UICollectionViewCell{
             barLeftVIew.setBar(color: LifeCircleColor.white)
             self.backgroundColor = UIColor.clear
             
+            self.selectedCheck.backgroundColor = UIColor.clear
+            
             barLeftVIew.setBar(ratio: 1)
             
             return
         }
+        
+        if fireman!.isSelected{
+            self.selectedCheck.backgroundColor = #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1)
+        }else{
+            self.selectedCheck.backgroundColor = UIColor.clear
+        }
+        
         self.nameLable.text = fireman!.name
         self.photo.image = fireman!.image
         
@@ -85,7 +94,6 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.timestamp = doubleLtestTimeStamp
         
 //        print("最後一筆時間戳\(String(describing: latestTimeStamp))")
-        
         
         // 要給label顯示的時間字串格式
         let dateFormater:DateFormatter = DateFormatter()
@@ -106,9 +114,11 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     // 複寫cell被選擇的外觀
         override var isSelected: Bool{
             didSet{
-                print("self.contentView = \(self.contentView)")
-                self.selectedCheck.setTitle(isSelected ? "✓": "", for: .normal)
-                self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
+                // 想辦法判定格子裡面有消防員
+                if self.photo.image != nil{
+                    self.selectedCheck.setTitle(isSelected ? "✓": "✓", for: .normal)
+                    self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
+                }
             }
         }
     

@@ -10,15 +10,20 @@ import Foundation
 import UIKit
 
 protocol SelectedFiremanDelegate {
-    func addFiremanToChangeSquadList(selectedFiremans:(row:Int, item:Int))
-    func removeFiremanToChangeSquadList(selectedFiremans:(row:Int, item:Int))
+    func addFiremanToChangeSquadList(selectedFireman:(row:Int, item:Int))
+    func removeFiremanToChangeSquadList(selectedFireman:(row:Int, item:Int))
 }
 
 class BravoSquadTableViewCell:UITableViewCell{
     
     @IBOutlet weak var bravoSquadTitle: UILabel!
     @IBOutlet weak var bravoSquadSubTitle: UILabel!
+    @IBOutlet weak var subTitleIcon: UIImageView!
+    @IBOutlet weak var moveFiremanHere: UIButton!
+    
+    
     @IBOutlet weak var firemanCollectionView: UICollectionView!
+    
     private var bravoSquad:BravoSquad?
     
     @IBOutlet weak var heightOfCollectionView: NSLayoutConstraint!
@@ -47,15 +52,21 @@ class BravoSquadTableViewCell:UITableViewCell{
         super.awakeFromNib()
         firemanCollectionView.delegate = self
         firemanCollectionView.dataSource = self
+        self.subTitleIcon.isHidden = true
         
     }
     
+    // 給父層調整外觀用
     func selectedSquad(){
-        self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
+        self.bravoSquadSubTitle.text = "請感應 RFID"
+        self.bravoSquadSubTitle.textColor = #colorLiteral(red: 1, green: 0.7453039998, blue: 0.7006635274, alpha: 1)
+        self.subTitleIcon.isHidden = false
     }
 
     func deSelectedSquad(){
         self.bravoSquadSubTitle.text = "點擊登陸此小隊"
+        self.bravoSquadSubTitle.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.subTitleIcon.isHidden = true
     }
     
     // 設定 BravoSquad 外觀
@@ -65,9 +76,9 @@ class BravoSquadTableViewCell:UITableViewCell{
         self.bravoSquadTitle.text = bravoSquad.squadTitle
         
         if isSelected{
-            self.bravoSquadSubTitle.text = ">>> 請感應 RFID"
+            self.selectedSquad()
         }else{
-            self.bravoSquadSubTitle.text = "點擊登錄此小隊"
+            self.deSelectedSquad()
         }
         
         // TODO:-- 抄來的 尚未解析
@@ -82,11 +93,6 @@ class BravoSquadTableViewCell:UITableViewCell{
             self.firemanCollectionView.scrollToItem(at: IndexPath(row: bravoSquad.fireMans.count-1, section: 0), at: .right, animated: true)
         }
     }
-    
-    // 在某個cell按下移動人員之後 要修改 bravoSquad 陣列 要知道該移動到哪個cell
-    func moveFiremanHere(at SquadRow:Int){
-        
-    }
 }
 
 extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewDataSource{
@@ -98,40 +104,48 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = firemanCollectionView.dequeueReusableCell(withReuseIdentifier: "FiremanCollectionViewCell", for: indexPath) as! FiremanCollectionViewCell
-        // 預設了十個格子 只有fireMans.count人數 超過人數的格子設為nil
         
         collectionView.tag = self.bravoSquad!.indexInTableView
         
+        // 預設了十個格子 只有fireMans.count人數 超過人數的格子設為nil
         if self.bravoSquad?.fireMans.count ?? 0 <= indexPath.row{
             cell.setFireman(fireman: nil)
         }else{
             cell.setFireman(fireman: self.bravoSquad?.fireMans[indexPath.row])
         }
         
-//        從父層的cellForRowAt indexPath來設定allowsMultipleSelection連帶控制這邊勾勾符號出現與否
+//        從父層的cellForRowAt indexPath來設定allowsMultipleSelection 連帶控制這邊勾勾符號出現與否
         if collectionView.allowsMultipleSelection == true{
             cell.selectedCheck.isHidden = false
         }else{
             cell.selectedCheck.isHidden = true
         }
+        
+        
+        
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("小隊\(collectionView.tag)\n被選上的消防員\(indexPath.item)")
-        let row = collectionView.tag
-        let item = indexPath.item
-        //這邊傳入的只有一個cell的選擇
-        self.delegate?.addFiremanToChangeSquadList(selectedFiremans: (row,item))
-        print("單cell被選擇的人\(String(describing: self.selectedFiremansIndex))")
-        
+        // 沒有消防員的格子不觸發代理
+        if (self.bravoSquad?.fireMans.count)! > indexPath.item{
+            print("小隊\(collectionView.tag)\n被選上的消防員\(indexPath.item)")
+            let row = collectionView.tag
+            let item = indexPath.item
+            //這邊傳入的只有一個cell的選擇
+            self.delegate?.addFiremanToChangeSquadList(selectedFireman: (row,item))
+            print("單cell被選擇的人\(String(describing: collectionView.indexPathsForSelectedItems))")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let row = collectionView.tag
-        let item = indexPath.item
-        //這邊傳入的只有一個cell的選擇
-        self.delegate?.removeFiremanToChangeSquadList(selectedFiremans: (row,item))
+        if (self.bravoSquad?.fireMans.count)! > indexPath.item{
+            let row = collectionView.tag
+            let item = indexPath.item
+            //這邊傳入的只有一個cell的選擇
+            self.delegate?.removeFiremanToChangeSquadList(selectedFireman: (row,item))
+        }
     }
     
     

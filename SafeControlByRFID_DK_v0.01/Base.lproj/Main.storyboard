@@ -77,8 +77,11 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UZP-9S-1lL">
-                                                                    <rect key="frame" x="313" y="45" width="26" height="26"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stage_icon_enter-1" translatesAutoresizingMaskIntoConstraints="NO" id="UZP-9S-1lL">
+                                                                    <rect key="frame" x="262.5" y="2.5" width="40.5" height="40.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="UZP-9S-1lL" secondAttribute="height" multiplier="1:1" id="diA-bc-wAM"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R5R-Nd-mDW">
                                                                     <rect key="frame" x="8" y="100" width="752" height="260"/>
@@ -184,9 +187,12 @@
                                                                         </collectionViewCell>
                                                                     </cells>
                                                                 </collectionView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgA-tK-D2H">
-                                                                    <rect key="frame" x="465" y="0.0" width="46" height="45"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgA-tK-D2H">
+                                                                    <rect key="frame" x="495" y="7" width="31.5" height="31.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="fgA-tK-D2H" secondAttribute="height" multiplier="1:1" id="ECs-Lg-28A"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="home_move_in_fireman"/>
                                                                     <connections>
                                                                         <action selector="moveFiremanTo:" destination="eVz-wj-sr4" eventType="touchUpInside" id="0yC-js-sU5"/>
                                                                     </connections>
@@ -195,18 +201,17 @@
                                                             <color key="backgroundColor" red="0.17254901960784313" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="HJG-gm-0ew" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" id="0PT-hT-XW3"/>
-                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="leading" secondItem="4cm-66-X06" secondAttribute="leading" id="9S3-OZ-bHk"/>
+                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="trailing" secondItem="HJG-gm-0ew" secondAttribute="leading" constant="-10" id="2uc-6F-hpt"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="leading" secondItem="Rcb-zO-oFr" secondAttribute="leading" constant="8" id="AH6-ex-auY"/>
+                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" multiplier="0.9" id="C9x-Au-kDY"/>
                                                                 <constraint firstAttribute="height" constant="400" id="G0b-ST-9CD"/>
-                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="top" id="G5Y-5G-QkX"/>
-                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="height" secondItem="4cm-66-X06" secondAttribute="height" id="Mfc-zh-6c5"/>
-                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="width" secondItem="4cm-66-X06" secondAttribute="height" multiplier="1:1" id="Rk9-wf-lDR"/>
+                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="centerY" secondItem="HJG-gm-0ew" secondAttribute="centerY" id="QNr-JD-KBJ"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" constant="100" id="f8y-21-kkx"/>
-                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="bottom" secondItem="4cm-66-X06" secondAttribute="bottom" id="fil-cn-euO"/>
-                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" id="jjn-B3-8rF"/>
+                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" multiplier="0.7" id="jjn-B3-8rF"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="bottom" id="n5T-Mm-gpK"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="width" secondItem="HJG-gm-0ew" secondAttribute="width" id="pbG-ce-cH7"/>
-                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="leading" secondItem="HJG-gm-0ew" secondAttribute="trailing" constant="10" id="vrc-KA-AZ3"/>
+                                                                <constraint firstItem="UZP-9S-1lL" firstAttribute="centerY" secondItem="HJG-gm-0ew" secondAttribute="centerY" id="qRF-W6-r5n"/>
+                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="leading" secondItem="HJG-gm-0ew" secondAttribute="trailing" constant="40" id="vrc-KA-AZ3"/>
                                                                 <constraint firstAttribute="trailing" secondItem="R5R-Nd-mDW" secondAttribute="trailing" constant="8" id="ycc-ub-map"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
@@ -248,6 +253,8 @@
                                             <outlet property="bravoSquadTitle" destination="HJG-gm-0ew" id="noe-jw-rbf"/>
                                             <outlet property="firemanCollectionView" destination="R5R-Nd-mDW" id="uXP-yq-Xdk"/>
                                             <outlet property="heightOfCollectionView" destination="1VS-3h-Tlk" id="aU8-Eh-mrM"/>
+                                            <outlet property="moveFiremanHere" destination="fgA-tK-D2H" id="KwK-f0-afk"/>
+                                            <outlet property="subTitleIcon" destination="UZP-9S-1lL" id="Cao-J0-zXB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -260,17 +267,24 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Oq-fUf">
-                                <rect key="frame" x="718" y="90" width="30" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="713" y="90" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nTe-Oq-fUf" secondAttribute="height" multiplier="1:1" id="9GV-zn-oa5"/>
-                                    <constraint firstAttribute="height" constant="30" id="AKk-J2-RzI"/>
+                                    <constraint firstAttribute="height" constant="35" id="AKk-J2-RzI"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="home_new_row"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.59999999999999998"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -278,16 +292,29 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHg-8n-Gup" userLabel="AllowEditSquad">
-                                <rect key="frame" x="638" y="90" width="30" height="30"/>
+                                <rect key="frame" x="628" y="90" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VHg-8n-Gup" secondAttribute="height" multiplier="1:1" id="qgz-YK-iJv"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="home_switch_member">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="allowEditSquadBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="KkN-1Q-bmd"/>
                                 </connections>
@@ -921,9 +948,11 @@
     <resources>
         <image name="ImagePlaceholder" width="230" height="230"/>
         <image name="home_bluetooth_connected" width="306" height="79"/>
+        <image name="home_move_in_fireman" width="158" height="158"/>
         <image name="home_new_row" width="158" height="158"/>
         <image name="home_switch_member" width="158" height="158"/>
         <image name="stage_Icon_enter" width="82" height="82"/>
+        <image name="stage_icon_enter-1" width="160" height="105"/>
         <image name="stage_icon_quit" width="82" height="82"/>
         <image name="stage_member_cell_enter" width="704" height="106"/>
         <image name="stage_member_cell_quit" width="702" height="106"/>
