@@ -18,6 +18,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var barLeftVIew: BarLeftView!
     @IBOutlet weak var enterText: UILabel!
     @IBOutlet weak var selectedCheck: UIButton!
+    @IBOutlet weak var leaderBadge: UIButton!
     
     private var timestamp:TimeInterval?
     // 氣瓶時間，預設1800 單位是秒
@@ -25,7 +26,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
 
     override func awakeFromNib() {
         // cell的圓角
-        self.layer.cornerRadius = 2.0
+        self.layer.cornerRadius = 3.0
         self.layer.borderWidth = 1.2
 
         // 不用變化的外觀先寫在這
@@ -36,11 +37,33 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.selectedCheck.layer.borderWidth = 2
         self.selectedCheck.layer.borderColor = UIColor.white.cgColor
         
+        let badgeImage = #imageLiteral(resourceName: "firefighter_badge").withRenderingMode(.alwaysTemplate)
+        self.leaderBadge.setImage(badgeImage, for: .normal)
+        self.leaderBadge.isHidden = true
         
         super.awakeFromNib()
         
         countDown()
     }
+    
+    // 設定隊長 step: 3/3
+    func showLeaderBadge(){
+        self.leaderBadge.isHidden = false
+    }
+    func hideLeaderBadge(){
+        self.leaderBadge.isHidden = true
+    }
+    func isLeadeerBadge(){
+        self.leaderBadge.backgroundColor = #colorLiteral(red: 0.9689955115, green: 0.2885797918, blue: 0.2897839844, alpha: 1)
+        self.leaderBadge.isHidden = false
+    }
+    
+    override func prepareForReuse() {
+        // invoke superclass implementation
+        super.prepareForReuse()
+//        self.leaderBadge.isHidden = true
+    }
+    
     
     // 準備好一個消防員的cell需要呈現的資料
     // 時間計算方法：逼逼的時候存入資料庫逼逼的時間 -> 要計算的時候用(當下時間-逼逼時間)=進去了多久
@@ -70,10 +93,15 @@ class FiremanCollectionViewCell:UICollectionViewCell{
             return
         }
         
-        if fireman!.isSelected{
+        if fireman!.manIsSelected{
             self.selectedCheck.backgroundColor = #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1)
+//            self.leaderBadge.tintColor = #colorLiteral(red: 0.3450980392, green: 0.968627451, blue: 0.8549019608, alpha: 1)
         }else{
             self.selectedCheck.backgroundColor = UIColor.clear
+        }
+        
+        if fireman!.isLeader{
+            self.showLeaderBadge()
         }
         
         self.nameLable.text = fireman!.name
@@ -118,6 +146,8 @@ class FiremanCollectionViewCell:UICollectionViewCell{
                 if self.photo.image != nil{
                     self.selectedCheck.setTitle(isSelected ? "✓": "✓", for: .normal)
                     self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
+                    
+                    self.leaderBadge.backgroundColor = isSelected ? #colorLiteral(red: 0.9689955115, green: 0.2885797918, blue: 0.2897839844, alpha: 1): UIColor.clear
                 }
             }
         }

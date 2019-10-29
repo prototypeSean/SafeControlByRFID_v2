@@ -22,8 +22,11 @@ protocol SafeControldelegateforAddNewFireman{
 struct BravoSquad {
     var squadTitle:String
     var fireMans:Array<FiremanForBravoSquad>
-    var isSelected:Bool
+    var rowIsSelected:Bool
     var indexInTableView:Int
+    var isSettingCap:Bool
+    var capName:String
+    var capCallSign:String
 }
 
 class SafeControlModel:NSObject{
@@ -48,8 +51,8 @@ class SafeControlModel:NSObject{
             self.selectionStatus.currentRow = row
         
             // 先取消選取，再選取才能避免存錯資料到array
-            self.bravoSquads[selectionStatus.priviousRow].isSelected=false
-            self.bravoSquads[row].isSelected = true
+            self.bravoSquads[selectionStatus.priviousRow].rowIsSelected=false
+            self.bravoSquads[row].rowIsSelected = true
         
             print("\(self.bravoSquads)")
 //        }
@@ -59,8 +62,8 @@ class SafeControlModel:NSObject{
     override init() {
         super.init()
         BluetoothModel.singletion.delegate = self
-        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], isSelected: true, indexInTableView: 0))
-        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], isSelected: false, indexInTableView: 1))
+        bravoSquads.append(BravoSquad(squadTitle: "第一面", fireMans: [], rowIsSelected: true, indexInTableView: 0, isSettingCap: false, capName: "隊長名", capCallSign: "設定隊長"))
+        bravoSquads.append(BravoSquad(squadTitle: "第二面", fireMans: [], rowIsSelected: false, indexInTableView: 1, isSettingCap: false, capName: "隊長名", capCallSign: "設定隊長"))
 //        self.addNewBrevoSquad(title: "第二小隊")
     }
     
@@ -109,7 +112,7 @@ class SafeControlModel:NSObject{
     
     
     func addNewBrevoSquad(title:String){
-        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], isSelected: false, indexInTableView: bravoSquads.count))
+        bravoSquads.append(BravoSquad(squadTitle: title, fireMans: [], rowIsSelected: false, indexInTableView: bravoSquads.count, isSettingCap: false, capName: "隊長名", capCallSign: "設定隊長"))
     }
     
     func removeBravoSquad(title:String){
@@ -140,50 +143,97 @@ extension SafeControlModel{
         return self.bravoSquads
     }
     
-    // 選取 ROW (SQUAD)
+    // 選取要登錄的 ROW (SQUAD)
     func selectBravoSquad(by index:Int){
-        self.bravoSquads[index].isSelected = true
+        self.bravoSquads[index].rowIsSelected = true
     }
     
     func deSelectBravoSquad(by index:Int){
-        self.bravoSquads[index].isSelected = false
+        self.bravoSquads[index].rowIsSelected = false
     }
     
-    // 選取 FIREMAN (collectionViewCell)
+    // 選取要移動的 FIREMAN (collectionViewCell)
     func selectedFireman(in squad:Int, place:Int){
-        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.isSelected) != nil{
-            self.bravoSquads[squad].fireMans[place].isSelected = true
+        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.manIsSelected) != nil{
+            self.bravoSquads[squad].fireMans[place].manIsSelected = true
         }
     }
     
     func deSelectedFireman(in squad:Int, place:Int){
-        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.isSelected) != nil{
-            self.bravoSquads[squad].fireMans[place].isSelected = false
+        if (self.bravoSquads[safe:squad]?.fireMans[safe:place]?.manIsSelected) != nil{
+            self.bravoSquads[squad].fireMans[place].manIsSelected = false
         }
     }
     
-    //
-    func reArrengementSquad(into squadRow:Int, selectedList:Array<(row:Int, item:Int)>){
-        print("squad==\(squadRow), array\(selectedList)")
+    //設定隊長按鈕
+    func startSettingCap(at row:Int){
+        self.bravoSquads[row].isSettingCap = true
+    }
+    
+    func endSettingCap(at row:Int){
+        self.bravoSquads[row].isSettingCap = false
+    }
+    
+    // 已選擇隊長
+    // 要檢查是不是已經有隊長 有的話要置換
+    func selectedCaptainToModel(in squad:Int, place:Int){
+        let currentCap = self.bravoSquads[squad].fireMans.first(where: {$0.isLeader == true})
+        print("目前隊長、\(currentCap?.name)")
         
-        for manIndex in selectedList{
-            // 匹配被選擇的消防原 --> 逐個移出Squad
-            if let outputRow = self.bravoSquads[safe:manIndex.row], var targetFireman = outputRow.fireMans[safe:manIndex.item]{
-
-                if let inputRow = self.bravoSquads[safe:squadRow]{
-                    // 這邊要把記錄在陣列裡面的選取取消掉 不然移動過去變成已經選取
-                    targetFireman.isSelected = false
-                    
-                    self.bravoSquads[squadRow].fireMans.append(targetFireman)
-                    //                    print("要被移入的小隊\(inputRow)")
-                    //                    print("已經移入的人\(targetFireman)")
-                }
-
-                self.bravoSquads[manIndex.row].fireMans.remove(at: manIndex.item)
-            }
+        let newCap = self.bravoSquads[squad].fireMans[place]
+        
+        if newCap.uuid == currentCap?.uuid{
+            print("同一個隊長，無需替換")
+        }else{
+            let deSelectedCapIndex = self.bravoSquads[squad].fireMans.firstIndex(where: {$0.uuid == currentCap?.uuid})
+            self.bravoSquads[squad].fireMans[deSelectedCapIndex ?? 0].isLeader = false
             
+            self.bravoSquads[squad].fireMans[place].isLeader = true
+            self.bravoSquads[squad].capName = newCap.name
+            self.bravoSquads[squad].capCallSign = newCap.callSign
+            print("已變更隊長\(newCap.name)")
+            for aaa in bravoSquads[squad].fireMans{
+                print("name \(aaa.name),is cap \(aaa.isLeader)")
+            }
         }
-//        print("看看結果\(self.getBravoSquads())")
+        
+        
+        self.bravoSquads[squad].fireMans[place].isLeader = true
+    }
+    //取消選擇隊長
+    func deSelectedCaptainToModel(in squad:Int, place:Int){
+        self.bravoSquads[squad].fireMans[place].isLeader = false
+    }
+    
+    
+    
+    /// 重新編組消防員（把已經被選取的人員清單，移入被按下「移入人員」按鈕的小隊）
+    ///
+    /// - Parameters:
+    ///   - squadRow: 要移入哪個Squad (cell所在的row index)
+    ///   - selectedList: 哪些人要被移入（bravoSquads的fireman index）
+    func reArrengementSquad(into squadRow:Int, selectedList:Array<(row:Int, item:Int)>){
+//        print("squad==\(squadRow), array\(selectedList)")
+        // 寫個變數來存比較安心 這裡面的操作都用這個陣列
+        var selectedFm:Array<FiremanForBravoSquad> = []
+        
+        for (squad,man) in selectedList{
+            // 把選取的人存進變數之前 先取消選取狀態＝isSelected＝false
+            var manSelectedtoFalse = self.bravoSquads[squad].fireMans[man]
+            manSelectedtoFalse.manIsSelected = false
+            selectedFm.append(manSelectedtoFalse)
+        }
+        
+        for removeman in selectedFm{
+            // 因為是用ＲＦＩＤ移除所以剛剛改為否那邊不會影響操作
+            if self.removeFireman(by: removeman.uuid){
+                print("選取的消防員移出成功")
+            }else{
+                print("移出消防員\(removeman.name)失敗")
+            }
+        }
+        // 在要插入的小隊中加入本地存好的消防員陣列
+        self.bravoSquads[squadRow].fireMans += selectedFm
     }
     
     
@@ -191,7 +241,7 @@ extension SafeControlModel{
     // 找出現在哪個小隊被點選 要嗶嗶進入這小對了
     func getSelectedSquad() -> (squad:BravoSquad,index:Int){
         let bravoSquads = self.bravoSquads
-        if let targetSquad = bravoSquads.firstIndex(where: {$0.isSelected == true}){
+        if let targetSquad = bravoSquads.firstIndex(where: {$0.rowIsSelected == true}){
             return (bravoSquads[targetSquad],targetSquad)
         }else{
             return (bravoSquads[0],0)

@@ -108,7 +108,7 @@ class AddNewFiremanViewController: UIViewController {
         let ffr = FiremanForRegister(name: self.fireManName.text!,
                                      uuid: self.fireManRFID.text!,
                                      serialNumber: self.serialNumber.text!,
-                                     callSing: self.firemanCallSign.text!,
+                                     callSign: self.firemanCallSign.text!,
                                      department: self.firemanDepartment.text!,
                                      scubaTime: self.firemanScubaTime.text!,
                                      image: self.firemanAvatar.image!)
@@ -144,7 +144,8 @@ class AddNewFiremanViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         // 只有橫向＆＆鍵盤升起才需要抬高view
-        if keyboardSize != nil && UIDevice.current.orientation.isLandscape{
+//（暫時不給直向模式所以這行改成下面的)if keyboardSize != nil && UIDevice.current.orientation.isLandscape
+        if keyboardSize != nil{
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= 110
             }
@@ -264,7 +265,7 @@ extension AddNewFiremanViewController:SafeControldelegateforAddNewFireman{
             
             if let fireman = self.model?.firemanDB.getFiremanforRegisterCheck(by: uuid){
                 self.firemanAvatar.image = fireman.image
-                self.firemanCallSign.text = fireman.callSing
+                self.firemanCallSign.text = fireman.callSign
                 self.fireManName.text = fireman.name
                 self.fireManRFID.text = uuid
                 self.firemanDepartment.text = fireman.department

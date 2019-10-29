@@ -76,6 +76,7 @@
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stage_icon_enter-1" translatesAutoresizingMaskIntoConstraints="NO" id="UZP-9S-1lL">
                                                                     <rect key="frame" x="262.5" y="2.5" width="40.5" height="40.5"/>
@@ -152,6 +153,25 @@
                                                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
                                                                                         <state key="normal" title="✓"/>
                                                                                     </button>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDO-rQ-Q9m">
+                                                                                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="BDO-rQ-Q9m" secondAttribute="height" multiplier="1:1" id="NQy-YV-t1d"/>
+                                                                                            <constraint firstAttribute="height" constant="40" id="sFS-8X-Ia7"/>
+                                                                                        </constraints>
+                                                                                        <state key="normal" image="firefighter_badge"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                                <real key="value" value="0.5"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="3"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </button>
                                                                                 </subviews>
                                                                             </view>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,8 +185,10 @@
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="top" secondItem="R4L-PN-FgA" secondAttribute="bottom" id="Jlc-Rm-NOx"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="width" secondItem="6EW-Fh-0Dk" secondAttribute="width" multiplier="0.55" id="OJ2-Fh-Slc"/>
                                                                                 <constraint firstItem="0En-L7-jyg" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="QaK-gP-8E8"/>
+                                                                                <constraint firstItem="BDO-rQ-Q9m" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" constant="5" id="RGz-8y-Oed"/>
                                                                                 <constraint firstItem="x0p-IJ-iPH" firstAttribute="top" secondItem="xFG-NK-dbp" secondAttribute="bottom" id="TXw-XM-9gL"/>
                                                                                 <constraint firstItem="mYA-d5-poQ" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="top" id="UNY-Nn-IjR"/>
+                                                                                <constraint firstItem="BDO-rQ-Q9m" firstAttribute="top" secondItem="6EW-Fh-0Dk" secondAttribute="top" constant="5" id="WT2-T3-eaf"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="x0p-IJ-iPH" secondAttribute="trailing" id="fLY-7Q-rcb"/>
                                                                                 <constraint firstItem="R4L-PN-FgA" firstAttribute="leading" secondItem="6EW-Fh-0Dk" secondAttribute="leading" id="iG9-tN-rRR"/>
                                                                                 <constraint firstItem="mYA-d5-poQ" firstAttribute="height" secondItem="R4L-PN-FgA" secondAttribute="height" id="jdj-5c-aCM"/>
@@ -179,6 +201,7 @@
                                                                             <connections>
                                                                                 <outlet property="barLeftVIew" destination="mYA-d5-poQ" id="2oU-m4-jOm"/>
                                                                                 <outlet property="enterText" destination="0En-L7-jyg" id="Yov-Gi-8iN"/>
+                                                                                <outlet property="leaderBadge" destination="BDO-rQ-Q9m" id="wLc-xL-z16"/>
                                                                                 <outlet property="nameLable" destination="x0p-IJ-iPH" id="10n-PD-31l"/>
                                                                                 <outlet property="photo" destination="R4L-PN-FgA" id="D9X-Ja-JWD"/>
                                                                                 <outlet property="selectedCheck" destination="EvM-RZ-Bi0" id="9hP-Yj-X0i"/>
@@ -188,31 +211,78 @@
                                                                     </cells>
                                                                 </collectionView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgA-tK-D2H">
-                                                                    <rect key="frame" x="495" y="7" width="31.5" height="31.5"/>
+                                                                    <rect key="frame" x="495" y="4.5" width="36" height="36"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="fgA-tK-D2H" secondAttribute="height" multiplier="1:1" id="ECs-Lg-28A"/>
                                                                     </constraints>
+                                                                    <inset key="imageEdgeInsets" minX="2.5" minY="2.5" maxX="2.5" maxY="2.5"/>
                                                                     <state key="normal" image="home_move_in_fireman"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="3"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="moveFiremanTo:" destination="eVz-wj-sr4" eventType="touchUpInside" id="0yC-js-sU5"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設定隊長" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihE-me-LOq">
+                                                                    <rect key="frame" x="60" y="0.0" width="69.5" height="31.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="69.5" id="ZPC-Sz-SEq"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隊長名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zce-he-ZBS">
+                                                                    <rect key="frame" x="60" y="31.5" width="69.5" height="13.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.96470588235294119" green="0.80392156862745101" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mci-7a-zac">
+                                                                    <rect key="frame" x="10" y="0.0" width="119.5" height="45"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="45" id="rJV-to-Cmu"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="firefighter_badge_2"/>
+                                                                    <connections>
+                                                                        <action selector="startSettingCapBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="6pb-08-5gn"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.17254901960784313" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="HJG-gm-0ew" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" id="0PT-hT-XW3"/>
+                                                                <constraint firstItem="zce-he-ZBS" firstAttribute="top" secondItem="ihE-me-LOq" secondAttribute="bottom" id="2uN-CP-Onj"/>
                                                                 <constraint firstItem="UZP-9S-1lL" firstAttribute="trailing" secondItem="HJG-gm-0ew" secondAttribute="leading" constant="-10" id="2uc-6F-hpt"/>
+                                                                <constraint firstItem="ihE-me-LOq" firstAttribute="trailing" secondItem="mci-7a-zac" secondAttribute="trailing" id="8BG-kr-RPD"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="leading" secondItem="Rcb-zO-oFr" secondAttribute="leading" constant="8" id="AH6-ex-auY"/>
                                                                 <constraint firstItem="UZP-9S-1lL" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" multiplier="0.9" id="C9x-Au-kDY"/>
                                                                 <constraint firstAttribute="height" constant="400" id="G0b-ST-9CD"/>
+                                                                <constraint firstItem="ihE-me-LOq" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="top" id="K9r-w0-1fK"/>
                                                                 <constraint firstItem="fgA-tK-D2H" firstAttribute="centerY" secondItem="HJG-gm-0ew" secondAttribute="centerY" id="QNr-JD-KBJ"/>
+                                                                <constraint firstItem="zce-he-ZBS" firstAttribute="width" secondItem="ihE-me-LOq" secondAttribute="width" id="T4O-9u-5Ho"/>
+                                                                <constraint firstItem="ihE-me-LOq" firstAttribute="height" secondItem="mci-7a-zac" secondAttribute="height" multiplier="0.7" id="UN0-KB-2Dc"/>
+                                                                <constraint firstItem="mci-7a-zac" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="top" id="VGh-XU-4O3"/>
                                                                 <constraint firstItem="R5R-Nd-mDW" firstAttribute="top" secondItem="Rcb-zO-oFr" secondAttribute="top" constant="100" id="f8y-21-kkx"/>
-                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" multiplier="0.7" id="jjn-B3-8rF"/>
+                                                                <constraint firstItem="fgA-tK-D2H" firstAttribute="height" secondItem="HJG-gm-0ew" secondAttribute="height" multiplier="0.8" id="jjn-B3-8rF"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="top" secondItem="HJG-gm-0ew" secondAttribute="bottom" id="n5T-Mm-gpK"/>
+                                                                <constraint firstItem="ihE-me-LOq" firstAttribute="top" secondItem="mci-7a-zac" secondAttribute="top" id="ovU-xe-27X"/>
                                                                 <constraint firstItem="4cm-66-X06" firstAttribute="width" secondItem="HJG-gm-0ew" secondAttribute="width" id="pbG-ce-cH7"/>
                                                                 <constraint firstItem="UZP-9S-1lL" firstAttribute="centerY" secondItem="HJG-gm-0ew" secondAttribute="centerY" id="qRF-W6-r5n"/>
+                                                                <constraint firstItem="ihE-me-LOq" firstAttribute="width" secondItem="mci-7a-zac" secondAttribute="width" constant="-50" id="qbL-ql-Qfc"/>
                                                                 <constraint firstItem="fgA-tK-D2H" firstAttribute="leading" secondItem="HJG-gm-0ew" secondAttribute="trailing" constant="40" id="vrc-KA-AZ3"/>
+                                                                <constraint firstItem="zce-he-ZBS" firstAttribute="height" secondItem="mci-7a-zac" secondAttribute="height" multiplier="0.3" id="wai-0k-JPY"/>
                                                                 <constraint firstAttribute="trailing" secondItem="R5R-Nd-mDW" secondAttribute="trailing" constant="8" id="ycc-ub-map"/>
+                                                                <constraint firstItem="zce-he-ZBS" firstAttribute="leading" secondItem="ihE-me-LOq" secondAttribute="leading" id="zwT-Lf-EKK"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -243,6 +313,9 @@
                                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Rcb-zO-oFr" secondAttribute="bottom" constant="139.5" id="oSZ-nk-Xlb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="mci-7a-zac" firstAttribute="leading" secondItem="T85-8U-YBN" secondAttribute="leading" constant="10" id="AkS-m2-tb2"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="0"/>
@@ -251,9 +324,12 @@
                                         <connections>
                                             <outlet property="bravoSquadSubTitle" destination="4cm-66-X06" id="R3y-b8-dgw"/>
                                             <outlet property="bravoSquadTitle" destination="HJG-gm-0ew" id="noe-jw-rbf"/>
+                                            <outlet property="capCallSign" destination="ihE-me-LOq" id="lWD-B0-KlR"/>
+                                            <outlet property="capName" destination="zce-he-ZBS" id="7PP-Ye-bEW"/>
                                             <outlet property="firemanCollectionView" destination="R5R-Nd-mDW" id="uXP-yq-Xdk"/>
                                             <outlet property="heightOfCollectionView" destination="1VS-3h-Tlk" id="aU8-Eh-mrM"/>
                                             <outlet property="moveFiremanHere" destination="fgA-tK-D2H" id="KwK-f0-afk"/>
+                                            <outlet property="setCaptain" destination="mci-7a-zac" id="DFb-Dr-hmh"/>
                                             <outlet property="subTitleIcon" destination="UZP-9S-1lL" id="Cao-J0-zXB"/>
                                         </connections>
                                     </tableViewCell>
@@ -947,6 +1023,8 @@
     </scenes>
     <resources>
         <image name="ImagePlaceholder" width="230" height="230"/>
+        <image name="firefighter_badge" width="54" height="54"/>
+        <image name="firefighter_badge_2" width="54" height="54"/>
         <image name="home_bluetooth_connected" width="306" height="79"/>
         <image name="home_move_in_fireman" width="158" height="158"/>
         <image name="home_new_row" width="158" height="158"/>

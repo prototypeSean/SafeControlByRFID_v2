@@ -15,7 +15,7 @@ public struct FiremanForRegister {
     let name:String
     let uuid:String
     let serialNumber:String
-    let callSing:String
+    let callSign:String
     let department:String
     let scubaTime:String
     let image:UIImage
@@ -30,7 +30,9 @@ public struct FiremanForBravoSquad {
     let timestampout:String
     let image:UIImage
     let scubaTime:Double
-    var isSelected:Bool
+    var manIsSelected:Bool
+    var isLeader:Bool
+    let callSign:String
 }
 // 提供給 Log 頁面的struct
 /// 格式：<日期,[人Ａ,人Ｂ,人Ｃ]>
@@ -448,7 +450,7 @@ extension FirecommandDatabase{
             let updateRows = try db.run(fireman.update(
                 [table_FIREMAN_NAME <- editfireman.name,
                 table_FIREMAN_SN <- editfireman.serialNumber,
-                table_FIREMAN_CALLSIGN <- editfireman.callSing,
+                table_FIREMAN_CALLSIGN <- editfireman.callSign,
                 table_FIREMAN_DEPARTMENT <- editfireman.department,
                 table_FIREMAN_SCUBATIME <- Double(editfireman.scubaTime)!,
                 table_FIREMAN_PHOTO_PATH <- path!.absoluteString]
@@ -486,7 +488,8 @@ extension FirecommandDatabase{
                                             timestampout: fm[table_FIREMAN_TIMESTAMPOUT],
                                             image: imageFromlocalPath,
                                             scubaTime: fm[table_FIREMAN_SCUBATIME],
-                                            isSelected: false)
+                                            manIsSelected: false, isLeader: false,
+                                            callSign: fm[table_FIREMAN_CALLSIGN])
             }
         }catch{
             print("取出FiremanforBravoSquad錯誤\(error)")
@@ -509,7 +512,7 @@ extension FirecommandDatabase{
                 return FiremanForRegister(name: fm[table_FIREMAN_NAME],
                                           uuid: fm[table_FIREMAN_RFIDUUID],
                                           serialNumber: fm[table_FIREMAN_SN],
-                                          callSing: fm[table_FIREMAN_CALLSIGN],
+                                          callSign: fm[table_FIREMAN_CALLSIGN],
                                           department: fm[table_FIREMAN_DEPARTMENT],
                                           scubaTime: String(fm[table_FIREMAN_SCUBATIME]),
                                           image: imageFromlocalPath)
@@ -597,7 +600,8 @@ extension FirecommandDatabase{
                     timestamp: String(oneFiremansInTimeLog),
                     timestampout: "",
                     image: imageFromlocalPath,
-                    scubaTime: fm[table_FIREMAN_SCUBATIME], isSelected: false)
+                    scubaTime: fm[table_FIREMAN_SCUBATIME], manIsSelected: false, isLeader: false,
+                    callSign: fm[table_FIREMAN_CALLSIGN])
                 arrayEnter.append(oneFiremanEachEnterLog)
             }
             //            print("arrayEnter!! \(arrayEnter)")
@@ -609,7 +613,8 @@ extension FirecommandDatabase{
                     timestamp: "",
                     timestampout: String(one),
                     image: imageFromlocalPath,
-                    scubaTime: fm[table_FIREMAN_SCUBATIME], isSelected: false)
+                    scubaTime: fm[table_FIREMAN_SCUBATIME], manIsSelected: false, isLeader: false,
+                    callSign: fm[table_FIREMAN_CALLSIGN])
                 arrayExit.append(oneFiremanEachExitLog)
             }
             
