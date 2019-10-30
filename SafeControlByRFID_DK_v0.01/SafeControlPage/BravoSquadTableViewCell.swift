@@ -67,26 +67,26 @@ class BravoSquadTableViewCell:UITableViewCell{
         firemanCollectionView.delegate = self
         firemanCollectionView.dataSource = self
         self.subTitleIcon.isHidden = true
-        
-//        let setCaptainImage = #imageLiteral(resourceName: "firefighter_badge_2").withRenderingMode(.alwaysTemplate)
-//        self.setCaptain.setImage(setCaptainImage, for: .normal)
-//        self.setCaptain.tintColor = UIColor.white
-        self.setCaptain.imageView?.contentMode = .scaleAspectFit
      
         let moveFiremanHereImage = #imageLiteral(resourceName: "home_move_in_fireman").withRenderingMode(.alwaysTemplate)
         self.moveFiremanHere.setImage(moveFiremanHereImage, for: .normal)
         self.moveFiremanHere.backgroundColor = UIColor.white
-        self.moveFiremanHere.tintColor = #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1)
+        self.moveFiremanHere.tintColor = #colorLiteral(red: 0.1725490196, green: 0.1960784314, blue: 0.2431372549, alpha: 1)
+        
+        self.setCapBtnOutletOff()
     }
     
     func setCapBtnOutletOn(){
-        self.setCaptain.imageView?.image = #imageLiteral(resourceName: "firefighter_badge_2")
+        print("設定隊長按鈕外觀-- 開開")
+        let image = #imageLiteral(resourceName: "firefighter_badge_2")
+        self.setCaptain.setImage(image, for: .normal)
         self.setCaptain.imageView?.contentMode = .scaleAspectFit
     }
     func setCapBtnOutletOff(){
-        let setCaptainImage = #imageLiteral(resourceName: "firefighter_badge").withRenderingMode(.alwaysTemplate)
-        self.setCaptain.setImage(setCaptainImage, for: .normal)
-        self.setCaptain.tintColor = UIColor.white
+        print("設定隊長按鈕外觀-- 關")
+        let image = #imageLiteral(resourceName: "firefighter_badge")
+        self.setCaptain.setImage(image, for: .normal)
+        self.setCaptain.imageView?.contentMode = .scaleAspectFit
     }
     
     // 給父層調整選擇ROW時外觀用
@@ -183,18 +183,6 @@ extension BravoSquadTableViewCell:UICollectionViewDelegate, UICollectionViewData
                 cell.isLeadeerBadge()
             }
         }
-        
-        
-        // 跟編輯隊員類似 只是這次每次只有一個bravoSquad可以編輯
-        // 設定隊長跟編排人員不同 按下設定隊長只有該cell可以操作
-//        if self.bravoSquad!.isSettingCap{
-//            collectionView.allowsSelection = true
-//            cell.showLeaderBadge()
-////            collectionView.allowsSelection = true
-//        }else{
-//            cell.hideLeaderBadge()
-//            collectionView.allowsSelection = false
-//        }
         
         return cell
     }

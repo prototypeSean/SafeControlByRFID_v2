@@ -344,6 +344,7 @@ extension FirecommandDatabase{
         }
     }
     
+    // TODO:疑似這東西很卡，找時間修正
     func makefiremanLogPageV2(){
         getFiremanForLogv2()
         missionDeployedDayV2()

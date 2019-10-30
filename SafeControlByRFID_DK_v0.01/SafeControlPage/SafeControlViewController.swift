@@ -115,6 +115,7 @@ class SafeControlViewController: UIViewController{
             print("ROW\(clickedRow!) 結束設定隊長")
             self.model.endSettingCap(at: clickedRow!)
             isSettingCaptain = false
+            self.SafeControlTableView.reloadData()
         }
         
         // 關掉編輯隊員的功能
@@ -142,7 +143,7 @@ class SafeControlViewController: UIViewController{
             allowEditSquad.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 0.5)
         }else{
             allowEdit = true
-            allowEditSquad.tintColor = #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1)
+            allowEditSquad.tintColor = #colorLiteral(red: 0.1725490196, green: 0.1960784314, blue: 0.2431372549, alpha: 1)
             allowEditSquad.backgroundColor = UIColor.white
         }
         for (squad,man) in self.allSelectedFiremans{
@@ -256,19 +257,21 @@ extension SafeControlViewController:UITableViewDelegate,UITableViewDataSource{
         
         
         // 設定隊長按鈕外觀
+
+        
         if (bravoSquads[indexPath.row].fireMans.first(where: {$0.isLeader == true})) != nil{
             
             cell.capName.text = bravoSquads[indexPath.row].capName
-            print("這是第\(indexPath.row)行，隊長是，隊長是\(cell.capName.text)")
-            
+            print("這是第\(indexPath.row)行，隊長是，隊長是\(String(describing: cell.capName.text))")
             cell.capCallSign.text = bravoSquads[indexPath.row].capCallSign
             cell.setCapBtnOutletOn()
         }else{
             cell.setCapBtnOutletOff()
+            cell.capName.text = "隊長名"
+            cell.capCallSign.text = "設定隊長"
         }
 
-        
-        
+
         return cell
     }
     

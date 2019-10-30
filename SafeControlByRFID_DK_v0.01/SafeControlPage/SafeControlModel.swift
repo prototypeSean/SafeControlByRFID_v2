@@ -165,7 +165,7 @@ extension SafeControlModel{
         }
     }
     
-    //設定隊長按鈕
+    //哪一行被按下「設定隊長」按鈕
     func startSettingCap(at row:Int){
         self.bravoSquads[row].isSettingCap = true
     }
@@ -217,6 +217,7 @@ extension SafeControlModel{
         // 寫個變數來存比較安心 這裡面的操作都用這個陣列
         var selectedFm:Array<FiremanForBravoSquad> = []
         
+        // 把選取的人整理到上面的變數裡
         for (squad,man) in selectedList{
             // 把選取的人存進變數之前 先取消選取狀態＝isSelected＝false
             var manSelectedtoFalse = self.bravoSquads[squad].fireMans[man]
@@ -226,10 +227,18 @@ extension SafeControlModel{
         
         for removeman in selectedFm{
             // 因為是用ＲＦＩＤ移除所以剛剛改為否那邊不會影響操作
-            if self.removeFireman(by: removeman.uuid){
-                print("選取的消防員移出成功")
-            }else{
-                print("移出消防員\(removeman.name)失敗")
+            // 基本上照抄removeFireman()但是不要動到DB
+            for bravoSquadIndex in 0 ..< bravoSquads.count{
+                // 從bravoSquads的陣列中遍歷，找uuid符合的fireman
+                if let index = bravoSquads[bravoSquadIndex].fireMans.firstIndex(where: {$0.uuid == removeman.uuid}){
+                    // 找到之後把他加離開的log陣列中 並且從bravoSquad中移出
+                    //                logLeave.append(bravoSquads[bravoSquadIndex].fireMans[index])
+                    bravoSquads[bravoSquadIndex].fireMans.remove(at: index)
+                    print("移出消防員")
+                }
+                else{
+                    print("移出消防員\(removeman.name)失敗")
+                }
             }
         }
         // 在要插入的小隊中加入本地存好的消防員陣列

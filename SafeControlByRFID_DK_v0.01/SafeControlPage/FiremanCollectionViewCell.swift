@@ -54,8 +54,9 @@ class FiremanCollectionViewCell:UICollectionViewCell{
         self.leaderBadge.isHidden = true
     }
     func isLeadeerBadge(){
-        self.leaderBadge.backgroundColor = #colorLiteral(red: 0.9689955115, green: 0.2885797918, blue: 0.2897839844, alpha: 1)
+//        self.leaderBadge.backgroundColor = #colorLiteral(red: 0.9689955115, green: 0.2885797918, blue: 0.2897839844, alpha: 1)
         self.leaderBadge.isHidden = false
+        self.leaderBadge.imageView?.image = #imageLiteral(resourceName: "firefighter_badge_2")
     }
     
     override func prepareForReuse() {
@@ -147,7 +148,7 @@ class FiremanCollectionViewCell:UICollectionViewCell{
                     self.selectedCheck.setTitle(isSelected ? "✓": "✓", for: .normal)
                     self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
                     
-                    self.leaderBadge.backgroundColor = isSelected ? #colorLiteral(red: 0.9689955115, green: 0.2885797918, blue: 0.2897839844, alpha: 1): UIColor.clear
+                    self.leaderBadge.imageView?.image = isSelected ? #imageLiteral(resourceName: "firefighter_badge_2"): #imageLiteral(resourceName: "firefighter_badge")
                 }
             }
         }

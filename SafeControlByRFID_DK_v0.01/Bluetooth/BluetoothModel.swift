@@ -20,7 +20,7 @@ import CoreBluetooth
 
 class BluetoothModel:NSObject{
     
-    var bleNFCDeviceName:String = "Taipei_00"
+    var bleNFCDeviceName:String = "Dev_00"
     
     // 為了singletion 設計的
     static let singletion = BluetoothModel()

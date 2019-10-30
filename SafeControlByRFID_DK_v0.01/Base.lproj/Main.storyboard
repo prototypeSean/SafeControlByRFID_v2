@@ -162,10 +162,10 @@
                                                                                         <state key="normal" image="firefighter_badge"/>
                                                                                         <userDefinedRuntimeAttributes>
                                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                                <real key="value" value="0.5"/>
+                                                                                                <real key="value" value="0.0"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                <real key="value" value="3"/>
+                                                                                                <real key="value" value="0.0"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +215,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="fgA-tK-D2H" secondAttribute="height" multiplier="1:1" id="ECs-Lg-28A"/>
                                                                     </constraints>
-                                                                    <inset key="imageEdgeInsets" minX="2.5" minY="2.5" maxX="2.5" maxY="2.5"/>
+                                                                    <inset key="imageEdgeInsets" minX="3.5" minY="3.5" maxX="3.5" maxY="3.5"/>
                                                                     <state key="normal" image="home_move_in_fireman"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -225,7 +225,7 @@
                                                                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <real key="value" value="3"/>
+                                                                            <real key="value" value="5"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
@@ -252,7 +252,6 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="45" id="rJV-to-Cmu"/>
                                                                     </constraints>
-                                                                    <state key="normal" image="firefighter_badge_2"/>
                                                                     <connections>
                                                                         <action selector="startSettingCapBtn:" destination="eVz-wj-sr4" eventType="touchUpInside" id="6pb-08-5gn"/>
                                                                     </connections>
@@ -336,7 +335,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bluetooth_connected" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-nn-sy6" userLabel="bluetoothStatus">
-                                <rect key="frame" x="6" y="76" width="93" height="24"/>
+                                <rect key="frame" x="5" y="75" width="93" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Skn-Yn-OrU"/>
                                     <constraint firstAttribute="width" secondItem="mRY-nn-sy6" secondAttribute="height" multiplier="306:79" id="pMG-KB-HUH"/>
@@ -399,15 +398,15 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VHg-8n-Gup" firstAttribute="height" secondItem="nTe-Oq-fUf" secondAttribute="height" id="8q8-K5-TXf"/>
-                            <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="6" id="CPg-LR-NMV"/>
                             <constraint firstItem="nTe-Oq-fUf" firstAttribute="leading" secondItem="VHg-8n-Gup" secondAttribute="trailing" constant="50" id="DV1-gm-v9K"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" id="JPJ-W8-nJR"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="top" secondItem="nTe-Oq-fUf" secondAttribute="top" constant="-20" id="Qzd-45-vDL"/>
                             <constraint firstItem="VHg-8n-Gup" firstAttribute="top" secondItem="nTe-Oq-fUf" secondAttribute="top" id="cIS-f9-Ad7"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="bottom" secondItem="VWP-D3-d93" secondAttribute="bottom" id="cQJ-FI-VfY"/>
+                            <constraint firstItem="mRY-nn-sy6" firstAttribute="leading" secondItem="kDa-mF-pRJ" secondAttribute="leading" constant="5" id="eo1-yr-wv5"/>
                             <constraint firstItem="kDa-mF-pRJ" firstAttribute="trailing" secondItem="VWP-D3-d93" secondAttribute="trailing" id="imN-QU-Jjg"/>
                             <constraint firstItem="VWP-D3-d93" firstAttribute="top" secondItem="vZz-d9-kMs" secondAttribute="top" id="qc1-SF-3nM"/>
-                            <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="6" id="ryE-zU-DD0"/>
+                            <constraint firstItem="mRY-nn-sy6" firstAttribute="top" secondItem="kDa-mF-pRJ" secondAttribute="top" constant="5" id="ryE-zU-DD0"/>
                             <constraint firstItem="nTe-Oq-fUf" firstAttribute="trailing" secondItem="kDa-mF-pRJ" secondAttribute="trailing" constant="-20" id="wyw-Q2-Tbr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kDa-mF-pRJ"/>
@@ -420,8 +419,8 @@
                                     <segue destination="iGh-xc-vsU" kind="show" identifier="segueToAddNewFireman" id="Gl5-qo-Lvf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="reName" id="2fm-ay-l1Y" userLabel="EditName">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <barButtonItem enabled="NO" title="reName" id="2fm-ay-l1Y" userLabel="EditName">
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="reNameBLENFCDevice:" destination="eVz-wj-sr4" id="81L-8y-TYu"/>
                                 </connections>
@@ -1024,7 +1023,6 @@
     <resources>
         <image name="ImagePlaceholder" width="230" height="230"/>
         <image name="firefighter_badge" width="54" height="54"/>
-        <image name="firefighter_badge_2" width="54" height="54"/>
         <image name="home_bluetooth_connected" width="306" height="79"/>
         <image name="home_move_in_fireman" width="158" height="158"/>
         <image name="home_new_row" width="158" height="158"/>
