@@ -25,7 +25,7 @@ class SafeControlLogPageViewController:UIViewController{
 //        self.safeControlEnterLogTableView.reloadData()
 //        self.safeControlLeaveLogTableView.reloadData()
 
-        model?.firemanDB.makefiremanLogPageV2()
+//        model?.firemanDB.makefiremanLogPageV2()
     }
     
     

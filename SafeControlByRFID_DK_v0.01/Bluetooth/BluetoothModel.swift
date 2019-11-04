@@ -64,21 +64,21 @@ class BluetoothModel:NSObject{
 //        }
         print("設備名稱：\(deviceName ?? "獲取設備名稱失敗")")
         
-        // TODO: 電壓警示 還來不及檢查先不放
-//        do{
-//            try ObjC.catchException{
-//                let btyQueue:DispatchQueue = DispatchQueue(label: "centralQueue")
-//                btyQueue.async {
-//                    if let deviceBattery = self.bleNfcDevice?.getBatteryVoltage(){
-//                        print("電池電壓：\(round(deviceBattery*100)/100)")
-//                    }else{
-//                        print("無法獲取電池電壓")
-//                    }
-//                }
-//            }
-//        }catch{
-//            print("電壓不足的NSErrorrrrr\(error)")
-//        }
+//         TODO: 電壓警示---測試中
+        do{
+            try ObjC.catchException{
+                let btyQueue:DispatchQueue = DispatchQueue(label: "btyQueue")
+                btyQueue.async {
+                    if let deviceBattery = self.bleNfcDevice?.getBatteryVoltage(){
+                        print("電池電壓：\(round(deviceBattery*100)/100)")
+                    }else{
+                        print("無法獲取電池電壓")
+                    }
+                }
+            }
+        }catch{
+            print("電壓不足的NSError電壓不足電壓不足\(error)")
+        }
     }
     
 //    開啟 RFID 自動掃描功能

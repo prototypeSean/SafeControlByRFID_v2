@@ -106,7 +106,7 @@ class BravoSquadTableViewCell:UITableViewCell{
     }
 
     func deSelectedSquad(){
-        self.bravoSquadSubTitle.text = "點擊登陸此小隊"
+        self.bravoSquadSubTitle.text = "點擊登錄此小隊"
         self.bravoSquadSubTitle.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.subTitleIcon.isHidden = true
     }
