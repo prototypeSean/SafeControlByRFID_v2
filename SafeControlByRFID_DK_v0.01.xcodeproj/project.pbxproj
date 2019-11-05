@@ -21,6 +21,7 @@
 		1921A90D2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */; };
 		1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */; };
 		1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */; };
+		19319CCF23716D70005A39D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */; };
 		1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF502318E88D00AC3707 /* SafeControlViewController.swift */; };
 		1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF522318F66900AC3707 /* FireCommandDB.swift */; };
 		19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97BD23161D3000E9B99B /* AppDelegate.swift */; };
@@ -76,6 +77,7 @@
 		1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogV2ViewController.swift; sourceTree = "<group>"; };
 		1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogInTableViewCell.swift; sourceTree = "<group>"; };
 		1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogOutTableViewCell.swift; sourceTree = "<group>"; };
+		19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1978EF502318E88D00AC3707 /* SafeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlViewController.swift; sourceTree = "<group>"; };
 		1978EF522318F66900AC3707 /* FireCommandDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCommandDB.swift; sourceTree = "<group>"; };
 		19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeControlByRFID_DK_v0.01.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				19AD97C723161D3200E9B99B /* Assets.xcassets */,
 				19AD97C923161D3200E9B99B /* LaunchScreen.storyboard */,
 				19AD97C423161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld */,
+				19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */,
 			);
 			path = SafeControlByRFID_DK_v0.01;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 			files = (
 				19204E9223485CC4006C8AE6 /* LogHeader.xib in Resources */,
 				19AD97CB23161D3200E9B99B /* LaunchScreen.storyboard in Resources */,
+				19319CCF23716D70005A39D5 /* GoogleService-Info.plist in Resources */,
 				19AD97C823161D3200E9B99B /* Assets.xcassets in Resources */,
 				19AD97C323161D3000E9B99B /* Main.storyboard in Resources */,
 			);
@@ -683,7 +687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4HS2232BLN;
+				DEVELOPMENT_TEAM = VNNC6YVHB7;
 				INFOPLIST_FILE = SafeControlByRFID_DK_v0.01/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -706,7 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4HS2232BLN;
+				DEVELOPMENT_TEAM = VNNC6YVHB7;
 				INFOPLIST_FILE = SafeControlByRFID_DK_v0.01/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (

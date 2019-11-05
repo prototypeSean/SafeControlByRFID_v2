@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>29683697107-ge5b91q1vs0gilkadepghuij2ntr4dtr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.29683697107-ge5b91q1vs0gilkadepghuij2ntr4dtr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDavUbls3rzVnSTFwlvsHZX-MVoycREJyc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>29683697107</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>DennisKao.SafeControlByRFID-DK</string>
+	<key>PROJECT_ID</key>
+	<string>firecommand-b6ed0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firecommand-b6ed0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:29683697107:ios:e46e25aae13f8f80be5b26</string>
+	<key>DATABASE_URL</key>
+	<string>https://firecommand-b6ed0.firebaseio.com</string>
+</dict>
+</plist>
