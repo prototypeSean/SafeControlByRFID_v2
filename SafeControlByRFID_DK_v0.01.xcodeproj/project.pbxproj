@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,7 @@
 		1921A90D2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */; };
 		1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */; };
 		1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */; };
-		19319CCF23716D70005A39D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */; };
+		192264E223793566005700D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 192264E123793566005700D4 /* GoogleService-Info.plist */; };
 		1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF502318E88D00AC3707 /* SafeControlViewController.swift */; };
 		1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF522318F66900AC3707 /* FireCommandDB.swift */; };
 		19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97BD23161D3000E9B99B /* AppDelegate.swift */; };
@@ -56,8 +56,6 @@
 		19F7C868232A151A005F1167 /* CpuCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C85F232A1519005F1167 /* CpuCard.m */; };
 		19F7C869232A151A005F1167 /* FeliCa.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C860232A151A005F1167 /* FeliCa.m */; };
 		19F7C86A232A151A005F1167 /* Mifare.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C861232A151A005F1167 /* Mifare.m */; };
-		19F7C86E232CC7AC005F1167 /* SafeControlLogPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */; };
-		19F7C86F232CC7AC005F1167 /* SafeControlLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */; };
 		19F7C872232D030B005F1167 /* Objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C871232D030B005F1167 /* Objc.m */; };
 		8EA93EFCA058E79B929F0C2C /* libPods-SafeControlByRFID_DK_v0.01.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9B69AE1DCDE50C34507C7C /* libPods-SafeControlByRFID_DK_v0.01.a */; };
 /* End PBXBuildFile section */
@@ -77,7 +75,7 @@
 		1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogV2ViewController.swift; sourceTree = "<group>"; };
 		1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogInTableViewCell.swift; sourceTree = "<group>"; };
 		1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogOutTableViewCell.swift; sourceTree = "<group>"; };
-		19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		192264E123793566005700D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1978EF502318E88D00AC3707 /* SafeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlViewController.swift; sourceTree = "<group>"; };
 		1978EF522318F66900AC3707 /* FireCommandDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCommandDB.swift; sourceTree = "<group>"; };
 		19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeControlByRFID_DK_v0.01.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,8 +140,6 @@
 		19F7C85F232A1519005F1167 /* CpuCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuCard.m; sourceTree = "<group>"; };
 		19F7C860232A151A005F1167 /* FeliCa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeliCa.m; sourceTree = "<group>"; };
 		19F7C861232A151A005F1167 /* Mifare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mifare.m; sourceTree = "<group>"; };
-		19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlLogPageViewController.swift; sourceTree = "<group>"; };
-		19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeControlLogTableViewCell.swift; sourceTree = "<group>"; };
 		19F7C870232D02D0005F1167 /* Objc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Objc.h; sourceTree = "<group>"; };
 		19F7C871232D030B005F1167 /* Objc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Objc.m; sourceTree = "<group>"; };
 		2348C79872F456E364B1AF96 /* Pods-SafeControlByRFID_DK_v0.01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeControlByRFID_DK_v0.01.release.xcconfig"; path = "Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +239,7 @@
 		19AD97BC23161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */ = {
 			isa = PBXGroup;
 			children = (
+				192264E123793566005700D4 /* GoogleService-Info.plist */,
 				192AA63E2327DD40002ED806 /* DataBase */,
 				192AA63D2327DD16002ED806 /* Bluetooth */,
 				192008A623209AE600BF4179 /* SafeControlPage */,
@@ -255,7 +252,6 @@
 				19AD97C723161D3200E9B99B /* Assets.xcassets */,
 				19AD97C923161D3200E9B99B /* LaunchScreen.storyboard */,
 				19AD97C423161D3000E9B99B /* SafeControlByRFID_DK_v0_01.xcdatamodeld */,
-				19319CCE23716D6F005A39D5 /* GoogleService-Info.plist */,
 			);
 			path = SafeControlByRFID_DK_v0.01;
 			sourceTree = "<group>";
@@ -368,8 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				1921A90E2343030900DCFB19 /* SafeControlLogCell */,
-				19F7C86C232CC7AB005F1167 /* SafeControlLogPageViewController.swift */,
-				19F7C86D232CC7AC005F1167 /* SafeControlLogTableViewCell.swift */,
 				1921A90C2342FEB300DCFB19 /* SafeControlLogV2ViewController.swift */,
 			);
 			path = SafeControlLogPage;
@@ -403,6 +397,7 @@
 				19AD97B623161D3000E9B99B /* Sources */,
 				19AD97B723161D3000E9B99B /* Frameworks */,
 				19AD97B823161D3000E9B99B /* Resources */,
+				71E208F1746ABC2D49BFE981 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -454,7 +449,7 @@
 			files = (
 				19204E9223485CC4006C8AE6 /* LogHeader.xib in Resources */,
 				19AD97CB23161D3200E9B99B /* LaunchScreen.storyboard in Resources */,
-				19319CCF23716D70005A39D5 /* GoogleService-Info.plist in Resources */,
+				192264E223793566005700D4 /* GoogleService-Info.plist in Resources */,
 				19AD97C823161D3200E9B99B /* Assets.xcassets in Resources */,
 				19AD97C323161D3000E9B99B /* Main.storyboard in Resources */,
 			);
@@ -463,6 +458,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		71E208F1746ABC2D49BFE981 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SafeControlByRFID_DK_v0.01/Pods-SafeControlByRFID_DK_v0.01-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97C04BFDF0AC6C95C7566E85 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,9 +520,7 @@
 				191EBB9C231E0E7A0040D1BE /* PhotoManager.swift in Sources */,
 				19F7C864232A151A005F1167 /* Ntag21x.m in Sources */,
 				19F7C824232A0F8A005F1167 /* Iso14443bCard.m in Sources */,
-				19F7C86F232CC7AC005F1167 /* SafeControlLogTableViewCell.swift in Sources */,
 				191EA8F92339B733004C3429 /* MainTools.swift in Sources */,
-				19F7C86E232CC7AC005F1167 /* SafeControlLogPageViewController.swift in Sources */,
 				192008AE23209AE700BF4179 /* FiremanCollectionViewCell.swift in Sources */,
 				19F7C823232A0F8A005F1167 /* Ultralight.m in Sources */,
 				19F7C83F232A14BF005F1167 /* DKCardNoResponseException.m in Sources */,
@@ -694,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "DennisKao.SafeControlByRFID-DK";
+				PRODUCT_BUNDLE_IDENTIFIER = "DennisKaoatFC.SafeControlByRFID-DK";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BleNfcSDK/SafeControlByRFID_DK_v0.01-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -717,7 +727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "DennisKao.SafeControlByRFID-DK";
+				PRODUCT_BUNDLE_IDENTIFIER = "DennisKaoatFC.SafeControlByRFID-DK";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BleNfcSDK/SafeControlByRFID_DK_v0.01-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

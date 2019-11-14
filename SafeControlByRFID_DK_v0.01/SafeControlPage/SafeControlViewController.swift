@@ -9,7 +9,7 @@
 // 安管頁面最外層的VC 要吃下兩個協議來使用tableView的func
 
 import UIKit
-
+import Firebase
 
 // 第一次收到收到RFID要把人放到清單上 第二次要移除(先試著移除失敗就加入)
 // 這裡的資料靠 SafeControlModel 提供
@@ -163,9 +163,51 @@ class SafeControlViewController: UIViewController{
         self.model.delegate = self
     }
     
+    //MARK: FireBase 遠端資料庫
+    var docRef: DocumentReference? = nil
+    lazy var firedb = Firestore.firestore()
     
+    struct firemanToFB {
+        let name: String
+    }
+    
+    
+    
+//    // 建立 Docuement 同時插入資料
+    func testFirebasedb(){
+        let dataToSafe = ["name": self.model.getBravoSquads()[0].fireMans[0].name ]
+        docRef = firedb.document("userCollection/使用者000")
+        docRef?.setData(dataToSafe){ (error) in
+            if let error = error {
+                print("新增資料錯誤\(error.localizedDescription)")
+            }else{
+                print("新增資料成功")
+            }
+        }
+    }
+    
+    @IBAction func firebaseTest(_ sender: UIBarButtonItem) {
+        testFirebasedb()
+        print("Fire!\(String(describing: docRef?.documentID))")
+//        let dataSaveToFireBase:[String:Any] = ["capName": "隊長名"]
+//        docRef?.setData(dataSaveToFireBase) { (error) in
+//            if let error = error{
+//                print("有錯誤喔\(error)")
+//            }else{
+//                print("資料存進去\(self.docRef!.documentID)了")
+//            }
+//
+//        }
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var docRef: DocumentReference? = nil
+//        let firedb = Firestore.firestore()
+//        docRef = Firestore.firestore().document("userCollection/fireman")
+        docRef = firedb.document("userCollection/使用者001")
+        
         // 建立DB連線
         firecommandDB = FirecommandDatabase()
         firecommandDB.createTableFireman()
@@ -187,12 +229,6 @@ class SafeControlViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "segueToLogPage"{
-            self.model.syncBravoSquadLog()
-            let destinationtolog = segue.destination as! SafeControlLogPageViewController
-            destinationtolog.setupModel(model: model)
-        }
-        
         if segue.identifier == "segueToAddNewFireman"{
             let destinationtoAdd = segue.destination as! AddNewFiremanViewController
             /// 有點邪門的寫法，因為註冊頁面是child的關係，這樣兩個VC都會收到delegate
@@ -204,9 +240,6 @@ class SafeControlViewController: UIViewController{
             /// 有點邪門的寫法，因為註冊頁面是child的關係，這樣兩個VC都會收到delegate
             destinationtoAdd.setupModel(model: model)
         }
-//        self.model.delegate = nil
-        
-        
     }
 }
 

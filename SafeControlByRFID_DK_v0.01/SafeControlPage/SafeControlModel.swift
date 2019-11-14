@@ -9,6 +9,8 @@
 //
 import Foundation
 import UIKit
+import Firebase
+
 // 只是個時間點的flag的樣子
 protocol SafeControlModelDelegate{
     func dataDidUpdate()
@@ -30,6 +32,26 @@ struct BravoSquad {
 }
 
 class SafeControlModel:NSObject{
+    
+    
+    // MARK: firebase
+
+//    var docRef: DocumentReference? = nil
+//    let firedb = Firestore.firestore()
+//    
+//    private func setFirebasedb(){
+//        docRef = firedb.collection("users").addDocument(data: [
+//            "first": "Ada",
+//            "last": "Lovelace",
+//            "born": 1815
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                print("Document added with ID: \(self.docRef!.documentID)")
+//            }
+//        }
+//    }
     
     
     // 連上資料庫（這邊要用let還是var尚存疑）
@@ -258,7 +280,7 @@ extension SafeControlModel{
     }
     
     func reNameBLENFCDevide(){
-        BluetoothModel.singletion.reNameBLENFCDevide(as: "Dev_00")
+        BluetoothModel.singletion.reNameBLENFCDevide(as: "Dev_01")
     }
     
     // 不確定什麼時候該把資料庫中的log傳到 array 裡面, 不能在init因為第一次開app時資料庫還不存在
@@ -283,7 +305,7 @@ extension SafeControlModel:BluetoothModelDelegate{
                 
             }
             
-            if(vc is SafeControlViewController || vc is SafeControlLogPageViewController || vc is SafeControlLogV2ViewController){
+            if(vc is SafeControlViewController || vc is SafeControlLogV2ViewController){
                 
                 syncBravoSquadLog()
                 sortLogData()

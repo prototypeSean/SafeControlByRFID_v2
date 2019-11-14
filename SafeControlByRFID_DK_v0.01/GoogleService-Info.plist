@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>29683697107-ge5b91q1vs0gilkadepghuij2ntr4dtr.apps.googleusercontent.com</string>
+	<string>29683697107-vtd77cjar7supfv18hu29dgfdii5m58t.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.29683697107-ge5b91q1vs0gilkadepghuij2ntr4dtr</string>
+	<string>com.googleusercontent.apps.29683697107-vtd77cjar7supfv18hu29dgfdii5m58t</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDavUbls3rzVnSTFwlvsHZX-MVoycREJyc</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>DennisKao.SafeControlByRFID-DK</string>
+	<string>DennisKaoatFC.SafeControlByRFID-DK</string>
 	<key>PROJECT_ID</key>
 	<string>firecommand-b6ed0</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:29683697107:ios:e46e25aae13f8f80be5b26</string>
+	<string>1:29683697107:ios:228d962eb51d92edbe5b26</string>
 	<key>DATABASE_URL</key>
 	<string>https://firecommand-b6ed0.firebaseio.com</string>
 </dict>
