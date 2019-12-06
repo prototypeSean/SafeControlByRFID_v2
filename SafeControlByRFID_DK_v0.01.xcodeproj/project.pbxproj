@@ -22,6 +22,7 @@
 		1921A9102343049D00DCFB19 /* SafeControlLogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */; };
 		1921A912234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */; };
 		192264E223793566005700D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 192264E123793566005700D4 /* GoogleService-Info.plist */; };
+		196017B02398CF11001E9D76 /* CommanderPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196017AF2398CF11001E9D76 /* CommanderPageViewController.swift */; };
 		1978EF512318E88D00AC3707 /* SafeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF502318E88D00AC3707 /* SafeControlViewController.swift */; };
 		1978EF532318F66900AC3707 /* FireCommandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978EF522318F66900AC3707 /* FireCommandDB.swift */; };
 		19AD97BE23161D3000E9B99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD97BD23161D3000E9B99B /* AppDelegate.swift */; };
@@ -76,6 +77,7 @@
 		1921A90F2343049D00DCFB19 /* SafeControlLogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogInTableViewCell.swift; sourceTree = "<group>"; };
 		1921A911234305E000DCFB19 /* SafeControlLogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlLogOutTableViewCell.swift; sourceTree = "<group>"; };
 		192264E123793566005700D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		196017AF2398CF11001E9D76 /* CommanderPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderPageViewController.swift; sourceTree = "<group>"; };
 		1978EF502318E88D00AC3707 /* SafeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeControlViewController.swift; sourceTree = "<group>"; };
 		1978EF522318F66900AC3707 /* FireCommandDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCommandDB.swift; sourceTree = "<group>"; };
 		19AD97BA23161D3000E9B99B /* SafeControlByRFID_DK_v0.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeControlByRFID_DK_v0.01.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,14 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		196017AE2398CECD001E9D76 /* CommanderPage */ = {
+			isa = PBXGroup;
+			children = (
+				196017AF2398CF11001E9D76 /* CommanderPageViewController.swift */,
+			);
+			path = CommanderPage;
+			sourceTree = "<group>";
+		};
 		19AD97B123161D3000E9B99B = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +249,7 @@
 		19AD97BC23161D3000E9B99B /* SafeControlByRFID_DK_v0.01 */ = {
 			isa = PBXGroup;
 			children = (
+				196017AE2398CECD001E9D76 /* CommanderPage */,
 				192264E123793566005700D4 /* GoogleService-Info.plist */,
 				192AA63E2327DD40002ED806 /* DataBase */,
 				192AA63D2327DD16002ED806 /* Bluetooth */,
@@ -548,6 +559,7 @@
 				192008AD23209AE700BF4179 /* BarLeftView.swift in Sources */,
 				19F7C868232A151A005F1167 /* CpuCard.m in Sources */,
 				191EA8F72338C4C9004C3429 /* UIViewsTool.swift in Sources */,
+				196017B02398CF11001E9D76 /* CommanderPageViewController.swift in Sources */,
 				19F7C863232A151A005F1167 /* Iso15693Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

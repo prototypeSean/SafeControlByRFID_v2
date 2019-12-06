@@ -147,7 +147,6 @@ class FiremanCollectionViewCell:UICollectionViewCell{
                 if self.photo.image != nil{
                     self.selectedCheck.setTitle(isSelected ? "✓": "✓", for: .normal)
                     self.selectedCheck.backgroundColor = isSelected ? #colorLiteral(red: 0.07058823529, green: 0.4705882353, blue: 0.462745098, alpha: 1): UIColor.clear
-                    
                     self.leaderBadge.imageView?.image = isSelected ? #imageLiteral(resourceName: "firefighter_badge_2"): #imageLiteral(resourceName: "firefighter_badge")
                 }
             }

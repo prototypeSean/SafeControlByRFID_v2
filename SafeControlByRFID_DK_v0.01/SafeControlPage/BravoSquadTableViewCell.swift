@@ -103,6 +103,7 @@ class BravoSquadTableViewCell:UITableViewCell{
         
         self.bravoSquadSubTitle.textColor = #colorLiteral(red: 0.9647058824, green: 0.8039215686, blue: 0.431372549, alpha: 1)
         self.subTitleIcon.isHidden = false
+        
     }
 
     func deSelectedSquad(){

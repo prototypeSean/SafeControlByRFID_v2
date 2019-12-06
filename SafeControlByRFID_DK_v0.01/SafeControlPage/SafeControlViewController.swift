@@ -189,15 +189,15 @@ class SafeControlViewController: UIViewController{
     @IBAction func firebaseTest(_ sender: UIBarButtonItem) {
         testFirebasedb()
         print("Fire!\(String(describing: docRef?.documentID))")
-//        let dataSaveToFireBase:[String:Any] = ["capName": "隊長名"]
-//        docRef?.setData(dataSaveToFireBase) { (error) in
-//            if let error = error{
-//                print("有錯誤喔\(error)")
-//            }else{
-//                print("資料存進去\(self.docRef!.documentID)了")
-//            }
-//
-//        }
+        let dataSaveToFireBase:[String:Any] = ["capName": "隊長名"]
+        docRef?.setData(dataSaveToFireBase) { (error) in
+            if let error = error{
+                print("有錯誤喔\(error)")
+            }else{
+                print("資料存進去\(self.docRef!.documentID)了")
+            }
+
+        }
         
         
     }

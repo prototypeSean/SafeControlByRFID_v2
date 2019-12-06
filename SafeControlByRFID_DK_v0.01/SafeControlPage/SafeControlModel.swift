@@ -38,7 +38,7 @@ class SafeControlModel:NSObject{
 
 //    var docRef: DocumentReference? = nil
 //    let firedb = Firestore.firestore()
-//    
+//
 //    private func setFirebasedb(){
 //        docRef = firedb.collection("users").addDocument(data: [
 //            "first": "Ada",
